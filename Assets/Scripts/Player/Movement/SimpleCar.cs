@@ -59,6 +59,8 @@ public class SimpleCar : MonoBehaviour
     public float boosterForce = 20f; // Force to boost forward momentum
     public float rampBoost = 5f;
     public float alignToGroundTime;
+    public float rampUpwardsForce;
+    public float rampCenterOfMassAdjustmentForce;
 
     // Current speed variable
     private float currentSpeed;
@@ -269,11 +271,11 @@ public class SimpleCar : MonoBehaviour
             isOnRamp = true;
 
             // Apply a Y-axis boost
-            Vector3 boostDirection = Vector3.up * 7500;
+            Vector3 boostDirection = Vector3.up * rampUpwardsForce;
             sphereRB.AddForce(boostDirection, ForceMode.Impulse);
 
             // Adjust the center of mass
-            Vector3 newCenterOfMass = normalCenterOfMass + new Vector3(0, 0, -100f);
+            Vector3 newCenterOfMass = normalCenterOfMass + new Vector3(0, 0, rampCenterOfMassAdjustmentForce);
             if (!isCenterOfMassAdjusting)
             {
                 StartCoroutine(AdjustCenterOfMass(newCenterOfMass, 1f));
