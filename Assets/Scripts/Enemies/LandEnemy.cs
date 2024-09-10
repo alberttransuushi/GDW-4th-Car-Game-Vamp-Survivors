@@ -4,24 +4,23 @@ using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UIElements;
 
-public class LandEnemy : MonoBehaviour
+public class LandEnemy : BaseEnemy
 {
 
-    
-    [SerializeField] float maxLandVelocity;
+    [SerializeField] float currentSpeed;
+    [SerializeField] float maxLandSpeed;
     [SerializeField] float acceleration;
 
-    [SerializeField] float health;
+
+
     
     [SerializeField] float turnSpeed;
+    [SerializeField] float driftEfficiency;
 
-
-    [SerializeField] GameObject playerCar;
     [SerializeField] float AngleToPlayer;
 
     [SerializeField] LayerMask groundLayer;
     RaycastHit hit;
-    bool isCarGrounded;
     Rigidbody rb;
 
     // Start is called before the first frame update
@@ -33,40 +32,53 @@ public class LandEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        CheckAlive();
         Movement();
-        //print(currentTurnAngle);
     }
 
     void TurnToPlayer()
     {
         Vector3 dirToPlayer = playerCar.transform.position - transform.position;
         
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, dirToPlayer, turnSpeed * Time.deltaTime, 0.0f));
-
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToPlayer.x, dirToPlayer.y, dirToPlayer.z), turnSpeed * Time.deltaTime, 10.0f));
 
         AngleToPlayer = Vector3.Angle(dirToPlayer, transform.forward); 
     }
 
     void Movement()
     {
-        CheckGrounded();
-
-        if (rb.velocity.magnitude > 0)
+        
+        currentSpeed = rb.velocity.magnitude;
+        if (CheckGrounded())
         {
-            TurnToPlayer();
-        }
-        if (rb.velocity.magnitude < maxLandVelocity && isCarGrounded)
-        {
+            //Can only turn if moving
+            if (rb.velocity.magnitude > 0)
+            {
+                TurnToPlayer();
+            }
+            
+            //Speed Up
+            if (rb.velocity.magnitude < maxLandSpeed)
+            {
 
-            rb.velocity += transform.forward * Time.deltaTime * acceleration;
-            rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToPlayer/180;
+                rb.velocity += transform.forward * Time.deltaTime * acceleration;
 
+                //Slows down when drifting
+                rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180;
+                
+                //Slows down perpendicular velocity
+                Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
+                float perpendiuclarSpeed = perpendicularVelocity.magnitude * driftEfficiency;
+                rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
+
+
+            }
         }
     }
 
-    void CheckGrounded()
+    bool CheckGrounded()
     {
-        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
+        return Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
     }
 
 }
