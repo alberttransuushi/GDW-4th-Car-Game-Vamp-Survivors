@@ -58,8 +58,9 @@ public class LandEnemy : BaseEnemy
             }
             
             //Speed Up
-            if (rb.velocity.magnitude < maxLandSpeed)
+            if (rb.velocity.magnitude < maxLandSpeed + GetCatchUpBonus())
             {
+                print(maxLandSpeed + GetCatchUpBonus());
 
                 rb.velocity += transform.forward * Time.deltaTime * acceleration;
 
