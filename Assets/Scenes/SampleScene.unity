@@ -1727,6 +1727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   damage: 1
+  enemy: []
 --- !u!136 &1705250381
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3277,11 +3278,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
       propertyPath: acceleration
-      value: 50
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
+      propertyPath: catchUpBonus
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
       propertyPath: maxLandSpeed
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
       propertyPath: maxTurnAngle
@@ -3301,6 +3306,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
       propertyPath: currentTurnAngle
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
+      propertyPath: distancePerCatchUp
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6092990511305805840, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
