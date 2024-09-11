@@ -15,4 +15,7 @@ public class BaseEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+  public void takeDamge(float damage) {
+    health -= damage;
+  }
 }
