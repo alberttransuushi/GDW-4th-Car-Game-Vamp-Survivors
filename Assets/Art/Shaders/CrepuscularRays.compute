@@ -1,0 +1,40 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+
+float3 sunScreenPos;
+
+RWTexture2D<float4> result_buffer;
+RWTexture2D<float4> screen_buffer;
+float density;
+float weight;
+float decay ;
+float exposure;
+int num_samples;
+
+[numthreads(8, 8, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	
+	//Pixel coords would be where the pixel would be on the screen.
+	//For example, (0, 0) or(width, height)
+	float2 texCoords = id.xy;
+	//We need to find out how far away our samples are from each other
+	float2 delta = (texCoords - sunScreenPos.xy);
+	delta *= 1.0f / num_samples * density;
+	//The colour at our current pixel
+	float4 colour = screen_buffer[id.xy];
+	float illuminationDecay = 1.0f;
+	for (int i = 0; i < num_samples; i++) {
+		// Move to our next sample
+		texCoords = texCoords - delta;
+		// Our samples get weaker the farther away we get from the current pixel
+		float4 sampleColour = screen_buffer[floor(texCoords)];
+		sampleColour *= illuminationDecay * weight;
+		colour += sampleColour;
+		illuminationDecay *= decay;
+	}
+	result_buffer[id.xy] = colour;
+}
