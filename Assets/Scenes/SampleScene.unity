@@ -409,13 +409,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285320602}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.3420201, w: 0.9396927}
+  m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
   m_LocalPosition: {x: -142.4, y: 33.0017, z: -1.76}
   m_LocalScale: {x: 9.230774, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
 --- !u!65 &285320607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1651,8 +1651,8 @@ Transform:
   m_GameObject: {fileID: 1691346360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.32, y: 0.1, z: -1.82}
-  m_LocalScale: {x: 11.131802, y: 1, z: 1}
+  m_LocalPosition: {x: 37.32, y: 0.1, z: -1.517}
+  m_LocalScale: {x: 11.131802, y: 1, z: 1.0606}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1815,7 +1815,7 @@ GameObject:
   - component: {fileID: 1921181706}
   m_Layer: 3
   m_Name: ramp
-  m_TagString: Booster
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1878,13 +1878,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921181701}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.1425018, w: 0.9897946}
-  m_LocalPosition: {x: -12.3, y: 0.1, z: -1.9397}
-  m_LocalScale: {x: -14.904078, y: 1, z: 9.715072}
+  m_LocalRotation: {x: 0, y: 0, z: -0.17890526, w: 0.98386633}
+  m_LocalPosition: {x: -12.1, y: 0.49, z: -1.5762}
+  m_LocalScale: {x: -14.904078, y: 1, z: 10.441759}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -16.385}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.612}
 --- !u!65 &1921181706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3444,7 +3444,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e865c94e5aa0f384a89692c53d2fe58e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3996,7 +3996,7 @@ MonoBehaviour:
   boosterForce: 2000
   rampBoost: 40
   alignToGroundTime: 35
-  rampUpwardsForce: 7500
+  rampUpwardsForce: 0
   rampCenterOfMassAdjustmentForce: -100
   frontLeftWheel: {fileID: 9077268915657199718}
   frontRightWheel: {fileID: 1904406276449364597}
