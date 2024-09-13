@@ -51,7 +51,7 @@ public class LandEnemy : BaseEnemy
         
         currentSpeed = rb.velocity.magnitude;
         //if (CheckGrounded())
-        if(true)
+        if(CheckGrounded())
         {
             //Can only turn if moving
             if (rb.velocity.magnitude > 0)
