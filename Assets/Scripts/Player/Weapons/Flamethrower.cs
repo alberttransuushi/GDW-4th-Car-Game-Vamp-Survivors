@@ -5,6 +5,9 @@ using UnityEngine;
 public class Flamethrower : Weapon
 {
   public List<BaseEnemy> enemy;
+  public WeaponReference weaponRef;
+  public Transform baseTransform;
+  public Vector3 direction;
   override public void attack() {
 
   }
@@ -13,6 +16,11 @@ public class Flamethrower : Weapon
       if (enemy[i] != null) {
         enemy[i].takeDamge(damage);
       }
+    }
+    if (weaponRef.GetClosestEnemyPosition() != null) {
+      direction = weaponRef.GetClosestEnemyPosition().position - baseTransform.position;
+      direction = direction.normalized;
+      baseTransform.rotation = Quaternion.LookRotation(direction);
     }
   }
   private void OnTriggerEnter(Collider other) {
