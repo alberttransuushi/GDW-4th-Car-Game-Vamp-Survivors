@@ -836,4 +836,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15713423e9d8e14eb2f184c71dccd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  health: 0
+  playerCar: {fileID: 0}
+  catchUpBonus: 10
+  distancePerCatchUp: 5
+  maxLandSpeed: 30
+  acceleration: 15
+  turnSpeed: 2
+  driftEfficiency: 1
+  AngleToPlayer: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class LandEnemy : BaseEnemy
 {
 
-    [SerializeField] float currentSpeed;
+    float currentSpeed;
     [SerializeField] float maxLandSpeed;
     [SerializeField] float acceleration;
 
@@ -17,7 +17,7 @@ public class LandEnemy : BaseEnemy
     [SerializeField] float turnSpeed;
     [SerializeField] float driftEfficiency;
 
-    [SerializeField] float AngleToPlayer;
+    public float AngleToPlayer;
 
     [SerializeField] LayerMask groundLayer;
     RaycastHit hit;
@@ -26,11 +26,12 @@ public class LandEnemy : BaseEnemy
     // Start is called before the first frame update
     void Start()
     {
+        playerCar = GameObject.Find("player");
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         CheckAlive();
         Movement();
@@ -49,12 +50,14 @@ public class LandEnemy : BaseEnemy
     {
         
         currentSpeed = rb.velocity.magnitude;
-        if (CheckGrounded())
+        //if (CheckGrounded())
+        if(true)
         {
             //Can only turn if moving
             if (rb.velocity.magnitude > 0)
             {
                 TurnToPlayer();
+                print("Turning");
             }
             
             //Speed Up
@@ -66,6 +69,9 @@ public class LandEnemy : BaseEnemy
 
                 //Slows down when drifting
                 rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180;
+                print("Delta:" + Time.deltaTime);
+                print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
+                print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180).magnitude);
                 
                 //Slows down perpendicular velocity
                 Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
