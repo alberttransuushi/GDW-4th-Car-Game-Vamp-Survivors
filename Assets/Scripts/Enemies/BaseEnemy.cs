@@ -31,7 +31,7 @@ public class BaseEnemy : MonoBehaviour
 
     public float GetCatchUpBonus()
     {
-        print(Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus);
+        //print(Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus);
         return Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus;
     }
 
