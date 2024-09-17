@@ -5,4 +5,5 @@ using UnityEngine;
 public static class PlayerStats
 {
   public static float playerDamage;
+  public static float expPickupRange = 5;
 }

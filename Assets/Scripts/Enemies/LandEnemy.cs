@@ -57,21 +57,21 @@ public class LandEnemy : BaseEnemy
             if (rb.velocity.magnitude > 0)
             {
                 TurnToPlayer();
-                print("Turning");
+                //print("Turning");
             }
             
             //Speed Up
             if (rb.velocity.magnitude < maxLandSpeed + GetCatchUpBonus())
             {
-                print(maxLandSpeed + GetCatchUpBonus());
+                //print(maxLandSpeed + GetCatchUpBonus());
 
                 rb.velocity += transform.forward * Time.deltaTime * acceleration;
 
                 //Slows down when drifting
                 rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180;
-                print("Delta:" + Time.deltaTime);
-                print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
-                print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180).magnitude);
+                //print("Delta:" + Time.deltaTime);
+                //print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
+                //print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180).magnitude);
                 
                 //Slows down perpendicular velocity
                 Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);

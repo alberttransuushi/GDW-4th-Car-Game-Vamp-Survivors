@@ -263,7 +263,7 @@ public class SimpleCar : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Log collision information for debugging
-        Debug.Log($"Collided with: {collision.collider.name}");
+        //Debug.Log($"Collided with: {collision.collider.name}");
 
         if (collision.collider.CompareTag("Ramp"))
         {
