@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 842200846344425491}
   - component: {fileID: 5946623056020900658}
   - component: {fileID: 4050097117582569155}
+  - component: {fileID: -638356108084119504}
   m_Layer: 0
   m_Name: car_body
   m_TagString: Untagged
@@ -139,7 +140,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.9492389
   m_Height: 4.8766785
@@ -198,6 +199,28 @@ MonoBehaviour:
   rearLeftWheel: {fileID: 6817733577824257454}
   rearRightWheel: {fileID: 4770963590614357351}
   driftKey: 304
+--- !u!64 &-638356108084119504
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466764858007908247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7289310808242944780, guid: 5f2f97584f21285479ad43de07c83006, type: 3}
 --- !u!1 &3751662378485402349
 GameObject:
   m_ObjectHideFlags: 0

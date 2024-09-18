@@ -779,6 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampAddedAcceleration: 10
+  maxSpeed: 0
 --- !u!65 &365371542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -899,6 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampAddedAcceleration: 0
+  maxSpeed: 0
 --- !u!4 &678160588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be615f7838263824bae800d205cbe098, type: 3}
@@ -1118,6 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampAddedAcceleration: 0.5
+  maxSpeed: 0
 --- !u!1 &731374249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,6 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rampAddedAcceleration: 0.5
+  maxSpeed: 0
 --- !u!1 &1113141425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,7 +3652,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3466764858585785593}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f684a7435e91704d9ed4a16ce2a294e, type: 3}
   m_Name: 
@@ -3657,13 +3661,14 @@ MonoBehaviour:
   acceleration: 30
   turnSpeed: 1
   turnAngle: 45
-  driftFriction: 0.5
+  driftFriction: 0.05
   driftTurnSpeedModifier: 2
   dirToTurn: {x: 0, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   centerOfMass: {fileID: 1385771818}
+  unGroundedGravity: 100
 --- !u!4 &3466764858585785608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7120986138519804813, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
@@ -3686,7 +3691,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -4338,7 +4343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507115307705544383, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3507115307705544383, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
       propertyPath: m_Center.x
@@ -4458,7 +4463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709676698612191377, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8709676698612191377, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
       propertyPath: rampUpwardsForce
