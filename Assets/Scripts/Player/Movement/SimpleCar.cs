@@ -121,7 +121,7 @@ public class SimpleCar : MonoBehaviour
         currentSpeed = sphereRB.velocity.magnitude;
 
         // Rotate wheels based on car movement
-        RotateWheels();
+        //RotateWheels();
     }
 
     private void FixedUpdate()
@@ -185,16 +185,16 @@ public class SimpleCar : MonoBehaviour
     }
 
     // Method to rotate wheels
-    private void RotateWheels()
+    /*private void RotateWheels()
     {
         // Calculate the rotation amount based on speed
         float rotationAmount = currentSpeed * wheelRotationSpeed * Time.deltaTime;
 
         // Rotate each wheel around its local X axis
-        frontLeftWheel.Rotate(rotationAmount, 0, 0);
-        frontRightWheel.Rotate(rotationAmount, 0, 0);
-        rearLeftWheel.Rotate(rotationAmount, 0, 0);
-        rearRightWheel.Rotate(rotationAmount, 0, 0);
+        frontLeftWheel.Rotate(0, rotationAmount, 0);
+        frontRightWheel.Rotate(0, rotationAmount, 0);
+        rearLeftWheel.Rotate(0, rotationAmount, 0);
+        rearRightWheel.Rotate(0, rotationAmount, 0);
 
         // Calculate the target steering angle
         float targetSteeringAngle = turnInput * turnSpeed;
@@ -206,7 +206,7 @@ public class SimpleCar : MonoBehaviour
         // Apply the smooth steering rotation
         frontLeftWheel.localRotation = Quaternion.Euler(frontLeftWheel.localRotation.eulerAngles.x, currentSteeringAngleLeft, frontLeftWheel.localRotation.eulerAngles.z);
         frontRightWheel.localRotation = Quaternion.Euler(frontRightWheel.localRotation.eulerAngles.x, currentSteeringAngleRight, frontRightWheel.localRotation.eulerAngles.z);
-    }
+    }*/
 
     void ApplyDrift()
     {
