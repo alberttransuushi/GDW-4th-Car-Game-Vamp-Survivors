@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class RampAccelerator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float rampAddedAcceleration;
+    
+    private void OnTriggerStay(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        print(other.gameObject.name);
+        if (other.tag == "Player" || other.tag == "Enemy")
+        {
+            other.GetComponent<Rigidbody>().velocity += transform.right * rampAddedAcceleration;
+        }
     }
 }
