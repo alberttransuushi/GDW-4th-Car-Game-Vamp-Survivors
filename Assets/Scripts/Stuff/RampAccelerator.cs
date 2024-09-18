@@ -5,13 +5,17 @@ using UnityEngine;
 public class RampAccelerator : MonoBehaviour
 {
     [SerializeField] float rampAddedAcceleration;
-    
+    [SerializeField] float maxSpeed;
     private void OnTriggerStay(Collider other)
     {
         print(other.gameObject.name);
         if (other.tag == "Player" || other.tag == "Enemy")
         {
-            other.GetComponent<Rigidbody>().velocity += transform.right * rampAddedAcceleration;
+            if (other.GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
+            {
+                other.GetComponent<Rigidbody>().velocity += other.transform.forward * rampAddedAcceleration;
+            }
+            
         }
     }
 }

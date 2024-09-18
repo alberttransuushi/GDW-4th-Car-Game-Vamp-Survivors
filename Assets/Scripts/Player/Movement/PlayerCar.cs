@@ -20,6 +20,8 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     [SerializeField] GameObject centerOfMass;
 
+    [SerializeField] float unGroundedGravity;
+
     RaycastHit hit;
     bool isDrifting;
 
@@ -48,7 +50,11 @@ public class PlayerCar : MonoBehaviour
         {
             
             AccelDeccel();
+            
 
+        } else
+        {
+            IncreasedGravity(unGroundedGravity);
         }
         
     }
@@ -86,7 +92,7 @@ public class PlayerCar : MonoBehaviour
         {
             dirToTurn = Quaternion.AngleAxis(turnAngle, Vector3.up) * transform.forward;
         }
-        if (rb.velocity.magnitude > 0.5)
+        if (rb.velocity.magnitude > 5)
         {
             TurnToWheel(dirToTurn);
             //print("Turning");
@@ -94,6 +100,7 @@ public class PlayerCar : MonoBehaviour
     }
     void TurnToWheel(Vector3 dir)
     {
+        //Add More Turn Speed when drifting
         if (!isDrifting)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dir.x, dir.y, dir.z), turnSpeed * Time.deltaTime, 10.0f));
@@ -117,5 +124,11 @@ public class PlayerCar : MonoBehaviour
         rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
 
        
+    }
+
+
+    void IncreasedGravity(float inc)
+    {
+        rb.AddForce(new Vector3(0, inc, 0));
     }
 }
