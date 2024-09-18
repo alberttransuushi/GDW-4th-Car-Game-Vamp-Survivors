@@ -5,7 +5,7 @@ using UnityEngine;
 abstract public class Weapon : MonoBehaviour {
   abstract public void attack();
   [SerializeField] int level = 1;
-  [SerializeField] protected int damage;
+  [SerializeField] protected float damage;
 
   // Start is called before the first frame update
   void Start() {

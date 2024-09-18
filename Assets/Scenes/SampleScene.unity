@@ -2820,7 +2820,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3466764858585785593}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3341,29 +3341,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
+    - target: {fileID: 1045170379602979160, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
+      propertyPath: damage
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 2150424791835717901, guid: 20065b40495491e45a668bdcbc33f5b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

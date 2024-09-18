@@ -14,7 +14,7 @@ public class Flamethrower : Weapon
   private void Update() {
     for (int i = 0; i < enemy.Count; i++) {
       if (enemy[i] != null) {
-        enemy[i].takeDamge(damage);
+        enemy[i].takeDamge(damage*Time.deltaTime);
       }
     }
     if (weaponRef.GetClosestEnemyPosition() != null) {
@@ -23,7 +23,14 @@ public class Flamethrower : Weapon
       baseTransform.rotation = Quaternion.LookRotation(direction);
     }
   }
+  /**
   private void OnTriggerEnter(Collider other) {
+    if (other.GetComponent<BaseEnemy>() != null) {
+      enemy.Add(other.GetComponent<BaseEnemy>());
+    }
+  }
+  */
+  private void OnParticleCollision(GameObject other) {
     if (other.GetComponent<BaseEnemy>() != null) {
       enemy.Add(other.GetComponent<BaseEnemy>());
     }
