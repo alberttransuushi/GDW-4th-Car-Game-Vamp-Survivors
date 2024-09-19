@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCar : MonoBehaviour
 {
@@ -24,6 +25,30 @@ public class PlayerCar : MonoBehaviour
 
     RaycastHit hit;
     bool isDrifting;
+
+    //All our input objects, cause yay I guess
+    [SerializeField]
+    private InputActionReference movementControl;
+    [SerializeField]
+    private InputActionReference driftControl;
+    [SerializeField]
+    private InputActionReference fireControl;
+
+    private void OnEnable()
+    {
+        movementControl.action.Enable();
+        driftControl.action.Enable();
+        fireControl.action.Enable();
+
+    }
+
+    private void OnDisable()
+    {
+        movementControl.action.Disable();
+        driftControl.action.Disable();
+        fireControl.action.Disable();
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -61,15 +86,17 @@ public class PlayerCar : MonoBehaviour
 
     void AccelDeccel()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (movementControl.action.ReadValue<Vector2>().y > 0)
         {
             rb.velocity += transform.forward * Time.deltaTime * acceleration;
+            Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (movementControl.action.ReadValue<Vector2>().y < 0)
         {
             rb.velocity -= transform.forward * Time.deltaTime * acceleration;
+            Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (driftControl.action.triggered)
         {
             isDrifting = true;
         }
@@ -84,13 +111,15 @@ public class PlayerCar : MonoBehaviour
     void Steering()
     {
         dirToTurn = gameObject.transform.forward;
-        if (Input.GetKey(KeyCode.A))
+        if (movementControl.action.ReadValue<Vector2>().x < 0)
         {
             dirToTurn = Quaternion.AngleAxis(-turnAngle, Vector3.up) * transform.forward;
+            Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (movementControl.action.ReadValue<Vector2>().x > 0)
         {
             dirToTurn = Quaternion.AngleAxis(turnAngle, Vector3.up) * transform.forward;
+            Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
         if (rb.velocity.magnitude > 5)
         {
@@ -130,5 +159,18 @@ public class PlayerCar : MonoBehaviour
     void IncreasedGravity(float inc)
     {
         rb.AddForce(new Vector3(0, inc, 0));
+    }
+
+    bool Held(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            return true;
+        }
+        if (context.canceled)
+        {
+            return false;
+        }
+        return false;
     }
 }

@@ -3190,6 +3190,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fe1864b3f15107c4aa2cb83b5c05770b, type: 2}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: fireControl
+      value: 
+      objectReference: {fileID: -1023150447222097072, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: driftControl
+      value: 
+      objectReference: {fileID: 270835659405182783, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: movementControl
+      value: 
+      objectReference: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
     - target: {fileID: 6419713193592096629, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.089247

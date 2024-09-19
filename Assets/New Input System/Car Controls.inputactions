@@ -2,7 +2,7 @@
     "name": "Car Controls",
     "maps": [
         {
-            "name": "New action map",
+            "name": "Player",
             "id": "1dfe2d59-3b87-452c-85e3-727a8f040be0",
             "actions": [
                 {
@@ -18,6 +18,15 @@
                     "name": "Drifting",
                     "type": "Button",
                     "id": "920dae90-0588-41f1-9619-da76417bf9b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire Weapon",
+                    "type": "Button",
+                    "id": "332bcace-092d-4839-8404-3af0c50610b8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -50,7 +59,7 @@
                 {
                     "name": "down",
                     "id": "8757d2ed-afd1-4990-810e-3baee75aef7c",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -61,7 +70,7 @@
                 {
                     "name": "left",
                     "id": "7478534c-fd5e-4f22-9268-10c3f1d2cc34",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -94,7 +103,7 @@
                 {
                     "name": "up",
                     "id": "df64c3ba-76d5-44df-bf35-c845b018c9e8",
-                    "path": "",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -105,7 +114,7 @@
                 {
                     "name": "down",
                     "id": "de6aca37-96b0-4027-aa3f-24d81b13dbcf",
-                    "path": "",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -116,7 +125,7 @@
                 {
                     "name": "left",
                     "id": "67e0a65c-de61-4538-a5c4-a0bc8e140771",
-                    "path": "",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -127,7 +136,7 @@
                 {
                     "name": "right",
                     "id": "f7875557-6bcb-49d1-a0c3-c1b2651707d9",
-                    "path": "",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -138,11 +147,44 @@
                 {
                     "name": "",
                     "id": "d6858bcc-1802-425e-8ea7-0490586db872",
-                    "path": "",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Drifting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ecc45ca-d500-4584-86b7-1101dea50c0c",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drifting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48ae0c69-bc76-4e1c-b909-d2116d3f2a45",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd43df9c-64ad-461c-a56a-cbb54ff80429",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
