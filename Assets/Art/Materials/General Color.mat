@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
+  m_Name: General Color
   m_Shader: {fileID: 4800000, guid: 23a2b221fc298d348b1ae4f40d1d136a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,22 +41,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 100, y: 100}
+        m_Scale: {x: 10, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HvyTex:
         m_Texture: {fileID: 2800000, guid: 748cd56e770a63c4d8c3a87667a03ec3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: ab1f4154b7b91204eb651af619510821, type: 3}
+        m_Texture: {fileID: 2800000, guid: b222021c37f6490448c8fd5237d3b314, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5462baa961574c142bda770bbfd40beb, type: 3}
+        m_Texture: {fileID: 2800000, guid: b222021c37f6490448c8fd5237d3b314, type: 3}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MedTex:
-        m_Texture: {fileID: 2800000, guid: b222021c37f6490448c8fd5237d3b314, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab1f4154b7b91204eb651af619510821, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -87,16 +87,16 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 0.005
+    - _Outline: 0.1
     - _Parallax: 0.02
-    - _Repeat: 3
+    - _Repeat: 4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
