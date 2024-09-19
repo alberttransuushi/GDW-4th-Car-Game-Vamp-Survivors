@@ -5,10 +5,12 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] GameObject playerCar;
+    [SerializeField] Camera camera;
     [SerializeField] Rigidbody playerCarRB;
     [SerializeField] float cameraTurnSpeed;
     [SerializeField] float turnThreshold;
- 
+    [SerializeField] float maxFoV;
+    [SerializeField] float minFoV;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,10 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Zoom in/out depending on speed
+        camera.fieldOfView = Mathf.Lerp(maxFoV, minFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
+
+        //Lag behind 
         Vector3 dir = playerCarRB.velocity.normalized;
         if (playerCarRB.velocity.magnitude < turnThreshold)
         {

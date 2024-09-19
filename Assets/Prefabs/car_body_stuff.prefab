@@ -6193,6 +6193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCar: {fileID: 6418286009077657965}
+  camera: {fileID: 4790260001261081288}
   playerCarRB: {fileID: 4203709068397984327}
   cameraTurnSpeed: 0.66
   turnThreshold: 5
+  maxFoV: 80
+  minFoV: 100

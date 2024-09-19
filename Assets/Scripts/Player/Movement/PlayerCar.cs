@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCar : MonoBehaviour
 {
 
-    [SerializeField] float maxLandSpeed;
+    [SerializeField] public float maxLandSpeed;
     [SerializeField] float acceleration;
 
     [SerializeField] float turnSpeed;
