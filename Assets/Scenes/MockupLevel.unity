@@ -3175,7 +3175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 961450410084574949, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: spawnDelay
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1678720573964527725, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: LightsModule.color
@@ -3221,14 +3221,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fe1864b3f15107c4aa2cb83b5c05770b, type: 2}
-    - target: {fileID: 2062779675250637846, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
-      propertyPath: damage
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2062779675250637846, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
-      propertyPath: rotationSpeed
-      value: 1e-15
-      objectReference: {fileID: 0}
     - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: unGroundedGravity
       value: 0.2
