@@ -5655,11 +5655,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  damage: 0.01
+  damage: 0.1
   enemy: []
   weaponRef: {fileID: 2908689698039942673}
   baseTransform: {fileID: 9010787031326136586}
   direction: {x: 0, y: 0, z: 0}
+  rotationSpeed: 0.000000001
 --- !u!1 &6418286009077657965
 GameObject:
   m_ObjectHideFlags: 0

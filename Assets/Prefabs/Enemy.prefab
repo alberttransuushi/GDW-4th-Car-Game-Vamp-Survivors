@@ -697,7 +697,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.008725083, y: -0.707053, z: 0.008836166, w: 0.7070516}
   m_LocalPosition: {x: 102.79, y: 2.93, z: 9.1}
-  m_LocalScale: {x: 79.02912, y: 37.456512, z: 32.10558}
+  m_LocalScale: {x: 166.75935, y: 79.03699, z: 67.74599}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8049881046918380511}
@@ -837,12 +837,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15713423e9d8e14eb2f184c71dccd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 5
   playerCar: {fileID: 0}
   catchUpBonus: 10
   distancePerCatchUp: 5
-  maxLandSpeed: 30
-  acceleration: 15
+  maxLandSpeed: 40
+  acceleration: 20
   turnSpeed: 2
   driftEfficiency: 1
   AngleToPlayer: 0

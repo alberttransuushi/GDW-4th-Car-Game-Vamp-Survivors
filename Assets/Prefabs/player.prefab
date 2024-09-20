@@ -5017,12 +5017,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  damage: 0.00001
+  damage: 0.5
   enemy: []
   weaponRef: {fileID: 1937876434165361792}
   baseTransform: {fileID: 8149247993027664138}
   direction: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0.000000001
+  rotationSpeed: 1e-15
 --- !u!1 &1371560197043223239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6196,7 +6196,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   centerOfMass: {fileID: 2319133813059861891}
-  unGroundedGravity: 1
+  unGroundedGravity: 0.5
   AOAEnabled: 0
   isDrifting: 0
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}

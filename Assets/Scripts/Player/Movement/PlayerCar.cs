@@ -140,7 +140,7 @@ public class PlayerCar : MonoBehaviour {
   }
 
   bool CheckGrounded() {
-    return Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
+    return Physics.Raycast(transform.position, -transform.up, out hit, 4f, groundLayer);
   }
 
   void FrictionVelocity() {
