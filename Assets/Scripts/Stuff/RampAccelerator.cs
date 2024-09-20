@@ -14,6 +14,7 @@ public class RampAccelerator : MonoBehaviour
             if (other.GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
             {
                 other.GetComponent<Rigidbody>().velocity += other.transform.forward * rampAddedAcceleration;
+                
             }
             
         }

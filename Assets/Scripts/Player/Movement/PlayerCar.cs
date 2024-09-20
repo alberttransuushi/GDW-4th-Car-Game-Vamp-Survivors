@@ -13,7 +13,8 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] float turnAngle;
 
     // 0 = no friction/slidey | 1 = no momentum from drifting
-    [SerializeField] float driftFriction;
+    float currentDriftFriction;
+    [SerializeField] float setDriftFriction;
     [SerializeField] float driftTurnSpeedModifier;
 
     Rigidbody rb;
@@ -55,6 +56,7 @@ public class PlayerCar : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
+        currentDriftFriction = setDriftFriction;
     }
 
     // Update is called once per frame
@@ -149,7 +151,7 @@ public class PlayerCar : MonoBehaviour
     {
         //Apply Friction caused by drifting
         Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
-        float perpendiuclarSpeed = perpendicularVelocity.magnitude * driftFriction;
+        float perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
         rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
 
        
@@ -158,8 +160,10 @@ public class PlayerCar : MonoBehaviour
 
     void IncreasedGravity(float inc)
     {
-        rb.AddForce(new Vector3(0, inc, 0));
+        rb.AddForce(new Vector3(0, -inc, 0));
     }
+
+
 
     bool Held(InputAction.CallbackContext context)
     {

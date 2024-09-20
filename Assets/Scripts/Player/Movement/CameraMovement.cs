@@ -26,7 +26,7 @@ public class CameraMovement : MonoBehaviour
 
         //Lag behind 
         Vector3 dir = playerCarRB.velocity.normalized;
-        if (playerCarRB.velocity.magnitude < turnThreshold)
+        if (playerCarRB.velocity.magnitude < turnThreshold || Vector3.Dot(playerCar.transform.forward, playerCar.GetComponent<Rigidbody>().velocity.normalized) < 0)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, playerCar.transform.forward, cameraTurnSpeed * Time.deltaTime, 10.0f));
 
