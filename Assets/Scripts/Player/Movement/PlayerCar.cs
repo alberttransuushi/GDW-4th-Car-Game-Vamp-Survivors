@@ -77,6 +77,7 @@ public class PlayerCar : MonoBehaviour {
 
 
     } else {
+            
       IncreasedGravity(unGroundedGravity);
     }
 
@@ -153,7 +154,7 @@ public class PlayerCar : MonoBehaviour {
 
 
   void IncreasedGravity(float inc) {
-    rb.AddForce(new Vector3(0, -inc, 0));
+        rb.velocity -= new Vector3(0, inc, 0);
   }
 
   void AOALimiter() {

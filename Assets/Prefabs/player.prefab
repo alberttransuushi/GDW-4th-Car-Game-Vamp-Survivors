@@ -6189,14 +6189,14 @@ MonoBehaviour:
   acceleration: 30
   turnSpeed: 1
   turnAngle: 45
-  setDriftFriction: 0
+  setDriftFriction: 0.05
   driftTurnSpeedModifier: 2
   dirToTurn: {x: 0, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   centerOfMass: {fileID: 2319133813059861891}
-  unGroundedGravity: 100
+  unGroundedGravity: 1
   AOAEnabled: 0
   isDrifting: 0
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
