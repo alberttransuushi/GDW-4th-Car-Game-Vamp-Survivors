@@ -24,8 +24,10 @@ public class PlayerCar : MonoBehaviour
 
     [SerializeField] float unGroundedGravity;
 
+    public bool AOAEnabled;
+
     RaycastHit hit;
-    bool isDrifting;
+    public bool isDrifting;
 
     //All our input objects, cause yay I guess
     [SerializeField]
@@ -64,6 +66,8 @@ public class PlayerCar : MonoBehaviour
     {
         Movement();
         
+        AOALimiter();   
+        
 
     }
 
@@ -88,15 +92,18 @@ public class PlayerCar : MonoBehaviour
 
     void AccelDeccel()
     {
-        if (movementControl.action.ReadValue<Vector2>().y > 0)
+        if (!AOAEnabled)
         {
-            rb.velocity += transform.forward * Time.deltaTime * acceleration;
-            Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
-        }
-        if (movementControl.action.ReadValue<Vector2>().y < 0)
-        {
-            rb.velocity -= transform.forward * Time.deltaTime * acceleration;
-            Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            if (movementControl.action.ReadValue<Vector2>().y > 0)
+            {
+                rb.velocity += transform.forward * Time.deltaTime * acceleration;
+                Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            }
+            if (movementControl.action.ReadValue<Vector2>().y < 0)
+            {
+                rb.velocity -= transform.forward * Time.deltaTime * acceleration;
+                Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            }
         }
         if (driftControl.action.triggered)
         {
@@ -106,7 +113,17 @@ public class PlayerCar : MonoBehaviour
         {
             isDrifting = false;
         }
+        
 
+        //You can remove this and uncomment the one up top
+        /*if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isDrifting = true;
+        }
+        else
+        {
+            isDrifting = false;
+        }*/
         FrictionVelocity();
     }
 
@@ -163,7 +180,20 @@ public class PlayerCar : MonoBehaviour
         rb.AddForce(new Vector3(0, -inc, 0));
     }
 
-
+    void AOALimiter()
+    {
+        if (isDrifting && Input.GetKeyDown(KeyCode.Space))
+        {
+            AOAEnabled = true;
+            currentDriftFriction = 0;
+        }
+        if ((!isDrifting || Input.GetKeyUp(KeyCode.Space)) && AOAEnabled)
+        {
+            AOAEnabled = false;
+            currentDriftFriction = setDriftFriction;
+            rb.velocity = rb.velocity.magnitude * transform.forward;
+        }
+    }
 
     bool Held(InputAction.CallbackContext context)
     {

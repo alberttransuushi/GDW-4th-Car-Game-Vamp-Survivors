@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "d6858bcc-1802-425e-8ea7-0490586db872",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
