@@ -8,6 +8,7 @@ public class Flamethrower : Weapon
   public WeaponReference weaponRef;
   public Transform baseTransform;
   public Vector3 direction;
+  public float rotationSpeed = 0.000000001f;
   override public void attack() {
 
   }
@@ -21,6 +22,8 @@ public class Flamethrower : Weapon
       direction = weaponRef.GetClosestEnemyPosition().position - baseTransform.position;
       direction = direction.normalized;
       baseTransform.rotation = Quaternion.LookRotation(direction);
+
+      //baseTransform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(baseTransform.rotation.eulerAngles, direction, rotationSpeed * Time.deltaTime, 0.0f));
     }
   }
   /**
