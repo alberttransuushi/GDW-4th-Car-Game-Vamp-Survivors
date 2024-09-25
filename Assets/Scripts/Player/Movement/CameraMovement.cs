@@ -37,5 +37,8 @@ public class CameraMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dir.x, dir.y, dir.z), cameraTurnSpeed * Time.deltaTime, 10.0f));
 
         }
+
+        transform.position = playerCar.transform.position;
+
     }
 }
