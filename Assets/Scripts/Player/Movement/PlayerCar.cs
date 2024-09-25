@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCar : MonoBehaviour
 {
     [SerializeField] public float currentHP;
     [SerializeField] public float maxHP;
     [SerializeField] float IframeDuration;
+    public bool damagable = true;
 
     [SerializeField] public float maxLandSpeed;
     [SerializeField] float acceleration;
@@ -26,6 +28,8 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] GameObject centerOfMass;
 
     [SerializeField] float unGroundedGravity;
+
+    [SerializeField] Slider hpSlider;
 
     public bool AOAEnabled;
 
@@ -59,6 +63,7 @@ public class PlayerCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHP = maxHP;
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
         currentDriftFriction = setDriftFriction;
@@ -70,7 +75,8 @@ public class PlayerCar : MonoBehaviour
         Movement();
 
         AOALimiter();
-
+        
+        UpdateHP();
 
     }
 
@@ -128,6 +134,7 @@ public class PlayerCar : MonoBehaviour
             isDrifting = false;
         }
         FrictionVelocity();
+
     }
 
     void Steering()
@@ -199,6 +206,7 @@ public class PlayerCar : MonoBehaviour
         }
     }
 
+
     bool Held(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -215,14 +223,32 @@ public class PlayerCar : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (currentHP <= 0)
-        {
 
-            Destroy(this.gameObject);
+        if (damagable)
+        {
+        
+            currentHP -= damage;
+            damagable = false;
+            if (currentHP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+
+            StartCoroutine(EnforceIFrames(IframeDuration));
+        
         }
+
     }
 
 
+    IEnumerator EnforceIFrames(float deltaTime)
+    {
+
+
+        yield return new WaitForSeconds(deltaTime);
+
+        damagable = true;
+    }
 
     public void RepairDamage(float repairValue)
     {
@@ -235,5 +261,10 @@ public class PlayerCar : MonoBehaviour
         {
             currentHP = maxHP;
         }
+    }
+
+    public void UpdateHP()
+    {
+        hpSlider.value = currentHP / maxHP;
     }
 }

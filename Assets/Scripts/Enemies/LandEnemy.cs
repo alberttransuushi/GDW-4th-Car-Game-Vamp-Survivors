@@ -83,6 +83,12 @@ public class LandEnemy : BaseEnemy
         }
     }
 
+    public override void OnCollisionEnter(Collision collision)
+    {
+        base.OnCollisionEnter(collision);
+        print("Hit");
+    }
+
     bool CheckGrounded()
     {
         return Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);

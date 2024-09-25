@@ -841,6 +841,7 @@ MonoBehaviour:
   playerCar: {fileID: 0}
   catchUpBonus: 10
   distancePerCatchUp: 5
+  collisionDamage: 0.2
   maxLandSpeed: 40
   acceleration: 20
   turnSpeed: 2
