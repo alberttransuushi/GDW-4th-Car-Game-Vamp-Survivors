@@ -20,12 +20,12 @@ public class ExpOrb : MonoBehaviour {
     Debug.Log("force added");
   }
   private void Update() {
-    if (Vector3.Distance(player.transform.position, transform.position) < PlayerStats.expPickupRange && !isPickedup) {
+    if (Vector3.Distance(player.transform.position, transform.position) < PlayerStats.expPickupRange && !isPickedup && Time.timeScale != 0) {
       isPickedup = true;
     }
-    if (isPickedup) {
+    if (isPickedup && Time.timeScale != 0) {
       velocity += Time.deltaTime;
-      if (Vector3.Distance(player.transform.position, transform.position) < velocity) {
+      if (Vector3.Distance(player.transform.position, transform.position) < velocity && Time.timeScale != 0) {
         player.GetComponent<PlayerExp>().GetExp(value);
         Destroy(this.gameObject);
       }
