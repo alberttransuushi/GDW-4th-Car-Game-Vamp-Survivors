@@ -3806,6 +3806,22 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: maxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: hpSlider
+      value: 
+      objectReference: {fileID: 1293749116}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: IframeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: unStuckCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373966353498685551, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: unGroundedGravity
       value: 0.75
       objectReference: {fileID: 0}

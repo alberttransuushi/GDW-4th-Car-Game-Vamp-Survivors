@@ -36,6 +36,11 @@ public class PlayerCar : MonoBehaviour
     RaycastHit hit;
     public bool isDrifting;
 
+    [SerializeField] float unStuckCooldown;
+    float unStuckTimer;
+    bool canUnStuck = true;
+
+
     //All our input objects, cause yay I guess
     [SerializeField]
     private InputActionReference movementControl;
@@ -43,6 +48,8 @@ public class PlayerCar : MonoBehaviour
     private InputActionReference driftControl;
     [SerializeField]
     private InputActionReference fireControl;
+
+
 
     private void OnEnable()
     {
@@ -132,6 +139,14 @@ public class PlayerCar : MonoBehaviour
         else
         {
             isDrifting = false;
+        }
+
+        if(Input.GetKey(KeyCode.G) && canUnStuck)
+        {
+            canUnStuck = false;
+            transform.position = transform.position + (Vector3.up * 5f);
+            rb.velocity = Vector3.zero;
+            StartCoroutine(StartUnStuckCooldown(unStuckCooldown));
         }
         FrictionVelocity();
 
@@ -266,5 +281,11 @@ public class PlayerCar : MonoBehaviour
     public void UpdateHP()
     {
         hpSlider.value = currentHP / maxHP;
+    }
+
+    IEnumerator StartUnStuckCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canUnStuck = true;
     }
 }
