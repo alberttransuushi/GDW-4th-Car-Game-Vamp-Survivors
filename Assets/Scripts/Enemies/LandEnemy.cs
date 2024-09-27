@@ -21,13 +21,13 @@ public class LandEnemy : BaseEnemy
 
     [SerializeField] LayerMask groundLayer;
     RaycastHit hit;
-    Rigidbody rb;
+    
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         playerCar = GameObject.Find("player");
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

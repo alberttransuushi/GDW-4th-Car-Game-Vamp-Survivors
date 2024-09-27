@@ -68,7 +68,7 @@ public class PlayerCar : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         currentHP = maxHP;
         rb = GetComponent<Rigidbody>();

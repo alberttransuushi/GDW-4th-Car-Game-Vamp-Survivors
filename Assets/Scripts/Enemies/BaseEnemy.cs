@@ -9,7 +9,14 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected float catchUpBonus;
     [SerializeField] protected float distancePerCatchUp;
     [SerializeField] protected float collisionDamage;
+    protected Rigidbody rb;
+    [SerializeField] GameObject com;
 
+    public virtual void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = com.gameObject.transform.localPosition;
+    }
 
     public virtual void CheckAlive()
     {
