@@ -2,34 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flamethrower : Weapon
+public class Minigun : Weapon
 {
-  public List<BaseEnemy> enemy;
-  
   public WeaponReference weaponRef;
   public Transform baseTransform;
   public Vector3 direction;
   public float rotationSpeed = 1;
-  
+  public float firerate = 0.1f;
+  public float timeSinceLastFired;
+
+  [SerializeField] Transform barrelTip;
+  [SerializeField] GameObject bullet;
+
   bool firing = false;
-  ParticleSystem particleSystem;
-  private void Start() {
-    particleSystem = GetComponent<ParticleSystem>();
-  }
   override public void attack() {
-    var em = particleSystem.emission;
-    if (firing) {
-      em.enabled = true;
-    } else {
-      em.enabled = false;
+    if (timeSinceLastFired > firerate) {
+      Instantiate(bullet, barrelTip.position, baseTransform.rotation);
+      timeSinceLastFired -= firerate;
     }
   }
   private void Update() {
-    for (int i = 0; i < enemy.Count; i++) {
-      if (enemy[i] != null) {
-        enemy[i].takeDamge(damage*Time.deltaTime);
-      }
-    }
     if (weaponRef.GetClosestEnemyPosition() != null) {
       firing = true;
       direction = weaponRef.GetClosestEnemyPosition().position - baseTransform.position;
@@ -39,13 +31,11 @@ public class Flamethrower : Weapon
     } else {
       firing = false;
     }
-    attack();
-    
-  }
-
-  private void OnParticleCollision(GameObject other) {
-    if (other.GetComponent<BaseEnemy>() != null) {
-      enemy.Add(other.GetComponent<BaseEnemy>());
+    timeSinceLastFired += Time.deltaTime;
+    if (firing) {
+      attack();
+    } else {
+      
     }
   }
 }
