@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &609378879984978322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1888476280231052309}
+  m_Layer: 0
+  m_Name: CenterOfMass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1888476280231052309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609378879984978322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.0096, z: 0.0003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 382370981223627100}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &627570361881924645
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +739,7 @@ Transform:
   - {fileID: 2996470782853081450}
   - {fileID: 6234483436935767565}
   - {fileID: 6216597199518730004}
+  - {fileID: 1888476280231052309}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 1.423, y: -90, z: 0.009}
 --- !u!33 &4117359954792669603
@@ -842,6 +874,7 @@ MonoBehaviour:
   catchUpBonus: 10
   distancePerCatchUp: 5
   collisionDamage: 0.2
+  com: {fileID: 609378879984978322}
   maxLandSpeed: 40
   acceleration: 20
   turnSpeed: 2
