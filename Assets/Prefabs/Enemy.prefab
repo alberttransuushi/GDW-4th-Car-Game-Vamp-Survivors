@@ -877,6 +877,7 @@ MonoBehaviour:
   com: {fileID: 609378879984978322}
   maxLandSpeed: 40
   acceleration: 20
+  unGroundedGravity: 0.75
   turnSpeed: 2
   driftEfficiency: 1
   AngleToPlayer: 0

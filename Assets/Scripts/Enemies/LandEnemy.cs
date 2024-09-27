@@ -12,7 +12,7 @@ public class LandEnemy : BaseEnemy
     [SerializeField] float acceleration;
 
 
-
+    [SerializeField] float unGroundedGravity;
     
     [SerializeField] float turnSpeed;
     [SerializeField] float driftEfficiency;
@@ -81,6 +81,11 @@ public class LandEnemy : BaseEnemy
 
             }
         }
+        else
+        {
+
+            IncreasedGravity(unGroundedGravity);
+        }
     }
 
     public override void OnCollisionEnter(Collision collision)
@@ -94,4 +99,8 @@ public class LandEnemy : BaseEnemy
         return Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
     }
 
+    void IncreasedGravity(float inc)
+    {
+        rb.velocity -= new Vector3(0, inc, 0);
+    }
 }
