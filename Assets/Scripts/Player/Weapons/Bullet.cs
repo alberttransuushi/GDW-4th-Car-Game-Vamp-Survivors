@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     transform.position += transform.forward * speed;
   }
   private void OnTriggerEnter(Collider other) {
-    if (other.CompareTag("enemy")) {
+    if (other.CompareTag("Enemy") ) {
       other.gameObject.GetComponent<BaseEnemy>().takeDamge(damage);
       Destroy(this.gameObject);
     }
