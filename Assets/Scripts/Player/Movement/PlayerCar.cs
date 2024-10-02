@@ -6,41 +6,49 @@ using UnityEngine.UI;
 
 public class PlayerCar : MonoBehaviour
 {
-    [SerializeField] public float currentHP;
+    [SerializeField]
+    [Header("Health Stats")]
+    float currentHP;
     [SerializeField] public float maxHP;
     [SerializeField] float IframeDuration;
-    public bool damagable = true;
+    bool damagable = true;
+    [Space(10)]
 
+    [Header("Movement Stats")]
     [SerializeField] public float maxLandSpeed;
     [SerializeField] float acceleration;
-
     [SerializeField] float turnSpeed;
     [SerializeField] float turnAngle;
-
     // 0 = no friction/slidey | 1 = no momentum from drifting
     float currentDriftFriction;
     [SerializeField] float setDriftFriction;
     [SerializeField] float driftTurnSpeedModifier;
+    [SerializeField] float unGroundedGravity;
+    bool AOAEnabled;
+    [Space(10)]
+
+
 
     Rigidbody rb;
-    [SerializeField] Vector3 dirToTurn;
+    Vector3 dirToTurn;
+
+    [Header("Misc Stats")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] GameObject centerOfMass;
-
-    [SerializeField] float unGroundedGravity;
-
     [SerializeField] Slider hpSlider;
+    [SerializeField] float unStuckCooldown;
+    float unStuckTimer;
+    bool canUnStuck = true;
+    [Space(10)]
 
-    public bool AOAEnabled;
+
+
 
     RaycastHit hit;
     public bool isDrifting;
 
-    [SerializeField] float unStuckCooldown;
-    float unStuckTimer;
-    bool canUnStuck = true;
 
-
+    [Header("Controls")]
     //All our input objects, cause yay I guess
     [SerializeField]
     private InputActionReference movementControl;
@@ -48,6 +56,7 @@ public class PlayerCar : MonoBehaviour
     private InputActionReference driftControl;
     [SerializeField]
     private InputActionReference fireControl;
+    
 
 
 

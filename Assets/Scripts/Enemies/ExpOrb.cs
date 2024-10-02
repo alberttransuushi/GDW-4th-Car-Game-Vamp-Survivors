@@ -17,7 +17,7 @@ public class ExpOrb : MonoBehaviour {
     Vector3 tempVector = new Vector3(Random.Range(180, -180), 0, Random.Range(180, -180));
     tempVector = tempVector.normalized;
     GetComponent<Rigidbody>().AddForce(tempVector.x * 300, 700, tempVector.z * 300);
-    Debug.Log("force added");
+    //Debug.Log("force added");
   }
   private void Update() {
     if (Vector3.Distance(player.transform.position, transform.position) < PlayerStats.expPickupRange && !isPickedup && Time.timeScale != 0) {

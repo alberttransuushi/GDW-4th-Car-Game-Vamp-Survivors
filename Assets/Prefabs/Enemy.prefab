@@ -874,7 +874,7 @@ MonoBehaviour:
   catchUpBonus: 10
   distancePerCatchUp: 5
   collisionDamage: 0.2
-  com: {fileID: 609378879984978322}
+  centerOfMass: {fileID: 609378879984978322}
   maxLandSpeed: 40
   acceleration: 20
   unGroundedGravity: 0.75

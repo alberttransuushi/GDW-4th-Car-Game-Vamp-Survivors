@@ -10,12 +10,12 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected float distancePerCatchUp;
     [SerializeField] protected float collisionDamage;
     protected Rigidbody rb;
-    [SerializeField] GameObject com;
+    [SerializeField] GameObject centerOfMass;
 
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = com.gameObject.transform.localPosition;
+        rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
     }
 
     public virtual void CheckAlive()
@@ -39,7 +39,7 @@ public class BaseEnemy : MonoBehaviour
 
     }
 
-    public float GetCatchUpBonus()
+    public virtual float GetCatchUpBonus()
     {
         //print(Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus);
         return Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus;
