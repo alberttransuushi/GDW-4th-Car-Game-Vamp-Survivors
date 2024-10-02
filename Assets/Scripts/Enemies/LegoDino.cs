@@ -9,6 +9,8 @@ public class LegoDino : BaseEnemy
     [SerializeField] float throwTimer;
     [SerializeField] float throwCooldown;
 
+    float turnSpeed;
+    bool canWalk;
     
     // Start is called before the first frame update
     public override void Start()
@@ -20,6 +22,20 @@ public class LegoDino : BaseEnemy
     // Update is called once per frame
     void Update()
     {
-        
+        FacePlayer();
+    }
+    
+    void AdaptPlayerDistannce()
+    {
+        if (maxDistanceToThrow < CheckDistanceToPlayer() && CheckDistanceToPlayer() < minDistanceToThrow)
+        {
+            canWalk = false;
+            
+        }
+    }
+
+    void FacePlayer()
+    {
+
     }
 }

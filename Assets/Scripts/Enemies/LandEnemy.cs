@@ -14,11 +14,9 @@ public class LandEnemy : BaseEnemy
 
     [SerializeField] float unGroundedGravity;
     
-    [SerializeField] float turnSpeed;
+    
     [SerializeField] float driftEfficiency;
-
-    public float AngleToPlayer;
-
+    
     [SerializeField] LayerMask groundLayer;
     RaycastHit hit;
     
@@ -37,14 +35,7 @@ public class LandEnemy : BaseEnemy
         Movement();
     }
 
-    void TurnToPlayer()
-    {
-        Vector3 dirToPlayer = playerCar.transform.position - transform.position;
-        
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToPlayer.x, dirToPlayer.y, dirToPlayer.z), turnSpeed * Time.deltaTime, 10.0f));
-
-        AngleToPlayer = Vector3.Angle(dirToPlayer, transform.forward); 
-    }
+    
 
     void Movement()
     {

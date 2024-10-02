@@ -221,12 +221,14 @@ public class PlayerCar : MonoBehaviour
         {
             AOAEnabled = true;
             currentDriftFriction = 0;
+            Time.timeScale = 0.6f;
         }
         if ((!isDrifting || Input.GetKeyUp(KeyCode.Space)) && AOAEnabled)
         {
             AOAEnabled = false;
             currentDriftFriction = setDriftFriction;
             rb.velocity = rb.velocity.magnitude * transform.forward;
+            Time.timeScale = 1.0f;
         }
     }
 
