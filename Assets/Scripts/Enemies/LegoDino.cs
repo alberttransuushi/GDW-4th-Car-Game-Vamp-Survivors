@@ -8,6 +8,9 @@ public class LegoDino : BaseEnemy
     [SerializeField] float maxDistanceToThrow;
     [SerializeField] float throwTimer;
     [SerializeField] float throwCooldown;
+    [SerializeField] float throwAnimDelay;
+    [SerializeField] GameObject boulderPrefab;
+    [SerializeField] GameObject boulderSpawner;
 
     float turnSpeed;
     bool canWalk;
@@ -23,6 +26,7 @@ public class LegoDino : BaseEnemy
     void Update()
     {
         FacePlayer();
+        AdaptPlayerDistannce();
     }
     
     void AdaptPlayerDistannce()
@@ -30,12 +34,29 @@ public class LegoDino : BaseEnemy
         if (maxDistanceToThrow < CheckDistanceToPlayer() && CheckDistanceToPlayer() < minDistanceToThrow)
         {
             canWalk = false;
-            
+            Throwing();
         }
     }
 
     void FacePlayer()
     {
+
+    }
+
+    void Throwing() { 
+    
+        StartCoroutine(ThrowDelay());
+
+    }
+
+    IEnumerator ThrowDelay()
+    {
+
+        yield return new WaitForSeconds(throwAnimDelay);
+
+        GameObject boulder = Instantiate(boulderPrefab, boulderSpawner.transform.position, transform.rotation);
+
+
 
     }
 }
