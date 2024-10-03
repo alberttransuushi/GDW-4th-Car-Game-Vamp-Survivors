@@ -1114,6 +1114,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &303391008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 303391011}
+  - component: {fileID: 303391009}
+  - component: {fileID: 303391010}
+  m_Layer: 0
+  m_Name: BackCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &303391009
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303391008}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 90
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &303391010
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303391008}
+  m_Enabled: 1
+--- !u!4 &303391011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303391008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.9782328, z: -0.20751043, w: 0}
+  m_LocalPosition: {x: 0.01, y: 6.93, z: 7.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 361633475}
+  m_LocalEulerAnglesHint: {x: 23.953, y: 180, z: 0}
 --- !u!1001 &309382964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1351,7 +1443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCar: {fileID: 9076912378047612429}
-  camera: {fileID: 466377447}
+  frontCamera: {fileID: 466377447}
+  backCamera: {fileID: 303391009}
   playerCarRB: {fileID: 4395211145417008972}
   cameraTurnSpeed: 2.5
   turnThreshold: 5
@@ -1371,6 +1464,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 466377449}
+  - {fileID: 303391011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383699486 stripped
@@ -1717,7 +1811,7 @@ GameObject:
   - component: {fileID: 466377447}
   - component: {fileID: 466377448}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: FrontCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18814,23 +18908,20 @@ MonoBehaviour:
   currentHP: 0
   maxHP: 10
   IframeDuration: 1
-  damagable: 1
   maxLandSpeed: 60
   acceleration: 30
   turnSpeed: 1
   turnAngle: 45
   setDriftFriction: 0.1
   driftTurnSpeedModifier: 1.5
-  dirToTurn: {x: 0, y: 0, z: 0}
+  unGroundedGravity: 0.75
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   centerOfMass: {fileID: 2319133812266968042}
-  unGroundedGravity: 0.75
   hpSlider: {fileID: 1293749116}
-  AOAEnabled: 0
-  isDrifting: 0
   unStuckCooldown: 2
+  isDrifting: 0
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   driftControl: {fileID: 270835659405182783, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   fireControl: {fileID: -1023150447222097072, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}

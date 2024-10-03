@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] GameObject playerCar;
-    [SerializeField] Camera camera;
+    [SerializeField] Camera frontCamera;
+    [SerializeField] Camera backCamera;
     [SerializeField] Rigidbody playerCarRB;
     [SerializeField] float cameraTurnSpeed;
     [SerializeField] float turnThreshold;
@@ -15,14 +16,16 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        frontCamera.enabled = true;
+        backCamera.enabled = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         //Zoom in/out depending on speed
-        camera.fieldOfView = Mathf.Lerp(maxFoV, minFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
+        frontCamera.fieldOfView = Mathf.Lerp(maxFoV, minFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
+        backCamera.fieldOfView = Mathf.Lerp(maxFoV, minFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
 
         //Lag behind 
         Vector3 dir = playerCarRB.velocity.normalized;
@@ -40,5 +43,15 @@ public class CameraMovement : MonoBehaviour
 
         transform.position = playerCar.transform.position;
 
+
+        if(Input.GetKey(KeyCode.C)) { 
+            frontCamera.enabled = false;
+            backCamera.enabled = true;
+
+        } else
+        {
+            frontCamera.enabled = true;
+            backCamera.enabled = false;
+        }
     }
 }
