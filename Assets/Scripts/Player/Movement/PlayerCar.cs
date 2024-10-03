@@ -56,7 +56,10 @@ public class PlayerCar : MonoBehaviour
     private InputActionReference driftControl;
     [SerializeField]
     private InputActionReference fireControl;
-    
+    [SerializeField]
+    private InputActionReference AoADriftControl;
+    [SerializeField]
+    private InputActionReference UnstuckControl;
 
 
 
@@ -65,6 +68,8 @@ public class PlayerCar : MonoBehaviour
         movementControl.action.Enable();
         driftControl.action.Enable();
         fireControl.action.Enable();
+        AoADriftControl.action.Enable();
+        UnstuckControl.action.Enable();
 
     }
 
@@ -73,6 +78,8 @@ public class PlayerCar : MonoBehaviour
         movementControl.action.Disable();
         driftControl.action.Disable();
         fireControl.action.Disable();
+        AoADriftControl.action.Disable();
+        UnstuckControl.action.Disable();
 
     }
 
@@ -141,16 +148,16 @@ public class PlayerCar : MonoBehaviour
         **/
 
         //You can remove this and uncomment the one up top
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (driftControl.action.WasPressedThisFrame())
         {
             isDrifting = true;
         }
-        else
+        else if(driftControl.action.WasReleasedThisFrame())
         {
             isDrifting = false;
         }
 
-        if(Input.GetKey(KeyCode.G) && canUnStuck)
+        if(UnstuckControl.action.triggered && canUnStuck)
         {
             canUnStuck = false;
             transform.position = transform.position + (Vector3.up * 5f);
@@ -217,13 +224,13 @@ public class PlayerCar : MonoBehaviour
 
     void AOALimiter()
     {
-        if (isDrifting && Input.GetKeyDown(KeyCode.Space))
+        if (isDrifting && AoADriftControl.action.WasPressedThisFrame())
         {
             AOAEnabled = true;
             currentDriftFriction = 0;
             Time.timeScale = 0.6f;
         }
-        if ((!isDrifting || Input.GetKeyUp(KeyCode.Space)) && AOAEnabled)
+        if ((!isDrifting || AoADriftControl.action.WasReleasedThisFrame()) && AOAEnabled)
         {
             AOAEnabled = false;
             currentDriftFriction = setDriftFriction;

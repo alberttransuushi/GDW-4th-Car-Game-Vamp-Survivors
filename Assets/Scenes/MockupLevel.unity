@@ -1450,6 +1450,7 @@ MonoBehaviour:
   turnThreshold: 5
   maxFoV: 80
   minFoV: 100
+  CameraReverseControl: {fileID: -4866630592404658458, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
 --- !u!4 &361633475
 Transform:
   m_ObjectHideFlags: 0
@@ -18925,6 +18926,8 @@ MonoBehaviour:
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   driftControl: {fileID: 270835659405182783, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   fireControl: {fileID: -1023150447222097072, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  AoADriftControl: {fileID: 8422743376006617881, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  UnstuckControl: {fileID: 7211672211899866147, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
 --- !u!54 &4395211145417008972
 Rigidbody:
   m_ObjectHideFlags: 0

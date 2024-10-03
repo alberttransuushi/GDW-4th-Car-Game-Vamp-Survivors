@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -12,12 +13,28 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float turnThreshold;
     [SerializeField] float maxFoV;
     [SerializeField] float minFoV;
+    [SerializeField]
+    private InputActionReference CameraReverseControl;
 
     // Start is called before the first frame update
     void Start()
     {
         frontCamera.enabled = true;
         backCamera.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        CameraReverseControl.action.Enable();
+
+
+    }
+
+    private void OnDisable()
+    {
+        CameraReverseControl.action.Disable();
+
+
     }
 
     // Update is called once per frame
@@ -44,11 +61,11 @@ public class CameraMovement : MonoBehaviour
         transform.position = playerCar.transform.position;
 
 
-        if(Input.GetKey(KeyCode.C)) { 
+        if(CameraReverseControl.action.WasPressedThisFrame()) { 
             frontCamera.enabled = false;
             backCamera.enabled = true;
 
-        } else
+        } else if (CameraReverseControl.action.WasReleasedThisFrame())
         {
             frontCamera.enabled = true;
             backCamera.enabled = false;
