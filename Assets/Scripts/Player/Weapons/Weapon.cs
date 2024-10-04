@@ -4,6 +4,7 @@ using UnityEngine;
 
 abstract public class Weapon : MonoBehaviour {
   abstract public void attack();
+  public WeaponStats weaponStats;
   [SerializeField] int level = 1;
   [SerializeField] protected float damage;
 
@@ -15,5 +16,8 @@ abstract public class Weapon : MonoBehaviour {
   // Update is called once per frame
   void Update() {
     
+  }
+  public void UpgradeLevel() {
+    level += 1;
   }
 }

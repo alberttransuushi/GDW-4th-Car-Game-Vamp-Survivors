@@ -28,6 +28,7 @@ public class PlayerExp : MonoBehaviour
       UpdateExpReq();
       Time.timeScale = 0;
       upgradeUI.gameObject.SetActive(true);
+      upgradeUI.gameObject.GetComponent<WeaponUI>().UpdateUpgradeMenu();
     }
   }
 }
