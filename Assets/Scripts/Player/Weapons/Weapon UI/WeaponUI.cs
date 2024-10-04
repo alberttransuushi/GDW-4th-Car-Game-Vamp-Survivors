@@ -9,21 +9,34 @@ public class WeaponUI : MonoBehaviour
 
   [SerializeField] List<GameObject> newWeapons;
   [SerializeField] List<GameObject> upgradableWeapons;
-  
+  PlayerWeaponList weaponList;
+  private void Start() {
+    weaponList = GameObject.Find("player").GetComponent<PlayerWeaponList>();
+  }
   public void UpdateUpgradeMenu() {
+    int[] rands = new int[buttons.Count];
     for (int i = 0; i < buttons.Count; i++) {
-      int rand = Random.Range(0, newWeapons.Count + upgradableWeapons.Count);
-      Debug.Log(rand);
-      if (rand >= newWeapons.Count) {
-        rand -= newWeapons.Count;
+      //is weapon limits reached
+      if (weaponList.GetWeapons().Count >= weaponList.GetWeaponLimit()) {
+
+        rands[i] = Random.Range(0, upgradableWeapons.Count);
+        int rand = Random.Range(0, upgradableWeapons.Count);
         SetUpButton(buttons[i], upgradableWeapons[rand]);
-      } else {
-        Debug.Log(buttons[i]);
-        Debug.Log(newWeapons[rand]);
-        SetUpButton(buttons[i], newWeapons[rand]);
+
+      } else { //player can get new weapons
+        int rand = Random.Range(0, newWeapons.Count + upgradableWeapons.Count);
+        Debug.Log(rand);
+        if (rand >= newWeapons.Count) {
+          rand -= newWeapons.Count;
+          SetUpButton(buttons[i], upgradableWeapons[rand]);
+        } else {
+          Debug.Log(buttons[i]);
+          Debug.Log(newWeapons[rand]);
+          SetUpButton(buttons[i], newWeapons[rand]);
+        }
       }
-    }
-    
+      
+    }    
   }
   public void ExitMenu() {
     Time.timeScale = 1;
