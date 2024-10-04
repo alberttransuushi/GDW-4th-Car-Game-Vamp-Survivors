@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83826dda10547db4e8bb8578efd5690b
+guid: f1b40e0c5b3b096449ac3fa054a4d301
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: miniflame
-    second: {fileID: 2100000, guid: 459e3a6f74a5319499c4e7c88ed4effc, type: 2}
+    second: {fileID: 2100000, guid: 55cbc134d09bcfb4ca3f23cdf8802962, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: miniflametext_Albedo
-    second: {fileID: 2800000, guid: a02a5c51c236eb84697bbb0ca3aa86a2, type: 3}
+    second: {fileID: 2800000, guid: 99e7fa4935df18a49a05ee26a782d425, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: miniflametext_MetallicSmoothness
-    second: {fileID: 2800000, guid: b0d09686c97ca244c8ded08c08516165, type: 3}
+    second: {fileID: 2800000, guid: c95917ab2c3c6c74f9e81a53464053a8, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: miniflametext_Normal
-    second: {fileID: 2800000, guid: adc25c6886137e74db4ce11e37198bfe, type: 3}
+    second: {fileID: 2800000, guid: 6a28c13641d7ccc4292ee5606076adf9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -55,7 +55,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 20
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -110,7 +110,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.19999999
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
