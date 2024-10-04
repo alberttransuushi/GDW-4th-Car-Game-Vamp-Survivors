@@ -34,6 +34,7 @@ public class PlayerCar : MonoBehaviour
 
     [Header("Misc Stats")]
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask enemyLayer;
     [SerializeField] GameObject centerOfMass;
     [SerializeField] Slider hpSlider;
     [SerializeField] float unStuckCooldown;
@@ -174,12 +175,12 @@ public class PlayerCar : MonoBehaviour
         if (movementControl.action.ReadValue<Vector2>().x < 0)
         {
             dirToTurn = Quaternion.AngleAxis(-turnAngle, Vector3.up) * transform.forward;
-            Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            //Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
         if (movementControl.action.ReadValue<Vector2>().x > 0)
         {
             dirToTurn = Quaternion.AngleAxis(turnAngle, Vector3.up) * transform.forward;
-            Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            //Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
         if (rb.velocity.magnitude > 5)
         {
@@ -203,7 +204,14 @@ public class PlayerCar : MonoBehaviour
 
     bool CheckGrounded()
     {
-        return Physics.Raycast(transform.position, -transform.up, out hit, 2f, groundLayer);
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 2f, groundLayer) || Physics.Raycast(transform.position, -transform.up, out hit, 2f, enemyLayer))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+        
     }
 
     void FrictionVelocity()

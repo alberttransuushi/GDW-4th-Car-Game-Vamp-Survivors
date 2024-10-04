@@ -15,6 +15,10 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected float turnSpeed;
     public float AngleToPlayer;
 
+    [SerializeField] LayerMask groundLayer;
+    RaycastHit hit;
+    [SerializeField] protected float height;
+
 
     public virtual void Start()
     {
@@ -34,6 +38,11 @@ public class BaseEnemy : MonoBehaviour
     public void takeDamge(float damage)
     {
         health -= damage;
+    }
+
+    protected bool CheckGrounded()
+    {
+        return Physics.Raycast(transform.position, -transform.up, out hit, height/2, groundLayer);
     }
 
     public float CheckDistanceToPlayer()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1516413971483518856}
   - component: {fileID: 2503196691881015026}
   - component: {fileID: 4059602476304543956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   aoeRange: 20
   damage: 0
   damageFalloff: 0
-  explosionKnockback: 1000
+  explosionKnockback: 5000
   tracking: 0
   turnSpeed: 2
   trackingSpeed: 0

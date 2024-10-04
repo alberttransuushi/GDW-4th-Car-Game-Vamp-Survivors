@@ -23,7 +23,7 @@ public class DinoBoulder : MonoBehaviour
         playerCar = GameObject.Find("player");
         rb = GetComponent<Rigidbody>();
 
-        rb.velocity = new Vector3(0, 200, 0);
+        //rb.velocity = new Vector3(0, 200, 0);
 
     }
 
@@ -47,7 +47,7 @@ public class DinoBoulder : MonoBehaviour
 
     IEnumerator DelayTracking()
     {
-        print("YEs");
+        //print("YEs");
         yield return new WaitForSeconds(trackingDelay);
 
         tracking = true;
@@ -65,8 +65,12 @@ public class DinoBoulder : MonoBehaviour
         {
             if (collider.gameObject.tag == "Player" ||  collider.gameObject.tag == "Enemy")
             {
-                print("BOOM");
-                collider.GetComponent<Rigidbody>().AddExplosionForce(explosionKnockback, pointOfExplosion, aoeRange, 3.0f);
+                if (collider.gameObject.tag == "Player")
+                {
+                    collider.gameObject.GetComponent<PlayerCar>().TakeDamage(damage);
+                }
+                    //print("BOOM");
+                collider.GetComponent<Rigidbody>().AddExplosionForce(explosionKnockback, pointOfExplosion, aoeRange, 3.0f, ForceMode.Impulse);
             }
         }
 

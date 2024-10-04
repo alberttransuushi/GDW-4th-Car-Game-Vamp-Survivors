@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1888476280231052309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6216597199518730004}
   - component: {fileID: 7570110706883065516}
   - component: {fileID: 1353645795554365639}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spiked_bumoer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 8426274848042103517}
   - component: {fileID: 7737578198664590763}
   - component: {fileID: 2599396520595515992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: body_under
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 5510786791416411566}
   - component: {fileID: 3688797650755416373}
   - component: {fileID: 5192331253048112681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 2996470782853081450}
   - component: {fileID: 6035752883798028832}
   - component: {fileID: 6597945276668067428}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: front_pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 1083269825300584917}
   - component: {fileID: 1976549046015599412}
   - component: {fileID: 6036800280745693186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: back_pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 6234483436935767565}
   - component: {fileID: 1838827061648744881}
   - component: {fileID: 2893192110127028578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 3406530871576296413}
   - component: {fileID: 6783996418526106049}
   - component: {fileID: 3995037205139047947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 8049881046918380511}
   - component: {fileID: 4433163640576035457}
   - component: {fileID: 268283563397580561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 9150848822286153414}
   - component: {fileID: 6092990511305805840}
   - component: {fileID: 47565936605910246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7425959781412530574}
   serializedVersion: 4
-  m_Mass: 500
+  m_Mass: 25
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -875,15 +875,16 @@ MonoBehaviour:
   distancePerCatchUp: 5
   collisionDamage: 0.2
   centerOfMass: {fileID: 609378879984978322}
-  maxLandSpeed: 40
-  acceleration: 20
-  unGroundedGravity: 0.75
   turnSpeed: 2
-  driftEfficiency: 1
   AngleToPlayer: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  height: 2
+  maxLandSpeed: 40
+  acceleration: 20
+  unGroundedGravity: 0.75
+  driftEfficiency: 1
 --- !u!114 &47565936605910246
 MonoBehaviour:
   m_ObjectHideFlags: 0
