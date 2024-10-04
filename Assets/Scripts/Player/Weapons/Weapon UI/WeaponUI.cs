@@ -5,7 +5,7 @@ using TMPro;
 
 public class WeaponUI : MonoBehaviour
 {
-  [SerializeField] List<GameObject> buttons;
+  [SerializeField] List<WeaponUIButton> buttons;
 
   [SerializeField] List<GameObject> newWeapons;
   [SerializeField] List<GameObject> upgradableWeapons;
@@ -18,6 +18,8 @@ public class WeaponUI : MonoBehaviour
         rand -= newWeapons.Count;
         SetUpButton(buttons[i], upgradableWeapons[rand]);
       } else {
+        Debug.Log(buttons[i]);
+        Debug.Log(newWeapons[rand]);
         SetUpButton(buttons[i], newWeapons[rand]);
       }
     }
@@ -27,8 +29,7 @@ public class WeaponUI : MonoBehaviour
     Time.timeScale = 1;
     gameObject.SetActive(false);
   }
-  private void SetUpButton(GameObject button, GameObject weapon) {
-    button.GetComponentInChildren<TextMeshPro>().text = weapon.GetComponentInChildren<Weapon>().weaponStats.description;
-    
+  private void SetUpButton(WeaponUIButton button, GameObject weapon) {
+    button.GetTMP().SetText(weapon.GetComponentInChildren<Weapon>().weaponStats.description);
   }
 }

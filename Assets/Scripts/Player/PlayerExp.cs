@@ -14,6 +14,11 @@ public class PlayerExp : MonoBehaviour
   private void Start() {
     UpdateExpReq();
   }
+  private void Update() {
+    if (Input.GetKeyDown(KeyCode.L)) {
+      GetExp(100);
+    }
+  }
   void UpdateExpReq() {
     levelText.text = "Level " + level.ToString();
     nextLevelRequirement = Mathf.RoundToInt(Mathf.Pow(4 * (level + 1), 2)) - Mathf.RoundToInt(Mathf.Pow(4 * level, 2));
