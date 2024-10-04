@@ -10,6 +10,7 @@ public class DinoBoulder : MonoBehaviour
     [SerializeField] float aoeRange;
     [SerializeField] float damage;
     [SerializeField] float damageFalloff;
+    [SerializeField] float explosionKnockback;
     [SerializeField] bool tracking;
     [SerializeField] float turnSpeed;
     [SerializeField] float trackingSpeed;
@@ -52,5 +53,23 @@ public class DinoBoulder : MonoBehaviour
         tracking = true;
 
         speed = rb.velocity.magnitude;
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        Vector3 pointOfExplosion = collision.contacts[0].point;
+
+        Collider[] explosionCollider = Physics.OverlapSphere(pointOfExplosion, aoeRange);
+
+        foreach(Collider collider in explosionCollider)
+        {
+            if (collider.gameObject.tag == "Player" ||  collider.gameObject.tag == "Enemy")
+            {
+                print("BOOM");
+                collider.GetComponent<Rigidbody>().AddExplosionForce(explosionKnockback, pointOfExplosion, aoeRange, 3.0f);
+            }
+        }
+
+        Destroy(this.gameObject);
     }
 }

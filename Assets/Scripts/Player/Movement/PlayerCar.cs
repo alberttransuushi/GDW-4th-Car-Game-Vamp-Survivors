@@ -131,12 +131,12 @@ public class PlayerCar : MonoBehaviour
             if (movementControl.action.ReadValue<Vector2>().y > 0)
             {
                 rb.velocity += transform.forward * Time.deltaTime * acceleration;
-                Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+                //Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
             }
             if (movementControl.action.ReadValue<Vector2>().y < 0)
             {
                 rb.velocity -= transform.forward * Time.deltaTime * acceleration;
-                Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+                //Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
             }
         }
         /**

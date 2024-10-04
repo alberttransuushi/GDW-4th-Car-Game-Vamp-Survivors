@@ -148,9 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCar: {fileID: 0}
   trackingDelay: 1
-  aoeRange: 0
+  aoeRange: 20
   damage: 0
   damageFalloff: 0
+  explosionKnockback: 1000
   tracking: 0
   turnSpeed: 2
   trackingSpeed: 0

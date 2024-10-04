@@ -58,11 +58,16 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    protected void TurnToPlayer()
+    protected Vector3 GetDirToPlayer()
     {
         Vector3 dirToPlayer = playerCar.transform.position - transform.position;
+        return dirToPlayer;
+    }
+    protected void TurnToPlayer()
+    {
+        Vector3 dirToPlayer = GetDirToPlayer();
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToPlayer.x, dirToPlayer.y, dirToPlayer.z), turnSpeed * Time.deltaTime, 10.0f));
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToPlayer.x, 0, dirToPlayer.z), turnSpeed * Time.deltaTime, 10.0f));
 
         AngleToPlayer = Vector3.Angle(dirToPlayer, transform.forward);
     }
