@@ -2478,8 +2478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9772b524c19ef4d43a371603a2401f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponUI: {fileID: 1176385411}
   text: {fileID: 818251425}
   weaponIcon: {fileID: 918924106}
+  weapon: {fileID: 0}
 --- !u!114 &611750472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2562,9 +2564,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1176385411}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: ExitMenu
+      - m_Target: {fileID: 611750471}
+        m_TargetAssemblyTypeName: WeaponUIButton, Assembly-CSharp
+        m_MethodName: ChangeWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3065,8 +3067,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9772b524c19ef4d43a371603a2401f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponUI: {fileID: 1176385411}
   text: {fileID: 369714981}
   weaponIcon: {fileID: 1232674330}
+  weapon: {fileID: 0}
 --- !u!224 &713168015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3132,9 +3136,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1176385411}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: ExitMenu
+      - m_Target: {fileID: 713168014}
+        m_TargetAssemblyTypeName: WeaponUIButton, Assembly-CSharp
+        m_MethodName: ChangeWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4365,7 +4369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1176385410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4405,10 +4409,14 @@ MonoBehaviour:
   - {fileID: 611750471}
   - {fileID: 713168014}
   - {fileID: 1850116749}
+  maxWeapons: 5
   newWeapons:
   - {fileID: 5911976130740263386, guid: 30c07ea9c35f7b54da5d4717ee0f7ac4, type: 3}
   - {fileID: 5527765076265642538, guid: b7153b8c77bc2c742862db3e99937b25, type: 3}
+  - {fileID: 5527765076265642538, guid: b7153b8c77bc2c742862db3e99937b25, type: 3}
   upgradableWeapons: []
+  maxedWeapons: []
+  weaponList: {fileID: 9076912378047612430}
 --- !u!114 &1176385412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12978,8 +12986,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9772b524c19ef4d43a371603a2401f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponUI: {fileID: 1176385411}
   text: {fileID: 679642795}
   weaponIcon: {fileID: 1460738012}
+  weapon: {fileID: 0}
 --- !u!224 &1850116750
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13045,9 +13055,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1176385411}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: ExitMenu
+      - m_Target: {fileID: 1850116749}
+        m_TargetAssemblyTypeName: WeaponUIButton, Assembly-CSharp
+        m_MethodName: ChangeWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20180,6 +20190,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   centerOfMass: {fileID: 2319133812266968042}
   hpSlider: {fileID: 1293749116}
   unStuckCooldown: 2
@@ -20814,6 +20827,7 @@ GameObject:
   - component: {fileID: 3483095871975489077}
   - component: {fileID: 8120287740242769872}
   - component: {fileID: 1704459127}
+  - component: {fileID: 9076912378047612430}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -20821,6 +20835,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9076912378047612430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076912378047612429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14f3d234ebe498419018da948634190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  weaponLimit: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

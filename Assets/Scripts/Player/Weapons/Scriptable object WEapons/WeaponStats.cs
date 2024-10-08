@@ -8,5 +8,6 @@ public class WeaponStats : ScriptableObject
 
   public string description;
   public Sprite sprite;
+  public float damageModifier;
 
 }
