@@ -89,9 +89,12 @@ public class WeaponUI : MonoBehaviour {
   }
   public void WeaponChange(int weaponRef, bool isUpgrade) {
     if (isUpgrade) {//upgrade weapon
-      upgradableWeapons[weaponRef].GetComponentInChildren<Weapon>().weaponStats.damageModifier += 10;
+      upgradableWeapons[weaponRef].GetComponentInChildren<Weapon>().UpgradeWeapon();
+      //upgradableWeapons[weaponRef].GetComponentInChildren<Weapon>().weaponStats.damageModifier += 10;
     } else {//get new weapon
-      upgradableWeapons.Add(Instantiate(newWeapons[weaponRef], player.transform));
+      GameObject newWeapon =Instantiate(newWeapons[weaponRef], player.transform);
+      newWeapon.GetComponentInChildren<Weapon>().UpgradeWeapon();
+      upgradableWeapons.Add(newWeapon);
       newWeapons.RemoveAt(weaponRef);
     }
 
@@ -102,7 +105,7 @@ public class WeaponUI : MonoBehaviour {
     gameObject.SetActive(false);
   }
   private void SetUpButton(WeaponUIButton button, GameObject weapon, int r, bool u) {
-    button.GetTMP().SetText(weapon.GetComponentInChildren<Weapon>().weaponStats.description);
+    button.GetTMP().SetText(weapon.GetComponentInChildren<Weapon>().weaponStats.GetLevelUpDesc());
     button.SetWeapon(weapon);
     button.SetWeaponReference(r);
     button.SetIsUpgrade(u);

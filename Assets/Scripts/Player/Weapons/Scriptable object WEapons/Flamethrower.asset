@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7564ed3f1140b7b46a8135aa803f37ee, type: 3}
   m_Name: Flamethrower
   m_EditorClassIdentifier: 
-  description: set enemies on fire
+  levelUpDescriptions:
+  - flamethromer
+  - a
+  - aaa
+  - aaaaa
+  - aaaaaaa
+  level: 0
   sprite: {fileID: 0}
+  damageModifier: 1

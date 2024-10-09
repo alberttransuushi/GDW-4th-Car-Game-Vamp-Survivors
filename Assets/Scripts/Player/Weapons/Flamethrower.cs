@@ -15,8 +15,9 @@ public class Flamethrower : Weapon
   ParticleSystem particleSystem;
   private void Start() {
     particleSystem = GetComponent<ParticleSystem>();
+    base.Start();
   }
-  override public void attack() {
+  override public void Attack() {
     var em = particleSystem.emission;
     if (firing) {
       em.enabled = true;
@@ -39,10 +40,21 @@ public class Flamethrower : Weapon
     } else {
       firing = false;
     }
-    attack();
+    Attack();
     
   }
+  public override void LevelUp1() {
+    
+  }
+  public override void LevelUp2() {
+     
+  }
+  public override void LevelUp3() {
 
+  }
+  public override void LevelUp4() {
+
+  }
   private void OnParticleCollision(GameObject other) {
     if (other.GetComponent<BaseEnemy>() != null) {
       enemy.Add(other.GetComponent<BaseEnemy>());

@@ -15,11 +15,23 @@ public class Minigun : Weapon
   [SerializeField] GameObject bullet;
 
   bool firing = false;
-  override public void attack() {
+  override public void Attack() {
     if (timeSinceLastFired > firerate) {
       Instantiate(bullet, barrelTip.position, baseTransform.rotation);
       timeSinceLastFired -= firerate;
     }
+  }
+  public override void LevelUp1() {
+    firerate = firerate / 2;
+  }
+  public override void LevelUp2() {
+
+  }
+  public override void LevelUp3() {
+
+  }
+  public override void LevelUp4() {
+
   }
   private void Update() {
     if (weaponRef.GetClosestEnemyPosition() != null) {
@@ -33,7 +45,7 @@ public class Minigun : Weapon
     }
     timeSinceLastFired += Time.deltaTime;
     if (firing) {
-      attack();
+      Attack();
     } else {
       
     }
