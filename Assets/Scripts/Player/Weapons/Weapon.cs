@@ -6,9 +6,11 @@ abstract public class Weapon : MonoBehaviour {
   abstract public void Attack();
   public WeaponStats weaponStats;
   [SerializeField] protected float damage;
+  public WeaponReference weaponRef;
 
   // Start is called before the first frame update
   public void Start() {
+    weaponRef = GameObject.Find("player").GetComponentInChildren<WeaponReference>();
     weaponStats = Instantiate(weaponStats);
   }
 

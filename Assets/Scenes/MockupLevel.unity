@@ -1555,7 +1555,7 @@ MonoBehaviour:
   frontCamera: {fileID: 466377447}
   backCamera: {fileID: 303391009}
   playerCarRB: {fileID: 4395211145417008972}
-  cameraTurnSpeed: 2.5
+  cameraTurnSpeed: 2
   turnThreshold: 5
   maxFoV: 80
   minFoV: 100
@@ -5584,8 +5584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5fa2ad56c8f32489b712fff6d33438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats: {fileID: 0}
-  level: 1
+  weaponStats: {fileID: 11400000, guid: 67fd707e97e5b4c4cbb5ed057b472a35, type: 2}
   damage: 1
   weaponRef: {fileID: 1937876432835605225}
   baseTransform: {fileID: 509537087}
@@ -6738,10 +6737,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 0}
-  level: 1
   damage: 1.5
-  enemy: []
   weaponRef: {fileID: 1937876432835605225}
+  enemy: []
   baseTransform: {fileID: 8149247994357090147}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
@@ -19499,10 +19497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 0}
-  level: 1
   damage: 1.5
-  enemy: []
   weaponRef: {fileID: 1937876432835605225}
+  enemy: []
   baseTransform: {fileID: 8149247994357090147}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
@@ -20184,7 +20181,7 @@ MonoBehaviour:
   acceleration: 30
   turnSpeed: 1
   turnAngle: 45
-  setDriftFriction: 0.1
+  setDriftFriction: 0.05
   driftTurnSpeedModifier: 1.5
   unGroundedGravity: 0.75
   groundLayer:

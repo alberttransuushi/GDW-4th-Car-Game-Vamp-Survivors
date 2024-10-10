@@ -182,7 +182,7 @@ public class PlayerCar : MonoBehaviour
             dirToTurn = Quaternion.AngleAxis(turnAngle, Vector3.up) * transform.forward;
             //Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
-        if (rb.velocity.magnitude > 5)
+        if (rb.velocity.magnitude >= 0)
         {
             TurnToWheel(dirToTurn);
             //print("Turning");

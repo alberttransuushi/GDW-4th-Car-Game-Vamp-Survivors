@@ -6,7 +6,6 @@ public class Flamethrower : Weapon
 {
   public List<BaseEnemy> enemy;
   
-  public WeaponReference weaponRef;
   public Transform baseTransform;
   public Vector3 direction;
   public float rotationSpeed = 1;

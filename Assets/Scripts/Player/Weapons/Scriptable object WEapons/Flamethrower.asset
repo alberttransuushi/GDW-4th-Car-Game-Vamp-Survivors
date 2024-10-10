@@ -19,5 +19,5 @@ MonoBehaviour:
   - aaaaa
   - aaaaaaa
   level: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 47c9214a0f33c3d41abf565405f965d2, type: 3}
   damageModifier: 1

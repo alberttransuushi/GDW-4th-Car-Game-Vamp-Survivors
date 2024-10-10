@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Minigun : Weapon
 {
-  public WeaponReference weaponRef;
   public Transform baseTransform;
   public Vector3 direction;
   public float rotationSpeed = 1;

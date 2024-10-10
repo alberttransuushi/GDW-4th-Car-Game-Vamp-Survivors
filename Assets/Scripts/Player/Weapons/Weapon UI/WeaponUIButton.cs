@@ -36,6 +36,9 @@ public class WeaponUIButton : MonoBehaviour
   public bool GetIsUpgrade() {
     return isUpgrade;
   }
+  public void SetSprite(Sprite s) {
+    weaponIcon.sprite = s;
+  }
   public void ChangeWeapon() {
     weaponUI.WeaponChange(weaponRef, isUpgrade);
   }

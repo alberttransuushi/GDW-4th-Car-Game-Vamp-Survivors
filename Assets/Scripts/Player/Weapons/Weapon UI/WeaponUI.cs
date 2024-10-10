@@ -38,54 +38,6 @@ public class WeaponUI : MonoBehaviour {
         }
       }
     }
-
-    /*
-    //int[] rands = new int[buttons.Count];
-    bool repeat = true;
-    for (int i = 0; i < buttons.Count; i++) {
-      
-      //is weapon limits reached
-      if (weaponList.GetWeapons().Count >= weaponList.GetWeaponLimit()) {
-
-        while (repeat) {
-          rands[i] = Random.Range(0, upgradableWeapons.Count);
-          repeat = false;
-          for (int j = 0; j < i; j++) {
-            if (rands[i] == rands[j]) {
-              repeat = true;
-            }
-          }
-        }
-
-        for (int j = 0; j < rands.Length; j++) {
-          Debug.Log(rands[j]);
-        }
-        SetUpButton(buttons[i], upgradableWeapons[rands[i]]);
-
-      } else { //player can get new weapons
-
-        while (repeat) {//gen new number
-          rands[i] = Random.Range(0, newWeapons.Count + upgradableWeapons.Count);
-          repeat = false;
-          for (int j = 0; j < i; j++) {
-            if (rands[i] == rands[j]) {
-              repeat = true;
-            }
-          }
-        }
-
-        if (rands[i] >= newWeapons.Count) {//upgrade weapon
-          rands[i] -= newWeapons.Count;
-          SetUpButton(buttons[i], upgradableWeapons[rands[i]]);
-        } else {//new weapon
-          Debug.Log(buttons[i]);
-          Debug.Log(newWeapons[rands[i]]);
-          SetUpButton(buttons[i], newWeapons[rands[i]]);
-        }
-      }
-      
-    }  
-    */
   }
   public void WeaponChange(int weaponRef, bool isUpgrade) {
     if (isUpgrade) {//upgrade weapon
@@ -106,6 +58,7 @@ public class WeaponUI : MonoBehaviour {
   }
   private void SetUpButton(WeaponUIButton button, GameObject weapon, int r, bool u) {
     button.GetTMP().SetText(weapon.GetComponentInChildren<Weapon>().weaponStats.GetLevelUpDesc());
+    button.SetSprite(weapon.GetComponentInChildren<Weapon>().weaponStats.sprite);
     button.SetWeapon(weapon);
     button.SetWeaponReference(r);
     button.SetIsUpgrade(u);
