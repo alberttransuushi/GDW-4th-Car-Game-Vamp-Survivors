@@ -20177,6 +20177,7 @@ MonoBehaviour:
   currentHP: 0
   maxHP: 10
   IframeDuration: 1
+  ramDamage: 10
   maxLandSpeed: 60
   acceleration: 30
   turnSpeed: 1

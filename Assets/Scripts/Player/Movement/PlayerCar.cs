@@ -12,6 +12,7 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] public float maxHP;
     [SerializeField] float IframeDuration;
     bool damagable = true;
+    [SerializeField] float ramDamage = 1f;
     [Space(10)]
 
     [Header("Movement Stats")]
@@ -313,5 +314,13 @@ public class PlayerCar : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canUnStuck = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<BaseEnemy>().takeDamge(ramDamage * rb.velocity.magnitude / 10);
+        }
     }
 }
