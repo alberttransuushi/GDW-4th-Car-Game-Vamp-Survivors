@@ -12,6 +12,7 @@ public class LegoDino : BaseEnemy
     public bool canAttack;
     [SerializeField] float initialThrowXZSpeed;
     [SerializeField] float initialThrowYSpeed;
+    [SerializeField] float collisionKnockBack;
 
     [SerializeField] GameObject boulderPrefab;
     [SerializeField] GameObject boulderSpawner;
@@ -47,7 +48,7 @@ public class LegoDino : BaseEnemy
         {
             //Debug.Log("throw");
             Throwing();
-            rb.velocity = Vector3.zero;
+            //rb.velocity = Vector3.zero;
 
         } 
     }
@@ -86,7 +87,7 @@ public class LegoDino : BaseEnemy
         canAttack = false;
         canWalk = false;
         animator.SetTrigger("Attack");
-        rb.velocity = Vector3.zero;
+        //rb.velocity = Vector3.zero;
 
         //print("StartDelay");
         yield return new WaitForSeconds(throwAnimDelay);
@@ -110,40 +111,30 @@ public class LegoDino : BaseEnemy
 
     }
 
-    IEnumerator TailDelay()
+    void TailAttack()
     {
-        //print("StartDelay");
-        canAttack = false;
-        canWalk = false;
-        yield return new WaitForSeconds(throwAnimDelay);
+        Debug.Log("MyBoy");
 
-        //print("THROW");
-
+        playerCar.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * collisionKnockBack * 2f, ForceMode.Acceleration);
+        rb.AddForce(-transform.forward.normalized * collisionKnockBack * 2f, ForceMode.Acceleration);
 
         playerCar.GetComponent<PlayerCar>().TakeDamage(collisionDamage);
 
 
-        yield return new WaitForSeconds(attackExhaustDuration);
-
-        canWalk = true;
-
-        yield return new WaitForSeconds(throwCooldown);
-
-        canAttack = true;
-
-        //print("OVER");
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if(canAttack)
-            {
-                TailDelay();
-            }
+
+            TailAttack();
+
         }
     }
+
+
 
     void IncreasedGravity(float inc)
     {

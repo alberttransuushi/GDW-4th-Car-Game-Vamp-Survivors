@@ -836,8 +836,8 @@ MonoBehaviour:
   playerCarRB: {fileID: 4395211145417008972}
   cameraTurnSpeed: 2
   turnThreshold: 5
-  maxFoV: 90
-  minFoV: 120
+  maxFoV: 120
+  minFoV: 90
   CameraReverseControl: {fileID: -4866630592404658458, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
 --- !u!4 &361633475
 Transform:
@@ -16962,6 +16962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockDino
       objectReference: {fileID: 0}
+    - target: {fileID: 332521215454300920, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1141252267540680770, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
       propertyPath: m_LocalPosition.x
       value: -120.8
@@ -17002,41 +17006,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2831714098932396938, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: m_Mass
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2831714098932396938, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: m_Constraints
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 3374515679376272314, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2be248673dae7b841afe08f0b0ee998e, type: 2}
-    - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: health
-      value: 2.5
+    - target: {fileID: 3739862707212914516, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: m_Size.x
+      value: 13.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739862707212914516, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: m_Size.y
+      value: 19.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739862707212914516, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: m_Size.z
+      value: 15.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739862707212914516, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: walkSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: throwCooldown
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: throwAnimDelay
+      propertyPath: collisionDamage
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: initialThrowYSpeed
-      value: 80
+      propertyPath: collisionKnockBack
+      value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
-      propertyPath: attackExhaustDuration
-      value: 3
+      propertyPath: minDistanceToThrow
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17160,6 +17160,9 @@ MonoBehaviour:
   centerOfMass: {fileID: 2319133812266968042}
   hpSlider: {fileID: 1293749116}
   unStuckCooldown: 2
+  unstuckAoeRange: 100
+  unstuckExplosionStrength: 10000
+  unstuckPlayerDamage: 0.5
   isDrifting: 0
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   driftControl: {fileID: 270835659405182783, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}

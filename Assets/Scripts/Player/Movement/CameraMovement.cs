@@ -41,8 +41,8 @@ public class CameraMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Zoom in/out depending on speed
-        frontCamera.fieldOfView = Mathf.Lerp(maxFoV, minFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
-        backCamera.fieldOfView = Mathf.Lerp(maxFoV, minFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
+        frontCamera.fieldOfView = Mathf.Lerp(minFoV, maxFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
+        backCamera.fieldOfView = Mathf.Lerp(minFoV, maxFoV, playerCarRB.velocity.magnitude / playerCar.GetComponent<PlayerCar>().maxLandSpeed);
 
         //Lag behind 
         Vector3 dir = playerCarRB.velocity.normalized;

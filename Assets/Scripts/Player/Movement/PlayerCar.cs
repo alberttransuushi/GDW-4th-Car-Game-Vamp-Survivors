@@ -44,7 +44,9 @@ public class PlayerCar : MonoBehaviour
     [Space(10)]
 
 
-
+    [SerializeField] float unstuckAoeRange;
+    [SerializeField] float unstuckExplosionStrength;
+    [SerializeField] float unstuckPlayerDamage;
 
     RaycastHit hit;
     public bool isDrifting;
@@ -162,8 +164,7 @@ public class PlayerCar : MonoBehaviour
         if (UnstuckControl.action.triggered && canUnStuck)
         {
             canUnStuck = false;
-            transform.position = transform.position + (Vector3.up * 5f);
-            rb.velocity = Vector3.zero;
+            Unstuck();
             StartCoroutine(StartUnStuckCooldown(unStuckCooldown));
         }
         FrictionVelocity();
@@ -234,13 +235,13 @@ public class PlayerCar : MonoBehaviour
 
     void AOALimiter()
     {
-        if (isDrifting && AoADriftControl.action.WasPressedThisFrame())
+        if (AoADriftControl.action.WasPressedThisFrame())
         {
             AOAEnabled = true;
             currentDriftFriction = 0;
             Time.timeScale = 0.6f;
         }
-        if ((!isDrifting || AoADriftControl.action.WasReleasedThisFrame()) && AOAEnabled)
+        if ((AoADriftControl.action.WasReleasedThisFrame()) && AOAEnabled)
         {
             AOAEnabled = false;
             currentDriftFriction = setDriftFriction;
@@ -315,6 +316,25 @@ public class PlayerCar : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canUnStuck = true;
+    }
+
+    void Unstuck()
+    {
+        TakeDamage(unstuckPlayerDamage);
+
+        Vector3 pointOfExplosion = transform.position;
+
+        Collider[] explosionCollider = Physics.OverlapSphere(pointOfExplosion, unstuckAoeRange);
+
+        foreach (Collider collider in explosionCollider)
+        {
+            if (collider.gameObject.tag == "Enemy")
+            {
+                
+                //print("BOOM");
+                collider.GetComponent<Rigidbody>().AddExplosionForce(unstuckExplosionStrength, pointOfExplosion, unstuckAoeRange, 3.0f, ForceMode.Acceleration);
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
