@@ -230,7 +230,7 @@ MonoBehaviour:
   playerCar: {fileID: 0}
   catchUpBonus: 0
   distancePerCatchUp: 0
-  collisionDamage: 5
+  collisionDamage: 3
   centerOfMass: {fileID: 4190051899560984739}
   turnSpeed: 2
   AngleToPlayer: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   height: 22
-  minDistanceToThrow: 40
+  minDistanceToThrow: 20
   maxDistanceToThrow: 200
   throwCooldown: 8
   throwAnimDelay: 3
@@ -246,6 +246,7 @@ MonoBehaviour:
   canAttack: 0
   initialThrowXZSpeed: 10
   initialThrowYSpeed: 80
+  collisionKnockBack: 8000
   boulderPrefab: {fileID: 5769646650520503644, guid: 17ef0f8a87a245244bd79beb58f5f0c3, type: 3}
   boulderSpawner: {fileID: 4053606960329101981}
   walkSpeed: 40

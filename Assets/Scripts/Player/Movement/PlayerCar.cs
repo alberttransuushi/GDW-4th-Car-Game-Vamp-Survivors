@@ -47,6 +47,9 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] float unstuckAoeRange;
     [SerializeField] float unstuckExplosionStrength;
     [SerializeField] float unstuckPlayerDamage;
+    [SerializeField] bool unstuckJumpFeature;
+    [SerializeField] float unstuckBoost;
+
 
     RaycastHit hit;
     public bool isDrifting;
@@ -163,9 +166,12 @@ public class PlayerCar : MonoBehaviour
 
         if (UnstuckControl.action.triggered && canUnStuck)
         {
-            canUnStuck = false;
-            Unstuck();
-            StartCoroutine(StartUnStuckCooldown(unStuckCooldown));
+            if (CheckGrounded())
+            {
+                canUnStuck = false;
+                Unstuck();
+                StartCoroutine(StartUnStuckCooldown(unStuckCooldown));
+            }
         }
         FrictionVelocity();
 
@@ -333,8 +339,15 @@ public class PlayerCar : MonoBehaviour
                 
                 //print("BOOM");
                 collider.GetComponent<Rigidbody>().AddExplosionForce(unstuckExplosionStrength, pointOfExplosion, unstuckAoeRange, 3.0f, ForceMode.Acceleration);
+
             }
         }
+        if (unstuckJumpFeature)
+        {
+            rb.AddForce(unstuckExplosionStrength * Vector3.up / 2f, ForceMode.Acceleration);
+        }
+
+        rb.velocity += transform.forward * unstuckBoost;
     }
 
     private void OnCollisionEnter(Collision collision)
