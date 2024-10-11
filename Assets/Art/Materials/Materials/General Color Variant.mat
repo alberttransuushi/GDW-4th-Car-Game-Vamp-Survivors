@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: General Color Varient
+  m_Name: General Color Variant
   m_Shader: {fileID: 4800000, guid: 23a2b221fc298d348b1ae4f40d1d136a, type: 3}
   m_Parent: {fileID: 2100000, guid: e865c94e5aa0f384a89692c53d2fe58e, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -22,15 +22,9 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MedTex:
-        m_Texture: {fileID: 2800000, guid: a83f7d1ee18e8d749904fdd7576039cd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _Repeat: 0.5
+    m_Floats: []
     m_Colors:
-    - _Color: {r: 0, g: 0.406003, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.75927097, b: 0, a: 1}
   m_BuildTextureStacks: []

@@ -1925,6 +1925,7 @@ GameObject:
   - component: {fileID: 1111059466}
   - component: {fileID: 1111059468}
   - component: {fileID: 1111059467}
+  - component: {fileID: 1111059469}
   m_Layer: 0
   m_Name: Wall (3)
   m_TagString: Untagged
@@ -1996,6 +1997,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111059465}
+  m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
+--- !u!64 &1111059469
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111059465}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
 --- !u!1 &1176385409
 GameObject:
@@ -2566,7 +2589,6 @@ MonoBehaviour:
   baseTransform: {fileID: 509537087}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1
-  firerate: 0.1
   timeSinceLastFired: 0
   barrelTip: {fileID: 1464474345}
   bullet: {fileID: 8755133087634995640, guid: 57204c28994da6f4ea7de1f33db3ac72, type: 3}
@@ -3115,6 +3137,8 @@ MonoBehaviour:
   damage: 1.5
   weaponRef: {fileID: 1937876432835605225}
   enemy: []
+  enemyBurnTime: []
+  burnTime: 0
   baseTransform: {fileID: 8149247994357090147}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
@@ -8846,6 +8870,7 @@ GameObject:
   - component: {fileID: 1916567178}
   - component: {fileID: 1916567180}
   - component: {fileID: 1916567179}
+  - component: {fileID: 1916567181}
   m_Layer: 0
   m_Name: Wall (1)
   m_TagString: Untagged
@@ -8918,6 +8943,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916567177}
   m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
+--- !u!64 &1916567181
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916567177}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
 --- !u!1 &1946579510
 GameObject:
   m_ObjectHideFlags: 0
@@ -8929,6 +8976,7 @@ GameObject:
   - component: {fileID: 1946579511}
   - component: {fileID: 1946579513}
   - component: {fileID: 1946579512}
+  - component: {fileID: 1946579514}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -9000,6 +9048,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946579510}
+  m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
+--- !u!64 &1946579514
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946579510}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
 --- !u!1 &2009386994
 GameObject:
@@ -9193,6 +9263,7 @@ GameObject:
   - component: {fileID: 6415959127662389834}
   - component: {fileID: 2919018817974542156}
   - component: {fileID: 404527403108790291}
+  - component: {fileID: 6415959127662389835}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -14243,6 +14314,8 @@ MonoBehaviour:
   damage: 1.5
   weaponRef: {fileID: 1937876432835605225}
   enemy: []
+  enemyBurnTime: []
+  burnTime: 0
   baseTransform: {fileID: 8149247994357090147}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
@@ -15238,6 +15311,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2009386995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6415959127662389835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828880717634322065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733429697405204941, guid: db57edeffd71f984286fd1db846fb6bd, type: 3}
 --- !u!4 &6419713192774113564
 Transform:
   m_ObjectHideFlags: 0

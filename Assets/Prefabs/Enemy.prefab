@@ -770,7 +770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e865c94e5aa0f384a89692c53d2fe58e, type: 2}
+  - {fileID: 2100000, guid: c2b2df2da5964f84ba4725081be39f9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -885,6 +885,7 @@ MonoBehaviour:
   acceleration: 20
   unGroundedGravity: 0.75
   driftEfficiency: 1
+  randomScaleStrenght: 0
 --- !u!114 &47565936605910246
 MonoBehaviour:
   m_ObjectHideFlags: 0
