@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fire
-  m_Shader: {fileID: 4800000, guid: 23a2b221fc298d348b1ae4f40d1d136a, type: 3}
+  m_Shader: {fileID: 4800000, guid: cdc5b52f5cc884a49938b148a323e2fa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -45,19 +45,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HvyTex:
-        m_Texture: {fileID: 2800000, guid: a32ed499777af744d9ff740574ffaeb8, type: 3}
+        m_Texture: {fileID: 2800000, guid: b222021c37f6490448c8fd5237d3b314, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: a32ed499777af744d9ff740574ffaeb8, type: 3}
+        m_Texture: {fileID: 2800000, guid: a355797a525c50b459e5bfe4fabefebf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f2c5f39c141c63643bb5af93eb7a1ac8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: a355797a525c50b459e5bfe4fabefebf, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MedTex:
-        m_Texture: {fileID: 2800000, guid: f2c5f39c141c63643bb5af93eb7a1ac8, type: 3}
+        m_Texture: {fileID: 2800000, guid: a355797a525c50b459e5bfe4fabefebf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3353e19048350a2439063a10eb347687, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -88,16 +88,20 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 0.21
+    - _Outline: 0
     - _Parallax: 0.02
     - _Repeat: 4
+    - _RimPower: 2
+    - _RotationDegrees: 60
+    - _RotationSpeed: 20
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.8377325, b: 0.759434, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.4339623, g: 0.15780447, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

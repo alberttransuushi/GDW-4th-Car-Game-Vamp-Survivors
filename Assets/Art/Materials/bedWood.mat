@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: General Color Varient 2
+  m_Name: bedWood
   m_Shader: {fileID: 4800000, guid: 97daa4ae18806e64babeaee430987d20, type: 3}
-  m_Parent: {fileID: 2100000, guid: abfed7683849b4d4e8f26956688e41bf, type: 2}
+  m_Parent: {fileID: 2100000, guid: e865c94e5aa0f384a89692c53d2fe58e, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -23,8 +23,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _HvyTex:
-        m_Texture: {fileID: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5462baa961574c142bda770bbfd40beb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MedTex:
@@ -33,7 +33,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Repeat: 10
+    - _Repeat: 0
     m_Colors:
-    - _Color: {r: 0.9519104, g: 1, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ContourColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

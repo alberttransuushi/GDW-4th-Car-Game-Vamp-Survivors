@@ -5020,6 +5020,8 @@ MonoBehaviour:
   damage: 0.5
   weaponRef: {fileID: 1937876434165361792}
   enemy: []
+  enemyBurnTime: []
+  burnTime: 0
   baseTransform: {fileID: 8149247993027664138}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
