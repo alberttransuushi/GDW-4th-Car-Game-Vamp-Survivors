@@ -5,6 +5,8 @@ using UnityEngine;
 public class Flamethrower : Weapon
 {
   public List<BaseEnemy> enemy;
+  public List<float> enemyBurnTime;
+  public float burnTime;
   
   public Transform baseTransform;
   public Vector3 direction;
@@ -27,7 +29,27 @@ public class Flamethrower : Weapon
   private void Update() {
     for (int i = 0; i < enemy.Count; i++) {
       if (enemy[i] != null) {
-        enemy[i].takeDamge(damage*Time.deltaTime);
+        //burn enemy
+        bool crit = false;
+        if (Random.Range(0,100) < weaponStats.critChance) {
+          enemy[i].takeDamge(damage * Time.deltaTime * weaponStats.damageModifier * (1 + (weaponStats.critDamage / 100)));
+        } else {
+          enemy[i].takeDamge(damage * Time.deltaTime * weaponStats.damageModifier);
+
+        }
+        enemyBurnTime[i] -= Time.deltaTime;
+
+        if (enemyBurnTime[i] <= 0) {
+          //enemy burn over
+          enemy.RemoveAt(i);
+          enemyBurnTime.RemoveAt(i);
+          i--;
+        }
+      } else {
+        //enemy is dead
+        enemy.RemoveAt(i);
+        enemyBurnTime.RemoveAt(i);
+        i--;
       }
     }
     if (weaponRef.GetClosestEnemyPosition() != null) {
@@ -43,20 +65,27 @@ public class Flamethrower : Weapon
     
   }
   public override void LevelUp1() {
-    
+    weaponStats.damageModifier += 0.1f;
   }
   public override void LevelUp2() {
-     
+    burnTime += 0.5f;
   }
   public override void LevelUp3() {
-
+    weaponStats.damageModifier += 0.3f;
   }
   public override void LevelUp4() {
-
+    weaponStats.critChance += 20;
   }
   private void OnParticleCollision(GameObject other) {
     if (other.GetComponent<BaseEnemy>() != null) {
+      for (int i = 0; i < enemy.Count; i++) {
+        if (enemy[i].gameObject == other) {
+          enemyBurnTime[i] = burnTime;
+          return;
+        }
+      }
       enemy.Add(other.GetComponent<BaseEnemy>());
+      enemyBurnTime.Add(burnTime);
     }
   }
 }

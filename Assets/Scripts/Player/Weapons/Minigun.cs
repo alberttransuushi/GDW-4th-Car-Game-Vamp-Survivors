@@ -7,7 +7,7 @@ public class Minigun : Weapon
   public Transform baseTransform;
   public Vector3 direction;
   public float rotationSpeed = 1;
-  public float firerate = 0.1f;
+
   public float timeSinceLastFired;
 
   [SerializeField] Transform barrelTip;
@@ -15,22 +15,23 @@ public class Minigun : Weapon
 
   bool firing = false;
   override public void Attack() {
-    if (timeSinceLastFired > firerate) {
-      Instantiate(bullet, barrelTip.position, baseTransform.rotation);
-      timeSinceLastFired -= firerate;
+    if (timeSinceLastFired > weaponStats.fireRate) {
+      GameObject b = Instantiate(bullet, barrelTip.position, baseTransform.rotation);
+      b.GetComponent<Bullet>().DamageMultiply(weaponStats.damageModifier);
+      timeSinceLastFired -= weaponStats.fireRate;
     }
   }
   public override void LevelUp1() {
-    firerate = firerate / 2;
+    weaponStats.fireRate = weaponStats.fireRate / 2;
   }
   public override void LevelUp2() {
-
+    weaponStats.damageModifier += 0.1f;
   }
   public override void LevelUp3() {
-
+    weaponStats.projectiles += 1;
   }
   public override void LevelUp4() {
-
+    //NON fuctional as of yet
   }
   private void Update() {
     if (weaponRef.GetClosestEnemyPosition() != null) {

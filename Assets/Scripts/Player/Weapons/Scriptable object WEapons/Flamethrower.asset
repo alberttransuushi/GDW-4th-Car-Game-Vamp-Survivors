@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpDescriptions:
   - flamethromer
-  - a
-  - aaa
-  - aaaaa
-  - aaaaaaa
+  - more damage
+  - burn duration increased
+  - Even more damage
+  - chance to crit
   level: 0
   sprite: {fileID: 21300000, guid: 47c9214a0f33c3d41abf565405f965d2, type: 3}
   damageModifier: 1
+  fireRate: 1
+  projectiles: 0
+  size: 1
+  critChance: 0
+  critDamage: 50
+  slowingPercent: 0
+  slowingTime: 0
+  freezingTime: 0

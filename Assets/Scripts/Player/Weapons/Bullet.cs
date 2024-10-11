@@ -15,4 +15,7 @@ public class Bullet : MonoBehaviour
       Destroy(this.gameObject);
     }
   }
+  public void DamageMultiply(float m) {
+    damage = damage * m;
+  }
 }

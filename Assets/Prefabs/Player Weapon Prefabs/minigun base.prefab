@@ -45,12 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: 67fd707e97e5b4c4cbb5ed057b472a35, type: 2}
-  level: 1
   damage: 1
   weaponRef: {fileID: 0}
   baseTransform: {fileID: 6544535661630556255}
   direction: {x: 0, y: 0, z: 0}
-  rotationSpeed: 1
+  rotationSpeed: 0.5
   firerate: 0.1
   timeSinceLastFired: 0
   barrelTip: {fileID: 4455586581095393750}

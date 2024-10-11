@@ -9,7 +9,20 @@ public class WeaponStats : ScriptableObject
 
   [SerializeField] int level = 0;
   public Sprite sprite;
+
   public float damageModifier;
+  public float fireRate;
+  public float projectiles;
+  public float size;
+  public float critChance;
+  public float critDamage = 50;
+
+  public float slowingPercent;
+  public float slowingTime;
+  public float freezingTime;
+
+
+
   public string GetLevelUpDesc() {
     return levelUpDescriptions[level];
   }
