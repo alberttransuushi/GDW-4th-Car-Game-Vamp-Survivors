@@ -12,7 +12,6 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] public float maxHP;
     [SerializeField] float IframeDuration;
     bool damagable = true;
-    [SerializeField] float ramDamage = 1f;
     [Space(10)]
 
     [Header("Movement Stats")]
@@ -35,7 +34,6 @@ public class PlayerCar : MonoBehaviour
 
     [Header("Misc Stats")]
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask enemyLayer;
     [SerializeField] GameObject centerOfMass;
     [SerializeField] Slider hpSlider;
     [SerializeField] float unStuckCooldown;
@@ -58,10 +56,7 @@ public class PlayerCar : MonoBehaviour
     private InputActionReference driftControl;
     [SerializeField]
     private InputActionReference fireControl;
-    [SerializeField]
-    private InputActionReference AoADriftControl;
-    [SerializeField]
-    private InputActionReference UnstuckControl;
+    
 
 
 
@@ -70,8 +65,6 @@ public class PlayerCar : MonoBehaviour
         movementControl.action.Enable();
         driftControl.action.Enable();
         fireControl.action.Enable();
-        AoADriftControl.action.Enable();
-        UnstuckControl.action.Enable();
 
     }
 
@@ -80,8 +73,6 @@ public class PlayerCar : MonoBehaviour
         movementControl.action.Disable();
         driftControl.action.Disable();
         fireControl.action.Disable();
-        AoADriftControl.action.Disable();
-        UnstuckControl.action.Disable();
 
     }
 
@@ -92,6 +83,7 @@ public class PlayerCar : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
         currentDriftFriction = setDriftFriction;
+        
     }
 
     // Update is called once per frame
@@ -133,12 +125,12 @@ public class PlayerCar : MonoBehaviour
             if (movementControl.action.ReadValue<Vector2>().y > 0)
             {
                 rb.velocity += transform.forward * Time.deltaTime * acceleration;
-                //Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+                Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
             }
             if (movementControl.action.ReadValue<Vector2>().y < 0)
             {
                 rb.velocity -= transform.forward * Time.deltaTime * acceleration;
-                //Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+                Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
             }
         }
         /**
@@ -150,16 +142,16 @@ public class PlayerCar : MonoBehaviour
         **/
 
         //You can remove this and uncomment the one up top
-        if (driftControl.action.WasPressedThisFrame())
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             isDrifting = true;
         }
-        else if(driftControl.action.WasReleasedThisFrame())
+        else
         {
             isDrifting = false;
         }
 
-        if(UnstuckControl.action.triggered && canUnStuck)
+        if(Input.GetKey(KeyCode.G) && canUnStuck)
         {
             canUnStuck = false;
             transform.position = transform.position + (Vector3.up * 5f);
@@ -176,14 +168,14 @@ public class PlayerCar : MonoBehaviour
         if (movementControl.action.ReadValue<Vector2>().x < 0)
         {
             dirToTurn = Quaternion.AngleAxis(-turnAngle, Vector3.up) * transform.forward;
-            //Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
         if (movementControl.action.ReadValue<Vector2>().x > 0)
         {
             dirToTurn = Quaternion.AngleAxis(turnAngle, Vector3.up) * transform.forward;
-            //Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
+            Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
         }
-        if (rb.velocity.magnitude >= 0)
+        if (rb.velocity.magnitude > 5)
         {
             TurnToWheel(dirToTurn);
             //print("Turning");
@@ -205,14 +197,7 @@ public class PlayerCar : MonoBehaviour
 
     bool CheckGrounded()
     {
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 2f, groundLayer) || Physics.Raycast(transform.position, -transform.up, out hit, 2f, enemyLayer))
-        {
-            return true;
-        } else
-        {
-            return false;
-        }
-        
+        return Physics.Raycast(transform.position, -transform.up, out hit, 2f, groundLayer);
     }
 
     void FrictionVelocity()
@@ -233,18 +218,16 @@ public class PlayerCar : MonoBehaviour
 
     void AOALimiter()
     {
-        if (isDrifting && AoADriftControl.action.WasPressedThisFrame())
+        if (isDrifting && Input.GetKeyDown(KeyCode.Space))
         {
             AOAEnabled = true;
             currentDriftFriction = 0;
-            Time.timeScale = 0.6f;
         }
-        if ((!isDrifting || AoADriftControl.action.WasReleasedThisFrame()) && AOAEnabled)
+        if ((!isDrifting || Input.GetKeyUp(KeyCode.Space)) && AOAEnabled)
         {
             AOAEnabled = false;
             currentDriftFriction = setDriftFriction;
             rb.velocity = rb.velocity.magnitude * transform.forward;
-            Time.timeScale = 1.0f;
         }
     }
 
@@ -314,13 +297,5 @@ public class PlayerCar : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         canUnStuck = true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<BaseEnemy>().takeDamge(ramDamage * rb.velocity.magnitude / 10);
-        }
     }
 }

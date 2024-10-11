@@ -5590,7 +5590,6 @@ MonoBehaviour:
   baseTransform: {fileID: 509537087}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1
-  firerate: 0.1
   timeSinceLastFired: 0
   barrelTip: {fileID: 1464474345}
   bullet: {fileID: 8755133087634995640, guid: 57204c28994da6f4ea7de1f33db3ac72, type: 3}
@@ -6740,6 +6739,8 @@ MonoBehaviour:
   damage: 1.5
   weaponRef: {fileID: 1937876432835605225}
   enemy: []
+  enemyBurnTime: []
+  burnTime: 0
   baseTransform: {fileID: 8149247994357090147}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
@@ -19500,6 +19501,8 @@ MonoBehaviour:
   damage: 1.5
   weaponRef: {fileID: 1937876432835605225}
   enemy: []
+  enemyBurnTime: []
+  burnTime: 0
   baseTransform: {fileID: 8149247994357090147}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1e-15
@@ -20651,7 +20654,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9076912378047612429}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3e8ddc62498dcda4a9e3290169bbc810, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
