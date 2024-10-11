@@ -8,6 +8,7 @@ public class LegoDino : BaseEnemy
     [SerializeField] float maxDistanceToThrow;
     [SerializeField] float throwCooldown;
     [SerializeField] float throwAnimDelay;
+    [SerializeField] float attackExhaustDuration;
     public bool canAttack;
     [SerializeField] float initialThrowXZSpeed;
     [SerializeField] float initialThrowYSpeed;
@@ -97,6 +98,8 @@ public class LegoDino : BaseEnemy
         boulder.GetComponent<Rigidbody>().velocity = new Vector3(1, 0, 1) * initialThrowXZSpeed;
         boulder.GetComponent<Rigidbody>().velocity += Vector3.up * initialThrowYSpeed;
 
+        yield return new WaitForSeconds(attackExhaustDuration);
+
         canWalk = true;
 
         yield return new WaitForSeconds(throwCooldown);
@@ -117,8 +120,10 @@ public class LegoDino : BaseEnemy
         //print("THROW");
 
 
-        playerCar.GetComponent<PlayerCar>().TakeDamage(collisionDamage);    
+        playerCar.GetComponent<PlayerCar>().TakeDamage(collisionDamage);
 
+
+        yield return new WaitForSeconds(attackExhaustDuration);
 
         canWalk = true;
 

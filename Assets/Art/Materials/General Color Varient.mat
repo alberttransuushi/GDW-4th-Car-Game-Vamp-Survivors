@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: General Color Varient
-  m_Shader: {fileID: 4800000, guid: 23a2b221fc298d348b1ae4f40d1d136a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 97daa4ae18806e64babeaee430987d20, type: 3}
   m_Parent: {fileID: 2100000, guid: e865c94e5aa0f384a89692c53d2fe58e, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -31,6 +31,6 @@ Material:
     m_Floats:
     - _Repeat: 0.5
     m_Colors:
-    - _Color: {r: 0, g: 0.406003, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.2777132, b: 0.6415094, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

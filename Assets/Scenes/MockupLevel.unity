@@ -715,7 +715,7 @@ Transform:
   m_GameObject: {fileID: 303391008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9782328, z: -0.20751043, w: 0}
-  m_LocalPosition: {x: 0.01, y: 8, z: 7.99}
+  m_LocalPosition: {x: 0.01, y: 10, z: 7.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -780,6 +780,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4359577617200659267, guid: 4d928362d460e5b4dabfe0557c91c738, type: 3}
+--- !u!65 &306194141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306194133}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.33749995, y: 0.7125, z: 0.29999998}
+  m_Center: {x: 0.00000000745058, y: 0.03189017, z: 0.06306818}
 --- !u!1 &361633473
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +836,7 @@ MonoBehaviour:
   playerCarRB: {fileID: 4395211145417008972}
   cameraTurnSpeed: 2
   turnThreshold: 5
-  maxFoV: 130
+  maxFoV: 90
   minFoV: 120
   CameraReverseControl: {fileID: -4866630592404658458, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
 --- !u!4 &361633475
@@ -1314,7 +1335,7 @@ Transform:
   m_GameObject: {fileID: 466377446}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20750974, y: -0, z: 0.0000000074505797, w: 0.978233}
-  m_LocalPosition: {x: 0.01, y: 8, z: -7.99}
+  m_LocalPosition: {x: 0.01, y: 10, z: -7.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3996,6 +4017,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d928362d460e5b4dabfe0557c91c738, type: 3}
       insertIndex: -1
       addedObject: {fileID: 306194138}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d928362d460e5b4dabfe0557c91c738, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 306194141}
   m_SourcePrefab: {fileID: 100100000, guid: 4d928362d460e5b4dabfe0557c91c738, type: 3}
 --- !u!1001 &1352490353
 PrefabInstance:
@@ -16979,6 +17003,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2831714098932396938, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: m_Mass
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831714098932396938, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
       propertyPath: m_Constraints
       value: 16
       objectReference: {fileID: 0}
@@ -17005,6 +17033,10 @@ PrefabInstance:
     - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
       propertyPath: initialThrowYSpeed
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: attackExhaustDuration
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17118,7 +17150,7 @@ MonoBehaviour:
   turnAngle: 45
   setDriftFriction: 0.05
   driftTurnSpeedModifier: 1.5
-  unGroundedGravity: 0.4
+  unGroundedGravity: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
