@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour
     public float currentWaveSpawnDelay;
 
     public bool bossSpawner;
+    public List<WaveEnemyData> currentWaveData;
 
 
 
@@ -28,7 +29,12 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         //start timer for wave 1
-        waveTimer = waveDuration;    
+        waveTimer = waveDuration;
+
+        waves = Instantiate(waves);
+
+        UpdateSpawnDelay();
+        UpdateWaveData();
     }
 
     // Update is called once per frame
@@ -81,6 +87,8 @@ public class Spawner : MonoBehaviour
             currentWave++;
         }
         waveTimer = waveDuration;
+        UpdateSpawnDelay();
+        UpdateWaveData();
 
     }
 
@@ -88,7 +96,7 @@ public class Spawner : MonoBehaviour
     {
         spawnTimer -= 1 * Time.deltaTime;
         if (spawnTimer < 0 || bossSpawner) {
-
+            
             spawnTimer = currentWaveSpawnDelay;
             SpawnEnemy();
 
@@ -103,17 +111,29 @@ public class Spawner : MonoBehaviour
         //Repeat until outside minimum range;
         while ((transform.position - spawnPos).magnitude < minRange)
         {
-
-
             spawnPos = transform.position + (Vector3)(maxRange * Random.insideUnitSphere);
+        }
+
+        //Gets Random Enemy From Wave
+        int spawnedEnemyIndex = Random.Range(0, currentWaveData.Count);
+        currentWaveData[spawnedEnemyIndex].numberOfEnemies--;
+
+        //Spawn Enemy
+        Debug.Log("SPAWN");
+        Instantiate(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos, Quaternion.identity);
 
 
+        //Remove from Wave Data when spawn max number of an enemy type
+        if (currentWaveData[spawnedEnemyIndex].numberOfEnemies <= 0)
+        {
+            currentWaveData.RemoveAt(spawnedEnemyIndex);
         }
 
 
+
         //Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-        
-        
+
+
 
     }
 
@@ -133,5 +153,10 @@ public class Spawner : MonoBehaviour
     void UpdateSpawnDelay()
     {
         currentWaveSpawnDelay = waveDuration / calculateNumberOfEnemiesInCurrentWave();
+    }
+
+    void UpdateWaveData()
+    {
+        currentWaveData = waves[currentWave].enemiesInWave;
     }
 }

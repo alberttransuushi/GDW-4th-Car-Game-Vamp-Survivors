@@ -477,51 +477,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82720067}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &221724620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 221724622}
-  - component: {fileID: 221724621}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &221724621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 221724620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fefca0766f257c4e9f14756204df3da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemiesInWave: []
---- !u!4 &221724622
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 221724620}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.062263, y: 39.23496, z: 82.29055}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242890370
 GameObject:
   m_ObjectHideFlags: 0
@@ -11441,7 +11396,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9076912378047612429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd660144c5bc71e45b1a9cf20ce9d91c, type: 3}
   m_Name: 
@@ -17196,7 +17151,7 @@ MonoBehaviour:
   unstuckAoeRange: 100
   unstuckExplosionStrength: 10000
   unstuckPlayerDamage: 0.5
-  unstuckJumpFeature: 1
+  unstuckJumpFeature: 0
   unstuckBoost: 50
   isDrifting: 0
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
@@ -17824,6 +17779,7 @@ GameObject:
   - component: {fileID: 2985394938207452543}
   - component: {fileID: 4373966352680902150}
   - component: {fileID: 4395211145417008972}
+  - component: {fileID: 9076912378047612431}
   - component: {fileID: 961450408754821260}
   - component: {fileID: 2501946183646184071}
   - component: {fileID: 3483095871975489077}
@@ -17851,6 +17807,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: []
   weaponLimit: 2
+--- !u!114 &9076912378047612431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076912378047612429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0cfad748eed264ba0a7e83eedd68f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: 8bdd7041c86bfdc4fa3f294876726f2a, type: 2}
+  minRange: 20
+  maxRange: 80
+  waveTimer: 0
+  waveDuration: 60
+  currentWave: 0
+  spawnTimer: 0
+  currentWaveSpawnDelay: 0
+  bossSpawner: 0
+  currentWaveData: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -17863,4 +17842,3 @@ SceneRoots:
   - {fileID: 24568377}
   - {fileID: 3993103221613615649}
   - {fileID: 2082275596}
-  - {fileID: 221724622}

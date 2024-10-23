@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct WaveEnemyData
+public class WaveEnemyData
 {
     public GameObject enemyType;
     public int numberOfEnemies;
