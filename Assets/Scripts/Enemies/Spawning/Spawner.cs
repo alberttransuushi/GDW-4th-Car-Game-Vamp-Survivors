@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
         //start timer for wave 1
         waveTimer = waveDuration;
 
-        waves = Instantiate(waves);
+        //var waves = Instantiate<Wave>(waves);
 
         UpdateSpawnDelay();
         UpdateWaveData();
