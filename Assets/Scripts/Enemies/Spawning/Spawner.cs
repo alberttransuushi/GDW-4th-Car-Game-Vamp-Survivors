@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
     public float spawnTimer;
     public float currentWaveSpawnDelay;
 
+    public bool bossSpawner;
+
 
 
 
@@ -85,7 +87,7 @@ public class Spawner : MonoBehaviour
     void SpawnCooldown()
     {
         spawnTimer -= 1 * Time.deltaTime;
-        if (spawnTimer < 0) {
+        if (spawnTimer < 0 || bossSpawner) {
 
             spawnTimer = currentWaveSpawnDelay;
             SpawnEnemy();
