@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
 
     public bool bossSpawner;
     public List<WaveEnemyData> currentWaveData;
+    public List<int> currentWaveEnemyCount;
 
 
 
@@ -28,6 +29,8 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //CopyWaveDataToRunTime();
+
         //start timer for wave 1
         waveTimer = waveDuration;
 
@@ -50,39 +53,11 @@ public class Spawner : MonoBehaviour
 
         SpawnCooldown();
 
-
-
-        /*
-        timer -= 1 * Time.deltaTime;
-        while(timer <= 0)
-        {
-            timer = spawnDelay;
-
-
-            Vector3 spawnPos = transform.position + (Vector3)(maxRange * Random.insideUnitSphere);
-            spawnPos.y = 3;
-
-            if ((transform.position - spawnPos).magnitude > minRange)
-            {
-                
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                timer = spawnDelay;
-            }
-
-
-        }
-        */
-
-
-
     }
 
     void NextWave()
     {
-        if (currentWave < waves.Length)
+        if (currentWave < waves.Length-1)
         {
             currentWave++;
         }
@@ -115,18 +90,17 @@ public class Spawner : MonoBehaviour
         }
 
         //Gets Random Enemy From Wave
-        int spawnedEnemyIndex = Random.Range(0, currentWaveData.Count);
-        currentWaveData[spawnedEnemyIndex].numberOfEnemies--;
+        int spawnedEnemyIndex = Random.Range(0, currentWaveEnemyCount.Count);
+        currentWaveEnemyCount[spawnedEnemyIndex]--;
 
         //Spawn Enemy
-        Debug.Log("SPAWN");
-        Instantiate(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos, Quaternion.identity);
+        Instantiate(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos, Quaternion.identity);   
 
 
         //Remove from Wave Data when spawn max number of an enemy type
-        if (currentWaveData[spawnedEnemyIndex].numberOfEnemies <= 0)
+        if (currentWaveEnemyCount[spawnedEnemyIndex] <= 0)
         {
-            currentWaveData.RemoveAt(spawnedEnemyIndex);
+            currentWaveEnemyCount.RemoveAt(spawnedEnemyIndex);
         }
 
 
@@ -141,7 +115,7 @@ public class Spawner : MonoBehaviour
     {
 
         int totalNumberOfEnemies = 0;
-        foreach (WaveEnemyData enemies in waves[currentWave].enemiesInWave)
+        foreach (WaveEnemyData enemies in waves[currentWave].enemiesInWaveRuntime)
         {
             totalNumberOfEnemies += enemies.numberOfEnemies;
         }
@@ -157,6 +131,19 @@ public class Spawner : MonoBehaviour
 
     void UpdateWaveData()
     {
-        currentWaveData = waves[currentWave].enemiesInWave;
+        currentWaveData = waves[currentWave].enemiesInWaveRuntime;
+        currentWaveEnemyCount = new List<int> { };
+        for(int i = 0; i < currentWaveData.Count; i++)
+        {
+            currentWaveEnemyCount.Add(currentWaveData[i].numberOfEnemies);
+        }
     }
+    /*
+    void CopyWaveDataToRunTime()
+    {
+        for(int i = 0; i < waves.Length; i++)
+        {
+            waves[i].enemiesInWaveRuntime = waves[i].enemiesInWaveInitialize;
+        }
+    }*/
 }

@@ -4,10 +4,24 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Enemy Wave", menuName = "Wave")]
-public class Wave : ScriptableObject
+public class Wave : ScriptableObject, ISerializationCallbackReceiver
 {
-    public List<WaveEnemyData> enemiesInWave;
-    // Start is called before the first frame update
+
     
+
+    public List<WaveEnemyData> enemiesInWaveInitialize;
+
+    [System.NonSerialized] public List<WaveEnemyData> enemiesInWaveRuntime;
+
+
+    
+
+    public void OnAfterDeserialize()
+    {
+        enemiesInWaveRuntime = enemiesInWaveInitialize;
+    }
+
+    public void OnBeforeSerialize() { }
+
 }
 
