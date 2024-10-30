@@ -15,5 +15,5 @@ MonoBehaviour:
   enemiesInWaveInitialize:
   - enemyType: {fileID: 7425959781412530574, guid: 6256c9325e94f874fb96d887ea9b2495, type: 3}
     numberOfEnemies: 100
-  - enemyType: {fileID: 332521215454300920, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+  - enemyType: {fileID: 4674519822988498320, guid: be280610e5bf1394aaaeb35f0afa4f77, type: 3}
     numberOfEnemies: 5

@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15713423e9d8e14eb2f184c71dccd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 8
   playerCar: {fileID: 0}
   catchUpBonus: 10
   distancePerCatchUp: 5

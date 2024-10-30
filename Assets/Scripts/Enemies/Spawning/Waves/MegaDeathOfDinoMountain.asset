@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MegaDeathOfDinoMountain
   m_EditorClassIdentifier: 
   enemiesInWaveInitialize:
-  - enemyType: {fileID: 332521215454300920, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+  - enemyType: {fileID: 4674519822988498320, guid: be280610e5bf1394aaaeb35f0afa4f77, type: 3}
     numberOfEnemies: 5
   - enemyType: {fileID: 7425959781412530574, guid: 03c5ef332bf72c44f8eb46c787823354, type: 3}
     numberOfEnemies: 200
