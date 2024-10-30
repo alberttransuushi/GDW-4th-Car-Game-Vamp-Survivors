@@ -17026,6 +17026,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5403817558251979732, guid: bc70bc2c4eb221c4d978949e150ea674, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17131,6 +17135,7 @@ MonoBehaviour:
   currentHP: 0
   maxHP: 10
   IframeDuration: 1
+  damagable: 1
   ramDamage: 1
   maxLandSpeed: 60
   acceleration: 30
@@ -17820,7 +17825,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
+  - {fileID: 11400000, guid: 864fb62b6a387dd47889397aa2bf042d, type: 2}
   - {fileID: 11400000, guid: 8bdd7041c86bfdc4fa3f294876726f2a, type: 2}
+  - {fileID: 11400000, guid: eb42c788ade483d4a82fc5868743f206, type: 2}
+  - {fileID: 11400000, guid: fe2c89ff96c9fed42966ea320afe6c0e, type: 2}
   - {fileID: 11400000, guid: 872e0cc47dc163b4b8510108d3dac0ab, type: 2}
   minRange: 20
   maxRange: 80

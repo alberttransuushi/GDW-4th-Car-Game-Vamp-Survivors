@@ -11,7 +11,7 @@ public class PlayerCar : MonoBehaviour
     float currentHP;
     [SerializeField] public float maxHP;
     [SerializeField] float IframeDuration;
-    bool damagable = true;
+    public bool damagable = true;
     [SerializeField] float ramDamage = 1f;
     [Space(10)]
 

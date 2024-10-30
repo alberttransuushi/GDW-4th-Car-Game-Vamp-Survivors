@@ -35,7 +35,7 @@ public class LegoDino : BaseEnemy
     // Update is called once per frame
     void FixedUpdate()
     {
-    
+        CheckAlive();
         TurnToPlayer();
         AdaptPlayerDistannce();
         WalkToPlayer();
@@ -113,13 +113,16 @@ public class LegoDino : BaseEnemy
 
     void TailAttack()
     {
-        Debug.Log("MyBoy");
+        if (playerCar.GetComponent<PlayerCar>().damagable)
+        {
+            Debug.Log("MyBoy");
 
-        playerCar.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * collisionKnockBack * 2f, ForceMode.Acceleration);
-        rb.AddForce(-transform.forward.normalized * collisionKnockBack * 2f, ForceMode.Acceleration);
+            playerCar.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * collisionKnockBack * 2f, ForceMode.Acceleration);
+            rb.AddForce(-transform.forward.normalized * collisionKnockBack * 2f, ForceMode.Acceleration);
 
-        playerCar.GetComponent<PlayerCar>().TakeDamage(collisionDamage);
+            playerCar.GetComponent<PlayerCar>().TakeDamage(collisionDamage);
 
+        }
 
         
     }
