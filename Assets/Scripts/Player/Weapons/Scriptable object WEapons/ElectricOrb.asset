@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7564ed3f1140b7b46a8135aa803f37ee, type: 3}
+  m_Name: ElectricOrb
+  m_EditorClassIdentifier: 
+  levelUpDescriptions:
+  - shocks enemies around you
+  - more damage
+  - +10% crit chance
+  - increase radius
+  - +40% crit chance
+  level: 0
+  sprite: {fileID: 0}
+  damageModifier: 1
+  fireRate: 1
+  projectiles: 1
+  size: 1
+  critChance: 0
+  critDamage: 50
+  slowingPercent: 0
+  slowingTime: 0
+  freezingTime: 0
