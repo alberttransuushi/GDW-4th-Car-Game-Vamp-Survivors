@@ -16,7 +16,7 @@ public class LandEnemy : BaseEnemy
     
     
     [SerializeField] float driftEfficiency;
-    [SerializeField] float randomScaleStrenght;
+    //[SerializeField] float randomScaleStrenght;
     
 
     // Start is called before the first frame update
@@ -24,8 +24,8 @@ public class LandEnemy : BaseEnemy
     {
         base.Start();
         playerCar = GameObject.Find("player");
-        Vector3 scaleChange = new Vector3(Random.Range(0.75f, 2f), Random.Range(0.75f, 2f), Random.Range(0.75f, 2f));
-        gameObject.transform.localScale += scaleChange;
+        //Vector3 scaleChange = new Vector3(Random.Range(0.75f, 2f), Random.Range(0.75f, 2f), Random.Range(0.75f, 2f));
+        //gameObject.transform.localScale += scaleChange;
     }
 
     // Update is called once per frame

@@ -7,4 +7,9 @@ public class WaveEnemyData
 {
     public GameObject enemyType;
     public int numberOfEnemies;
+
+    //HP Multiplier
+    //Number Randomizer -/+ range
+    //Damage Multiplier
+    //Speed Multiplier
 }
