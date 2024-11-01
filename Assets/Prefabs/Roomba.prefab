@@ -636,8 +636,8 @@ MonoBehaviour:
   suckDamage: 5
   player: {fileID: 0}
   launchDelay: 2
-  launchStrength: 100
-  playerCollisionDelay: 0.5
+  launchStrength: 1000
+  playerCollisionDelay: 1
   isSucking: 0
 --- !u!1 &6187956366494702651
 GameObject:

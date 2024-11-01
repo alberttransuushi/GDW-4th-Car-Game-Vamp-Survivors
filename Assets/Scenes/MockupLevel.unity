@@ -17133,14 +17133,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7418622768244350495, guid: ff2ef2eed2be27b45ad8e09a6bcee841, type: 3}
-      propertyPath: launchStrength
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418622768244350495, guid: ff2ef2eed2be27b45ad8e09a6bcee841, type: 3}
-      propertyPath: playerCollisionDelay
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
