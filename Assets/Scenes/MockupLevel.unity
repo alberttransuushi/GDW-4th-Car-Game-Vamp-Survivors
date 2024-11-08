@@ -1256,6 +1256,14 @@ PrefabInstance:
       value: player
       objectReference: {fileID: 0}
     - target: {fileID: 4694910077237009570, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: driftNoise
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694910077237009570, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: startDrift
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694910077237009570, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: AoeTempTime
       value: 0.5
       objectReference: {fileID: 0}
@@ -1263,6 +1271,10 @@ PrefabInstance:
       propertyPath: AoeVisualizer
       value: 
       objectReference: {fileID: 612096352}
+    - target: {fileID: 4694910077237009570, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
+      propertyPath: unstuckJumpFeature
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6455026553788097996, guid: b115cd5722463a142acbb30fd0f16360, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
