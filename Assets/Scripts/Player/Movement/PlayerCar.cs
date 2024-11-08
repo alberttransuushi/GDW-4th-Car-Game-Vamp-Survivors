@@ -239,7 +239,7 @@ public class PlayerCar : MonoBehaviour {
 
   }
 
-  bool CheckGrounded() {
+  public bool CheckGrounded() {
     if (Physics.Raycast(transform.position, -transform.up, out hit, 2f, groundLayer) || Physics.Raycast(transform.position, -transform.up, out hit, 2f, enemyLayer)) {
       return true;
     } else {
@@ -335,24 +335,32 @@ public class PlayerCar : MonoBehaviour {
   void Unstuck() {
     TakeDamage(unstuckPlayerDamage);
 
-    Vector3 pointOfExplosion = transform.position;
-
-    Collider[] explosionCollider = Physics.OverlapSphere(pointOfExplosion, unstuckAoeRange);
-
-    foreach (Collider collider in explosionCollider) {
-      if (collider.gameObject.tag == "Enemy") {
-
-        //print("BOOM");
-        collider.GetComponent<Rigidbody>().AddExplosionForce(unstuckExplosionStrength, pointOfExplosion, unstuckAoeRange, 3.0f, ForceMode.Acceleration);
-
-      }
-    }
+    Explode();
+    
     if (unstuckJumpFeature) {
       rb.AddForce(unstuckExplosionStrength * Vector3.up / 2f, ForceMode.Acceleration);
     }
 
     rb.velocity += transform.forward * unstuckBoost;
   }
+
+    public void Explode()
+    {
+        Vector3 pointOfExplosion = transform.position;
+
+        Collider[] explosionCollider = Physics.OverlapSphere(pointOfExplosion, unstuckAoeRange);
+
+        foreach (Collider collider in explosionCollider)
+        {
+            if (collider.gameObject.tag == "Enemy")
+            {
+
+                //print("BOOM");
+                collider.GetComponent<Rigidbody>().AddExplosionForce(unstuckExplosionStrength, pointOfExplosion, unstuckAoeRange, 3.0f, ForceMode.Acceleration);
+
+            }
+        }
+    }
 
   private void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.tag == "Enemy") {

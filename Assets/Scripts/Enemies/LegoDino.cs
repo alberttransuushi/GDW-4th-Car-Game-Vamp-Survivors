@@ -27,7 +27,7 @@ public class LegoDino : BaseEnemy
     public override void Start()
     {
         base.Start();
-        playerCar = GameObject.Find("player");
+        playerCar = GameObject.FindGameObjectWithTag("Player");
         canAttack = true;
         animator = GetComponent<Animator>();
     }

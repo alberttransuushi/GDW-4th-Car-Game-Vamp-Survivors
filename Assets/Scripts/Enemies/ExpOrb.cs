@@ -13,7 +13,7 @@ public class ExpOrb : MonoBehaviour {
     value = expValue;
   }
   private void Start() {
-    player = GameObject.Find("player");
+    player = GameObject.FindGameObjectWithTag("Player");
     Vector3 tempVector = new Vector3(Random.Range(180, -180), 0, Random.Range(180, -180));
     tempVector = tempVector.normalized;
     GetComponent<Rigidbody>().AddForce(tempVector.x * 300, 700, tempVector.z * 300);

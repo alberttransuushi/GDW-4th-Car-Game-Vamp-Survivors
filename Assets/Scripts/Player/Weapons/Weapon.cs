@@ -10,7 +10,7 @@ abstract public class Weapon : MonoBehaviour {
 
   // Start is called before the first frame update
   public void Start() {
-    weaponRef = GameObject.Find("player").GetComponentInChildren<WeaponReference>();
+    weaponRef = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<WeaponReference>();
     weaponStats = Instantiate(weaponStats);
   }
 

@@ -19,12 +19,15 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         frontCamera.enabled = true;
         backCamera.enabled = false;
     }
 
     private void OnEnable()
     {
+        playerCar = GameObject.FindGameObjectWithTag("Player");
+        playerCarRB = playerCar.GetComponent<Rigidbody>();
         CameraReverseControl.action.Enable();
 
 

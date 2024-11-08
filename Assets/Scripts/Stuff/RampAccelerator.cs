@@ -8,7 +8,7 @@ public class RampAccelerator : MonoBehaviour
     [SerializeField] float maxSpeed;
     private void OnTriggerStay(Collider other)
     {
-        print(other.gameObject.name);
+        //print(other.gameObject.name);
         if (other.tag == "Player" || other.tag == "Enemy")
         {
             if (other.GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)

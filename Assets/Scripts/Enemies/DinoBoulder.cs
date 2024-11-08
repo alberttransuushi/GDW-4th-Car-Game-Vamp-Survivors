@@ -20,7 +20,7 @@ public class DinoBoulder : MonoBehaviour
     void Start()
     {
         StartCoroutine(DelayTracking());
-        playerCar = GameObject.Find("player");
+        playerCar = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
 
         //rb.velocity = new Vector3(0, 200, 0);

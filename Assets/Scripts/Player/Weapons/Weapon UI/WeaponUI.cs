@@ -14,7 +14,7 @@ public class WeaponUI : MonoBehaviour {
 
   [SerializeField] PlayerWeaponList weaponList;
   private void Start() {
-    player = GameObject.Find("player");
+    player = GameObject.FindGameObjectWithTag("Player");
     weaponList = player.GetComponent<PlayerWeaponList>();
   }
   public void UpdateUpgradeMenu() {
