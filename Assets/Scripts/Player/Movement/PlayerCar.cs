@@ -86,6 +86,11 @@ public class PlayerCar : MonoBehaviour {
   float baseVolume;
 
 
+
+    [SerializeField] float AoeTempTime;
+    [SerializeField] GameObject AoeVisualizer;
+
+
   private void OnEnable() {
     movementControl.action.Enable();
     driftControl.action.Enable();
@@ -346,6 +351,7 @@ public class PlayerCar : MonoBehaviour {
 
     public void Explode()
     {
+
         Vector3 pointOfExplosion = transform.position;
 
         Collider[] explosionCollider = Physics.OverlapSphere(pointOfExplosion, unstuckAoeRange);
@@ -360,7 +366,18 @@ public class PlayerCar : MonoBehaviour {
 
             }
         }
+        StartCoroutine(AoeHoloTime(AoeTempTime));
     }
+
+    IEnumerator AoeHoloTime(float time)
+    {
+        AoeVisualizer.SetActive(true);
+        yield return new WaitForSeconds(time);
+
+        AoeVisualizer.SetActive(false);
+    }
+
+
 
   private void OnCollisionEnter(Collision collision) {
     if (collision.gameObject.tag == "Enemy") {

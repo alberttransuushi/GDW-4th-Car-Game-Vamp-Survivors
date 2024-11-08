@@ -60,12 +60,12 @@ public class SlamCar : MonoBehaviour
             if(slamType == SlamType.BasedOnCurrent)
             {
 
-                player.GetComponent<Rigidbody>().velocity = new Vector3(0, -Vector3.Magnitude(player.GetComponent<Rigidbody>().velocity), 0);
+                player.GetComponent<Rigidbody>().velocity = new Vector3(player.GetComponent<Rigidbody>().velocity.x, -Vector3.Magnitude(player.GetComponent<Rigidbody>().velocity), player.GetComponent<Rigidbody>().velocity.z);
 
             } else if (slamType == SlamType.StaticSlamSpeed)
             {
 
-                player.GetComponent<Rigidbody>().velocity = new Vector3(0, -StaticSlamSpeed, 0);
+                player.GetComponent<Rigidbody>().velocity = new Vector3(player.GetComponent<Rigidbody>().velocity.x, -StaticSlamSpeed, player.GetComponent<Rigidbody>().velocity.z);
 
             }
 

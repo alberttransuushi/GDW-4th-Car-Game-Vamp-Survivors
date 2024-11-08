@@ -91,7 +91,7 @@ Material:
     - _Outline: 0
     - _Parallax: 0.02
     - _Repeat: 4
-    - _RimPower: 2
+    - _RimPower: 0.1
     - _RotationDegrees: 60
     - _RotationSpeed: 20
     - _SmoothnessTextureChannel: 0

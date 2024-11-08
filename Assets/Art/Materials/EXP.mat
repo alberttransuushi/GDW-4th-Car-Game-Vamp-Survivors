@@ -17,7 +17,7 @@ Material:
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampTex:
-        m_Texture: {fileID: 2800000, guid: 3353e19048350a2439063a10eb347687, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -91,7 +91,7 @@ Material:
     - _Outline: 0
     - _Parallax: 0.02
     - _Repeat: 4
-    - _RimPower: 0.3
+    - _RimPower: 2.38
     - _RotationDegrees: 60
     - _RotationSpeed: 20
     - _SmoothnessTextureChannel: 0
