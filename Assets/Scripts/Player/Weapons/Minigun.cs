@@ -13,12 +13,15 @@ public class Minigun : Weapon
   [SerializeField] Transform barrelTip;
   [SerializeField] GameObject bullet;
 
+    [SerializeField] SoundData soundData;
+
   bool firing = false;
   override public void Attack() {
     if (timeSinceLastFired > weaponStats.fireRate) {
       GameObject b = Instantiate(bullet, barrelTip.position, baseTransform.rotation);
       b.GetComponent<Bullet>().DamageMultiply(weaponStats.damageModifier);
       timeSinceLastFired -= weaponStats.fireRate;
+            SoundManager.Instance.CreateSound().WithSoundData(soundData).WithRandomPitch().WithPosition(barrelTip.position).Play();
     }
   }
   public override void LevelUp1() {
