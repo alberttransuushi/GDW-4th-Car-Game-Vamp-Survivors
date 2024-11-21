@@ -13,6 +13,7 @@ public class PlayerCar : MonoBehaviour {
   [SerializeField] float IframeDuration;
   public bool damagable = true;
   [SerializeField] float ramDamage = 1f;
+    [SerializeField] float explosionDamage;
   [Space(10)]
 
   [Header("Movement Stats")]
@@ -363,6 +364,8 @@ public class PlayerCar : MonoBehaviour {
 
                 //print("BOOM");
                 collider.GetComponent<Rigidbody>().AddExplosionForce(unstuckExplosionStrength, pointOfExplosion, unstuckAoeRange, 3.0f, ForceMode.Acceleration);
+
+                collider.GetComponent<BaseEnemy>().takeDamge(explosionDamage);
 
             }
         }

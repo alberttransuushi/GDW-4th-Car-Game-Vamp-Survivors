@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     public List<int> currentWaveEnemyCount;
 
 
-
+    
 
 
 
@@ -94,8 +94,10 @@ public class Spawner : MonoBehaviour
         currentWaveEnemyCount[spawnedEnemyIndex]--;
 
         //Spawn Enemy
-        Instantiate(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos, Quaternion.identity);   
 
+        Debug.Log(currentWaveData[spawnedEnemyIndex].enemyType.name);
+
+        PoolManager.SpawnObject(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos, Quaternion.identity);
 
         //Remove from Wave Data when spawn max number of an enemy type
         if (currentWaveEnemyCount[spawnedEnemyIndex] <= 0)

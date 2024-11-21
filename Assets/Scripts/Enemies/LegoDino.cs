@@ -24,9 +24,9 @@ public class LegoDino : BaseEnemy
     [SerializeField] float walkSpeed;
     
     // Start is called before the first frame update
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         playerCar = GameObject.FindGameObjectWithTag("Player");
         canAttack = true;
         animator = GetComponent<Animator>();

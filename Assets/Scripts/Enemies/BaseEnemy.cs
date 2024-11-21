@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
+
     [SerializeField] float health;
+    [SerializeField] float maxHealth;
     [SerializeField] protected GameObject playerCar;
     [SerializeField] protected float catchUpBonus;
     [SerializeField] protected float distancePerCatchUp;
@@ -20,10 +22,19 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected float height;
 
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
+    }
+
+    private void OnEnable()
+    {
+        health = maxHealth;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
+
     }
 
     public virtual void CheckAlive()
@@ -31,8 +42,10 @@ public class BaseEnemy : MonoBehaviour
         if (health < 0)
         {
             gameObject.GetComponent<EnemyExp>().DropExp();
-            Destroy(gameObject);
 
+
+
+            PoolManager.ReturnObjectToPool(gameObject);
         }
     }
     public void takeDamge(float damage)

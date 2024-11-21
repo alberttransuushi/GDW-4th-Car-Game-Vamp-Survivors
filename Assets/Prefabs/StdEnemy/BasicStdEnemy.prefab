@@ -870,6 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  maxHealth: 5
   playerCar: {fileID: 0}
   catchUpBonus: 10
   distancePerCatchUp: 5
@@ -885,7 +886,6 @@ MonoBehaviour:
   acceleration: 20
   unGroundedGravity: 0.75
   driftEfficiency: 1
-  randomScaleStrenght: 0
 --- !u!114 &47565936605910246
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,10 +20,10 @@ public class LandEnemy : BaseEnemy
     
 
     // Start is called before the first frame update
-    public override void Start()
+    public override void Awake()
     {
         playerCar = GameObject.FindGameObjectWithTag("Player");
-        base.Start();
+        base.Awake();
         
         //Vector3 scaleChange = new Vector3(Random.Range(0.75f, 2f), Random.Range(0.75f, 2f), Random.Range(0.75f, 2f));
         //gameObject.transform.localScale += scaleChange;

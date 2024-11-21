@@ -116,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1035bba981150b245b0871acbb96fccc, type: 3}
       propertyPath: m_Name
-      value: BlockDino 1
+      value: BlockDino
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1035bba981150b245b0871acbb96fccc, type: 3}
       propertyPath: m_Layer
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  maxHealth: 20
   playerCar: {fileID: 0}
   catchUpBonus: 0
   distancePerCatchUp: 0
