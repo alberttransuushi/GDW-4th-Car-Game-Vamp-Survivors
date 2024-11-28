@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: 5462baa961574c142bda770bbfd40beb, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -39,7 +39,8 @@ Material:
     m_Floats:
     - _Amplitude: 0.0001
     - _ContourWidth: 0.0002
+    - _Outline: 0
     - _Repeat: 1
     m_Colors:
-    - _Color: {r: 0.6792453, g: 0.29936227, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.56150126, b: 0, a: 1}
   m_BuildTextureStacks: []
