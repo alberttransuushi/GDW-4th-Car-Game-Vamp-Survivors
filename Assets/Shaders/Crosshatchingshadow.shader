@@ -17,7 +17,7 @@ Shader "Custom/Crosshatchingshadow"
             CGPROGRAM
             #pragma surface surf ToonRamp //vertex:vert
 
-            #pragma target 3.0
+            #pragma target 4.0
 
             sampler2D _MainTex;
             sampler2D _RampTex;

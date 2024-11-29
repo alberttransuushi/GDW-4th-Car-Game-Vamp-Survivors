@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CarColors 1
-  m_Shader: {fileID: 4800000, guid: 10b321e7d9906204bbc702d384f81098, type: 3}
+  m_Shader: {fileID: 4800000, guid: 23a2b221fc298d348b1ae4f40d1d136a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -77,7 +77,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Amplitude: 0.03
     - _BumpScale: 1
+    - _ContourWidth: 0.01
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -87,16 +89,18 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 0
+    - _Outline: 0.3
     - _Parallax: 0.02
     - _Repeat: 0.25
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: 6
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.6722719, g: 0.5606978, b: 0.6792453, a: 1}
+    - _ContourColor: {r: 0, g: 0, b: 0, a: 0.5}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0.34534922, g: 0.27825737, b: 0.3490566, a: 1}
   m_BuildTextureStacks: []
