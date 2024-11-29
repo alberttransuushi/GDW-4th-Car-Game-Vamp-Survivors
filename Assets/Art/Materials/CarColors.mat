@@ -96,7 +96,7 @@ Material:
     - _NoiseIntensity: 1
     - _NoiseScale: 1
     - _OcclusionStrength: 1
-    - _Outline: 0.1
+    - _Outline: 0
     - _Parallax: 0.02
     - _Repeat: 0.25
     - _SmoothnessTextureChannel: 0
