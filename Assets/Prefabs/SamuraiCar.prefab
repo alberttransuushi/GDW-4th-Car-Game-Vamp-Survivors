@@ -10986,6 +10986,7 @@ GameObject:
   - component: {fileID: 5245500884320608469}
   - component: {fileID: 35932948924331669}
   - component: {fileID: -3784523552262738073}
+  - component: {fileID: 7272708504472233673}
   m_Layer: 0
   m_Name: SamuraiCar
   m_TagString: Untagged
@@ -11345,6 +11346,27 @@ MonoBehaviour:
   bossSpawner: 0
   currentWaveData: []
   currentWaveEnemyCount: 
+--- !u!65 &7272708504472233673
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929506706498455279}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 3.5, y: 4.32, z: 6.64}
+  m_Center: {x: -0.0009970667, y: 0.79, z: 0.056932345}
 --- !u!1 &4038484850169623689
 GameObject:
   m_ObjectHideFlags: 0
