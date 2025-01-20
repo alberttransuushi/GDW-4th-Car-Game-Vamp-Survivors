@@ -14,9 +14,9 @@ abstract public class Event : MonoBehaviour
   private void Update() {
     UpdateFailCondition();
     UpdatePassCondition();
-    if (failCondition) {
+    if (passCondition) {
 
-    } else if (passCondition) {
+    } else if (failCondition) {
 
     }
   }
