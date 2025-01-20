@@ -1546,9 +1546,9 @@ MonoBehaviour:
     Probability: 0
   m_Method: 1
   m_Space: 0
-  m_Spacing: {x: 8, y: 8}
+  m_Spacing: {x: 7.5, y: 7.5}
   m_Up: 1
-  m_Forward: 5
+  m_Forward: 2
   m_PositionOffset:
     setup: 0
     min: {x: 0, y: 0, z: 0}
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     randomZ: 0
     space: 0
   m_RotationOffset:
-    setup: 1
+    setup: 0
     min: {x: 0, y: 0, z: 0}
     max: {x: 0, y: 0, z: 0}
     randomX: 0
@@ -1566,16 +1566,16 @@ MonoBehaviour:
     randomZ: 0
     space: 0
   m_ScaleOffset:
-    setup: 3
-    min: {x: 27.9, y: 18.5, z: 8}
-    max: {x: 45, y: 33.13, z: 59.81}
+    setup: 1
+    min: {x: 31.43, y: 20.2, z: 7.5}
+    max: {x: 31.43, y: 29.73, z: 7.5}
     randomX: 0
     randomY: 0
     randomZ: 0
-    space: 3
+    space: 0
   m_DeprecatedInstances: []
   m_AutoRefresh: 1
-  m_Seed: -368437017
+  m_Seed: -2301616
 --- !u!1001 &540758719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5551,9 +5551,9 @@ GameObject:
   - component: {fileID: 2010003022}
   - component: {fileID: 2010003021}
   - component: {fileID: 2010003020}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
