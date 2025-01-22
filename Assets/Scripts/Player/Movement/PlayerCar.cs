@@ -38,6 +38,7 @@ public class PlayerCar : MonoBehaviour {
 
   [Header("Misc Stats")]
   [SerializeField] LayerMask groundLayer;
+  [SerializeField] float playerHeight = 2f;
   [SerializeField] LayerMask enemyLayer;
   [SerializeField] GameObject centerOfMass;
   [SerializeField] Slider hpSlider;
@@ -246,7 +247,7 @@ public class PlayerCar : MonoBehaviour {
   }
 
   public bool CheckGrounded() {
-    if (Physics.Raycast(transform.position, -transform.up, out hit, 2f, groundLayer) || Physics.Raycast(transform.position, -transform.up, out hit, 2f, enemyLayer)) {
+    if (Physics.Raycast(transform.position, -transform.up, out hit, playerHeight, groundLayer) || Physics.Raycast(transform.position, -transform.up, out hit, 2f, enemyLayer)) {
       return true;
     } else {
       return false;
