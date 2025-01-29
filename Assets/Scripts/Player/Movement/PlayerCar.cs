@@ -148,6 +148,12 @@ public class PlayerCar : MonoBehaviour {
     accelorometer.value = rb.velocity.magnitude / (maxLandSpeed * 2);
     speedText.text = Mathf.RoundToInt(rb.velocity.magnitude).ToString();
     speedText.color = new Color(255, 255f - (rb.velocity.magnitude * 2), 255f - (rb.velocity.magnitude * 4));
+        /*
+        if (CheckGrounded())
+        {
+            Quaternion toRotateTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, 1 * Time.deltaTime);
+        }*/
 
   }
 
@@ -224,17 +230,19 @@ public class PlayerCar : MonoBehaviour {
   void Steering() {
     dirToTurn = gameObject.transform.forward;
     if (movementControl.action.ReadValue<Vector2>().x < 0) {
-      dirToTurn = Quaternion.AngleAxis(-turnAngle, Vector3.up) * transform.forward;
+      dirToTurn = Quaternion.AngleAxis(-turnAngle, Vector2.up) * transform.forward;
       //Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
     }
     if (movementControl.action.ReadValue<Vector2>().x > 0) {
-      dirToTurn = Quaternion.AngleAxis(turnAngle, Vector3.up) * transform.forward;
+      dirToTurn = Quaternion.AngleAxis(turnAngle, Vector2.up) * transform.forward;
       //Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
     }
     if (rb.velocity.magnitude >= 0) {
       TurnToWheel(dirToTurn);
       //print("Turning");
     }
+    Debug.Log("DIR:" + dirToTurn.ToString());
+       
   }
   void TurnToWheel(Vector3 dir) {
     //Add More Turn Speed when drifting

@@ -105,12 +105,13 @@ public class SimpleCar : MonoBehaviour
         isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
 
         // Rotate Car to align with ground
+        /*
         if (isCarGrounded)
         {
             Quaternion toRotateTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, alignToGroundTime * Time.deltaTime);
         }
-
+        */
         // Calculate Movement Direction
         moveInput *= moveInput > 0 ? fwdSpeed : revSpeed;
 
