@@ -17319,6 +17319,17 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 559200678687001334, guid: 06637892da294164da02ec10aa87adcc, type: 3}
   m_PrefabInstance: {fileID: 1974812186}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1440546689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4253283380423066369, guid: 06637892da294164da02ec10aa87adcc, type: 3}
+  m_PrefabInstance: {fileID: 1974812186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440546676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14f3d234ebe498419018da948634190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1443052672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18735,6 +18746,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a21ec1a9d1331b5468b89c2b5f5b7453, type: 3}
   m_PrefabInstance: {fileID: 408236845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1574352405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7788139216498621604, guid: 06637892da294164da02ec10aa87adcc, type: 3}
+  m_PrefabInstance: {fileID: 1974812186}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1579883630
 PrefabInstance:
@@ -23325,6 +23341,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 1084929057668265084, guid: 06637892da294164da02ec10aa87adcc, type: 3}
+      propertyPath: weaponList
+      value: 
+      objectReference: {fileID: 1440546689}
     - target: {fileID: 1559446040202003242, guid: 06637892da294164da02ec10aa87adcc, type: 3}
       propertyPath: turnAngle
       value: 50
@@ -23385,6 +23405,10 @@ PrefabInstance:
       propertyPath: m_SidewaysFriction.m_ExtremumValue
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3582378581976304007, guid: 06637892da294164da02ec10aa87adcc, type: 3}
+      propertyPath: upgradeUI
+      value: 
+      objectReference: {fileID: 1574352405}
     - target: {fileID: 3869256155546226382, guid: 06637892da294164da02ec10aa87adcc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
