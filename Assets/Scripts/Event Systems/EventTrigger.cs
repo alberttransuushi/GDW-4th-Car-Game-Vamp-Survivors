@@ -5,22 +5,23 @@ using UnityEngine;
 public class EventTrigger : MonoBehaviour
 {
   [SerializeField] float timer;
-  [SerializeField] List<int> eventTimes;
-  List<int> eventTimeDuplicate;
-  private void Start() {
-    eventTimeDuplicate = new List<int>(eventTimes);
-  }
+  //[SerializeField] List<int> eventTimes;
+  [SerializeField] float eventTriggerTimer;
   private void Update() {
     timer += Time.deltaTime;
-    if (timer >= eventTimeDuplicate[0]) {
-
+    if (timer > eventTriggerTimer) {//player didnt reach event trigger in time
+      //fail the event appearence
+      this.gameObject.SetActive(false);
     }
   }
-
+  public void SetTimer(float timer) {
+    eventTriggerTimer = timer;
+    timer = 0;
+  }
 
   private void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      GetComponentInParent<EventArea>().CreateEvent();
+      GetComponentInParent<EventManager>().CreateEvent();
       this.gameObject.SetActive(false);
     }
   }
