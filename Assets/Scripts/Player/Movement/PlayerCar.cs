@@ -21,6 +21,7 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] public float maxLandSpeed;
     [SerializeField] float acceleration;
     [SerializeField] float turnSpeed;
+    [SerializeField] float downwardForceMultiplier = 1f;
     //[SerializeField] float turnAngle;
     // 0 = no friction/slidey | 1 = no momentum from drifting
     float currentDriftFriction;
@@ -148,6 +149,7 @@ public class PlayerCar : MonoBehaviour
         {
 
             AccelDeccel();
+            ApplyDownwardForce();
 
 
         }
@@ -166,6 +168,11 @@ public class PlayerCar : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, 1 * Time.deltaTime);
         }*/
 
+    }
+
+    void ApplyDownwardForce()
+    {
+        rb.AddForce(0, downwardForceMultiplier * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
     }
 
     void AccelDeccel()
