@@ -36,7 +36,7 @@ public class LegoDino : BaseEnemy
     void FixedUpdate()
     {
         CheckAlive();
-        TurnToPlayer();
+        TurnToTarget();
         AdaptPlayerDistannce();
         WalkToPlayer();
     }

@@ -39,9 +39,29 @@ public class BaseEnemy : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
+        targetObject = FindClosestTarget();
 
     }
 
+    public GameObject FindClosestTarget()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("target");
+        GameObject closestTarget = null;
+
+        float minDistance = Mathf.Infinity;
+        foreach (GameObject gameObject in gameObjects)
+        {
+
+            float distance = Vector3.Distance(transform.position, gameObject.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestTarget = gameObject;
+            }
+
+        }
+        return closestTarget;
+    }
     public virtual void CheckAlive()
     {
         if (health < 0)
@@ -92,18 +112,37 @@ public class BaseEnemy : MonoBehaviour
         return dirToTarget;
 
     }
-    protected void TurnToPlayer()
+    protected void TurnToTarget()
     {
 
         Vector3 dirToTarget = GetDirToTarget();
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToTarget.x, 0, dirToTarget.z), turnSpeed * Time.deltaTime, 10.0f));
+        if (targetIsRight())
+        {
+            Quaternion turn = Quaternion.Euler(0, turnSpeed * Time.deltaTime, 0);
+            rb.MoveRotation(rb.rotation * turn);
+            Debug.Log("Turn Right");
+        }
+        else
+        {
+            Quaternion turn = Quaternion.Euler(0, -turnSpeed * Time.deltaTime, 0);
+            rb.MoveRotation(rb.rotation * turn);
+            Debug.Log("Turn Left");
+        }
+
+        //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToTarget.x, 0, dirToTarget.z), turnSpeed * Time.deltaTime, 10.0f));
 
         AngleToTarget = Vector3.Angle(dirToTarget, transform.forward);
 
     }
 
 
+    bool targetIsRight()
+    {
+        Vector3 targetDir = (targetObject.transform.position - transform.position).normalized;
+        float dot = Vector3.Dot(transform.right, targetDir);
+        return dot > 0;
+    }
     public void SwitchTarget(GameObject target)
     {
         targetObject = target;

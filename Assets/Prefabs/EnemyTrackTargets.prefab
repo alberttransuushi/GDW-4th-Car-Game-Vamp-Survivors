@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3455584987079651167}
   m_Layer: 3
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 3417748490456305522}
   m_Layer: 3
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 32096547264158054}
   m_Layer: 3
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 5082756826504591265}
   m_Layer: 3
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 1336136022870352226}
   m_Layer: 3
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,3 +719,6 @@ MonoBehaviour:
   - {fileID: 5718014804431204476}
   - {fileID: 7516863826814409834}
   - {fileID: 8470478003732233980}
+  nextCheckPoint: {fileID: 0}
+  prevCheckPoint: {fileID: 0}
+  s: {fileID: 0}

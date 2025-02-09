@@ -50,7 +50,7 @@ public class LandEnemy : BaseEnemy
             //Can only turn if moving
             if (rb.velocity.magnitude > 0)
             {
-                TurnToPlayer();
+                TurnToTarget();
                 //print("Turning");
             }
             

@@ -211,8 +211,10 @@ MonoBehaviour:
   distancePerCatchUp: 5
   collisionDamage: 0.05
   centerOfMass: {fileID: 609378879984978322, guid: 6256c9325e94f874fb96d887ea9b2495, type: 3}
-  turnSpeed: 3
-  AngleToPlayer: 0
+  targetObject: {fileID: 0}
+  targetIndex: 2
+  turnSpeed: 100
+  AngleToTarget: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -220,6 +222,7 @@ MonoBehaviour:
   maxLandSpeed: 80
   acceleration: 80
   unGroundedGravity: 0.75
+  downwardForceMultiplier: 1
   driftEfficiency: 1
 --- !u!114 &216019634660045120
 MonoBehaviour:

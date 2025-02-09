@@ -13,7 +13,7 @@ public class CheckPointManager : MonoBehaviour
         //Set Enemy Target to the Next CheckPoint
         if(other.tag == "Enemy")
         {
-            Debug.Log("Enemy");
+            //Debug.Log("Enemy");
             other.gameObject.GetComponent<BaseEnemy>().SwitchTarget(nextCheckPoint.targets[other.gameObject.GetComponent<BaseEnemy>().targetIndex]);
             s = nextCheckPoint.targets[other.gameObject.GetComponent<BaseEnemy>().targetIndex];
         }
