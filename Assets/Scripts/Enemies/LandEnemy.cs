@@ -13,9 +13,10 @@ public class LandEnemy : BaseEnemy
 
 
     [SerializeField] float unGroundedGravity;
-    
+    [SerializeField] float downwardForceMultiplier = 1f;
     
     [SerializeField] float driftEfficiency;
+
     //[SerializeField] float randomScaleStrenght;
     
 
@@ -45,6 +46,7 @@ public class LandEnemy : BaseEnemy
         //if (CheckGrounded())
         if(CheckGrounded())
         {
+            ApplyDownwardForce();
             //Can only turn if moving
             if (rb.velocity.magnitude > 0)
             {
@@ -60,10 +62,10 @@ public class LandEnemy : BaseEnemy
                 rb.velocity += transform.forward * Time.deltaTime * acceleration;
 
                 //Slows down when drifting
-                rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180;
+                rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180;
                 //print("Delta:" + Time.deltaTime);
                 //print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
-                //print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToPlayer / 180).magnitude);
+                //print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180).magnitude);
                 
                 //Slows down perpendicular velocity
                 Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
@@ -79,7 +81,10 @@ public class LandEnemy : BaseEnemy
             IncreasedGravity(unGroundedGravity);
         }
     }
-
+    void ApplyDownwardForce()
+    {
+        rb.AddForce(0, downwardForceMultiplier * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
+    }
     public override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);

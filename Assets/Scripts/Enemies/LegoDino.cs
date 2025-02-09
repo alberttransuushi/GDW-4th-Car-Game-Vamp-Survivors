@@ -44,7 +44,7 @@ public class LegoDino : BaseEnemy
     void AdaptPlayerDistannce()
     {
         //print(CheckDistanceToPlayer());
-        if (maxDistanceToThrow > CheckDistanceToPlayer() && CheckDistanceToPlayer() > minDistanceToThrow)
+        if (maxDistanceToThrow > CheckDistanceToTarget() && CheckDistanceToTarget() > minDistanceToThrow)
         {
             //Debug.Log("throw");
             Throwing();
@@ -61,7 +61,7 @@ public class LegoDino : BaseEnemy
         print(CheckGrounded());
         if (canWalk && CheckGrounded())
         {
-            Vector3 dirToPlayer = GetDirToPlayer().normalized;
+            Vector3 dirToPlayer = GetDirToTarget().normalized;
             rb.velocity = new Vector3(dirToPlayer.x,0,dirToPlayer.z) * walkSpeed;
         }
         if (!CheckGrounded())
@@ -94,7 +94,7 @@ public class LegoDino : BaseEnemy
 
         //print("Throw");
         GameObject boulder = Instantiate(boulderPrefab, boulderSpawner.transform.position, transform.rotation);
-        boulder.transform.rotation = Quaternion.LookRotation(GetDirToPlayer().normalized); 
+        boulder.transform.rotation = Quaternion.LookRotation(GetDirToTarget().normalized); 
 
         boulder.GetComponent<Rigidbody>().velocity = new Vector3(1, 0, 1) * initialThrowXZSpeed;
         boulder.GetComponent<Rigidbody>().velocity += Vector3.up * initialThrowYSpeed;

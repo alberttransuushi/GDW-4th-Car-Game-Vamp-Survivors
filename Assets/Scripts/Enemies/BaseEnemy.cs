@@ -13,9 +13,14 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected float collisionDamage;
     protected Rigidbody rb;
     [SerializeField] GameObject centerOfMass;
+    public GameObject targetObject;
+
+    [SerializeField]
+    public int targetIndex;
+
 
     [SerializeField] protected float turnSpeed;
-    public float AngleToPlayer;
+    public float AngleToTarget;
 
     [SerializeField] LayerMask groundLayer;
     RaycastHit hit;
@@ -58,17 +63,17 @@ public class BaseEnemy : MonoBehaviour
         return Physics.Raycast(transform.position, -transform.up, out hit, height/2, groundLayer);
     }
 
-    public float CheckDistanceToPlayer()
+    public float CheckDistanceToTarget()
     {
 
-        return (gameObject.transform.position - playerCar.transform.position).magnitude;
+        return (gameObject.transform.position - targetObject.transform.position).magnitude;
 
     }
 
     public virtual float GetCatchUpBonus()
     {
         //print(Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus);
-        return Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus;
+        return Mathf.Floor(CheckDistanceToTarget() / distancePerCatchUp) * catchUpBonus;
     }
 
     public virtual void OnCollisionEnter(Collision collision)
@@ -80,18 +85,27 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    protected Vector3 GetDirToPlayer()
+    protected Vector3 GetDirToTarget()
     {
-        Vector3 dirToPlayer = playerCar.transform.position - transform.position;
-        return dirToPlayer;
+
+        Vector3 dirToTarget = targetObject.transform.position - transform.position;
+        return dirToTarget;
+
     }
     protected void TurnToPlayer()
     {
-        Vector3 dirToPlayer = GetDirToPlayer();
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToPlayer.x, 0, dirToPlayer.z), turnSpeed * Time.deltaTime, 10.0f));
+        Vector3 dirToTarget = GetDirToTarget();
 
-        AngleToPlayer = Vector3.Angle(dirToPlayer, transform.forward);
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToTarget.x, 0, dirToTarget.z), turnSpeed * Time.deltaTime, 10.0f));
+
+        AngleToTarget = Vector3.Angle(dirToTarget, transform.forward);
+
     }
 
+
+    public void SwitchTarget(GameObject target)
+    {
+        targetObject = target;
+    }
 }

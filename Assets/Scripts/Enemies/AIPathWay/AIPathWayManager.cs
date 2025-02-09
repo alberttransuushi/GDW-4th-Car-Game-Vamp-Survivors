@@ -7,7 +7,10 @@ public class AIPathWayManager : MonoBehaviour
 {
     public List<CheckPointManager> checkPoints;
     // Start is called before the first frame update
-    
+    private void Start()
+    {
+        UpdateCheckPoints();
+    }
 
     public void UpdateCheckPoints()
     {
