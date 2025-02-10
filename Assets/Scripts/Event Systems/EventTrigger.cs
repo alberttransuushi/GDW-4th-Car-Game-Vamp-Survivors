@@ -11,6 +11,7 @@ public class EventTrigger : MonoBehaviour
     timer += Time.deltaTime;
     if (timer > eventTriggerTimer) {//player didnt reach event trigger in time
       //fail the event appearence
+      GetComponentInParent<EventManager>().EventTriggerFaded();
       this.gameObject.SetActive(false);
     }
   }
@@ -21,7 +22,7 @@ public class EventTrigger : MonoBehaviour
 
   private void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      GetComponentInParent<EventManager>().CreateEvent();
+      GetComponentInParent<EventManager>().EventTriggerReached();
       this.gameObject.SetActive(false);
     }
   }
