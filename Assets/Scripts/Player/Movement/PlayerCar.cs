@@ -205,7 +205,9 @@ public class PlayerCar : MonoBehaviour
             audioSource.volume = baseVolume;
             audioSource.loop = false;
             startedEngine = true;
-            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.pitch = Random.Range(0.6f, 1.6f);
+            //Debug.Log(rb.velocity);
+            
             audioSource.clip = startEngine;
             audioSource.Play();
         }
