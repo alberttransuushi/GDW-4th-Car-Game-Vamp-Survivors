@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesInWaveInitialize:
   - enemyType: {fileID: 1575671208401800621, guid: 6a0ccddbf92c208489b31e52e4286758, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 20
   - enemyType: {fileID: 1575671208401800621, guid: 7fc26125a8657ad4ab9eba73d8c392e6, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 20
   - enemyType: {fileID: 6267986500672238106, guid: b6cbce33af2623d4b8e3dea09bd30926, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 20
