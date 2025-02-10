@@ -8,7 +8,9 @@ public class LandEnemy : BaseEnemy
 {
 
     float currentSpeed;
-    [SerializeField] float maxLandSpeed;
+    [SerializeField] float currentLimitSpeed;
+    [SerializeField] float minLandSpeed = 90f;
+    [SerializeField] float maxLandSpeed = 210f;
     [SerializeField] float acceleration;
 
 
@@ -25,14 +27,16 @@ public class LandEnemy : BaseEnemy
     {
         playerCar = GameObject.FindGameObjectWithTag("Player");
         base.Awake();
+        currentLimitSpeed = playerCar.GetComponent<PlayerCar>().maxLandSpeed;
         
         //Vector3 scaleChange = new Vector3(Random.Range(0.75f, 2f), Random.Range(0.75f, 2f), Random.Range(0.75f, 2f));
         //gameObject.transform.localScale += scaleChange;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         CheckAlive();
         Movement();
     }
@@ -55,24 +59,50 @@ public class LandEnemy : BaseEnemy
             }
             
             //Speed Up
-            if (rb.velocity.magnitude < maxLandSpeed + GetCatchUpBonus())
+            if (IsPlayerAhead())
             {
-                //print(maxLandSpeed + GetCatchUpBonus());
+                if (rb.velocity.magnitude < Mathf.Min(currentLimitSpeed + GetCatchUpBonus(), maxLandSpeed))
+                {
+                    //print(currentLimitSpeed + GetCatchUpBonus());
 
-                rb.velocity += transform.forward * Time.deltaTime * acceleration;
+                    rb.velocity += transform.forward * Time.deltaTime * acceleration;
+                    
+                    Debug.Log("Speed: " + rb.velocity.magnitude);
+                    //Slows down when drifting
+                    rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180;
+                    //print("Delta:" + Time.deltaTime);
+                    //print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
+                    //print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180).magnitude);
 
-                //Slows down when drifting
-                rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180;
-                //print("Delta:" + Time.deltaTime);
-                //print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
-                //print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180).magnitude);
-                
-                //Slows down perpendicular velocity
-                Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
-                float perpendiuclarSpeed = perpendicularVelocity.magnitude * driftEfficiency;
-                rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
+                    //Slows down perpendicular velocity
+                    Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
+                    float perpendiuclarSpeed = perpendicularVelocity.magnitude * driftEfficiency;
+                    rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
 
 
+                }
+            } else
+            {
+                if (rb.velocity.magnitude < Mathf.Max(currentLimitSpeed - GetCatchUpBonus(), minLandSpeed))
+                {
+                    //print(currentLimitSpeed + GetCatchUpBonus());
+
+                    rb.velocity += transform.forward * Time.deltaTime * acceleration;
+                    
+                    Debug.Log("Speed: " + rb.velocity.magnitude);
+                    //Slows down when drifting
+                    rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180;
+                    //print("Delta:" + Time.deltaTime);
+                    //print("Speed:" + (transform.forward * Time.deltaTime * acceleration).magnitude);
+                    //print("Friction: " + (transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180).magnitude);
+
+                    //Slows down perpendicular velocity
+                    Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
+                    float perpendiuclarSpeed = perpendicularVelocity.magnitude * driftEfficiency;
+                    rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
+
+
+                }
             }
         }
         else

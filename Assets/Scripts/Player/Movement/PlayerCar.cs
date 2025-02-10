@@ -158,7 +158,8 @@ public class PlayerCar : MonoBehaviour
 
             IncreasedGravity(unGroundedGravity);
         }
-        accelorometer.value = rb.velocity.magnitude / (maxLandSpeed * 2);
+        accelorometer.value = rb.velocity.magnitude / (maxLandSpeed);
+        //accelorometer.value = rb.velocity.magnitude / (maxLandSpeed * 2);
         speedText.text = Mathf.RoundToInt(rb.velocity.magnitude).ToString();
         speedText.color = new Color(255, 255f - (rb.velocity.magnitude * 2), 255f - (rb.velocity.magnitude * 4));
         /*
@@ -182,13 +183,19 @@ public class PlayerCar : MonoBehaviour
         {
             if (movementControl.action.ReadValue<Vector2>().y > 0)
             {
-                rb.velocity += transform.forward * Time.deltaTime * acceleration;
+                if (rb.velocity.magnitude <= maxLandSpeed)
+                {
+                    rb.velocity += transform.forward * Time.deltaTime * acceleration;
+                }
                 driving = true;
                 //Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
             }
             if (movementControl.action.ReadValue<Vector2>().y < 0)
             {
-                rb.velocity -= transform.forward * Time.deltaTime * acceleration;
+                if (rb.velocity.magnitude <= maxLandSpeed)
+                {
+                    rb.velocity -= transform.forward * Time.deltaTime * acceleration;
+                }
                 driving = true;
                 //Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
             }
@@ -290,13 +297,13 @@ public class PlayerCar : MonoBehaviour
         if (!isDrifting)
         {
             Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
-            Debug.Log(turn);
+            //Debug.Log(turn);
             rb.MoveRotation(rb.rotation * turn);
         }
         else
         {
             Quaternion turn = Quaternion.Euler(0,  (driftTurnSpeedModifier * speed) * Time.deltaTime, 0);
-            Debug.Log(turn);
+            //Debug.Log(turn);
             rb.MoveRotation(rb.rotation * turn);
         }
     }

@@ -11558,12 +11558,13 @@ MonoBehaviour:
   damagable: 1
   ramDamage: 1
   explosionDamage: 0
-  maxLandSpeed: 60
+  maxLandSpeed: 150
   acceleration: 30
   turnSpeed: 1
-  turnAngle: 45
+  downwardForceMultiplier: 1
   setDriftFriction: 0.05
   driftTurnSpeedModifier: 1.5
+  breakStrength: 0.05
   unGroundedGravity: 0.2
   accelorometer: {fileID: 7652053732288087115}
   speedText: {fileID: 3858185710089941029}

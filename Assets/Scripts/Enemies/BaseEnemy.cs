@@ -14,10 +14,12 @@ public class BaseEnemy : MonoBehaviour
     protected Rigidbody rb;
     [SerializeField] GameObject centerOfMass;
     public GameObject targetObject;
+    public bool targetingPlayer;
+    public bool isPlayerAhead;
 
     [SerializeField]
     public int targetIndex;
-
+    [SerializeField] float despawnRange = 2000f;
 
     [SerializeField] protected float turnSpeed;
     public float AngleToTarget;
@@ -31,8 +33,28 @@ public class BaseEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
+        
     }
 
+    public virtual void Update()
+    {
+        IsTargetingPlayer();
+        CheckDespawnCondition();
+        isPlayerAhead = IsPlayerAhead();
+    }
+
+
+    void IsTargetingPlayer()
+    {
+        if (targetObject == playerCar)
+        {
+            targetingPlayer = true;
+        }
+        else
+        {
+            targetingPlayer = false;
+        }
+    }
     private void OnEnable()
     {
         health = maxHealth;
@@ -40,6 +62,8 @@ public class BaseEnemy : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
         targetObject = FindClosestTarget();
+        SetRandomIndex();
+
 
     }
 
@@ -62,6 +86,17 @@ public class BaseEnemy : MonoBehaviour
         }
         return closestTarget;
     }
+
+    public void SetRandomIndex()
+    {
+        SetTargetIndex(Random.Range(0,5));
+    }
+
+    public void SetTargetIndex(int index)
+    {
+        targetIndex = index;
+    }
+
     public virtual void CheckAlive()
     {
         if (health < 0)
@@ -93,7 +128,10 @@ public class BaseEnemy : MonoBehaviour
     public virtual float GetCatchUpBonus()
     {
         //print(Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus);
+
+        Debug.Log(gameObject.name + ": " + Mathf.Floor(CheckDistanceToTarget() / distancePerCatchUp) * catchUpBonus);
         return Mathf.Floor(CheckDistanceToTarget() / distancePerCatchUp) * catchUpBonus;
+        
     }
 
     public virtual void OnCollisionEnter(Collision collision)
@@ -117,7 +155,7 @@ public class BaseEnemy : MonoBehaviour
 
         Vector3 dirToTarget = GetDirToTarget();
 
-        if (targetIsRight())
+        if (TargetIsRight())
         {
             Quaternion turn = Quaternion.Euler(0, turnSpeed * Time.deltaTime, 0);
             rb.MoveRotation(rb.rotation * turn);
@@ -137,11 +175,27 @@ public class BaseEnemy : MonoBehaviour
     }
 
 
-    bool targetIsRight()
+    protected bool TargetIsRight()
     {
         Vector3 targetDir = (targetObject.transform.position - transform.position).normalized;
         float dot = Vector3.Dot(transform.right, targetDir);
         return dot > 0;
+    }
+
+    protected bool IsPlayerAhead()
+    {
+        Vector3 targetDir = (playerCar.transform.position - transform.position).normalized;
+        float dot = Vector3.Dot(transform.forward, targetDir);
+        
+        return dot > 0;
+    }
+
+    void CheckDespawnCondition()
+    {
+        if (Vector3.Distance(gameObject.transform.position, playerCar.transform.position) >= despawnRange)
+        {
+            PoolManager.ReturnObjectToPool(gameObject);
+        }
     }
     public void SwitchTarget(GameObject target)
     {

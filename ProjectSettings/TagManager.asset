@@ -8,6 +8,7 @@ TagManager:
   - Ramp
   - Booster
   - Enemy
+  - target
   layers:
   - Default
   - TransparentFX

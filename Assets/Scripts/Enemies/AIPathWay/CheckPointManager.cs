@@ -14,9 +14,42 @@ public class CheckPointManager : MonoBehaviour
         if(other.tag == "Enemy")
         {
             //Debug.Log("Enemy");
-            other.gameObject.GetComponent<BaseEnemy>().SwitchTarget(nextCheckPoint.targets[other.gameObject.GetComponent<BaseEnemy>().targetIndex]);
-            s = nextCheckPoint.targets[other.gameObject.GetComponent<BaseEnemy>().targetIndex];
+            if (!other.gameObject.GetComponent<BaseEnemy>().targetingPlayer)
+            {
+
+                other.gameObject.GetComponent<BaseEnemy>().SwitchTarget(nextCheckPoint.targets[other.gameObject.GetComponent<BaseEnemy>().targetIndex]);
+
+                RandomizeTargetIndex(other.gameObject.GetComponent<BaseEnemy>());
+
+            }
+
+            //s = nextCheckPoint.targets[other.gameObject.GetComponent<BaseEnemy>().targetIndex];
         }
     }
 
+
+    public void RandomizeTargetIndex(BaseEnemy enemy)
+    {
+        // 1-2 Down, 3-8 Straight, 9-10 Up
+        int direction = Random.Range(1, 21);
+        if (enemy.targetIndex == 0 && (direction < 2 || direction > 19)) 
+        {
+            enemy.targetIndex++;
+        } else if (enemy.targetIndex == 4 && (direction < 2 || direction > 19))
+        {
+            enemy.targetIndex--;
+        } else
+        {
+            if (direction < 2)
+            {
+                enemy.targetIndex--;
+            }
+            if (direction > 19)
+            {
+                enemy.targetIndex++;
+            }
+
+        }
+
+    }
 }

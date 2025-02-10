@@ -657,22 +657,27 @@ MonoBehaviour:
   health: 8
   maxHealth: 8
   playerCar: {fileID: 0}
-  catchUpBonus: 10
+  catchUpBonus: 40
   distancePerCatchUp: 5
   collisionDamage: 0.5
   centerOfMass: {fileID: 6971512224885868975}
   targetObject: {fileID: 0}
+  targetingPlayer: 0
+  isPlayerAhead: 0
   targetIndex: 2
+  despawnRange: 2000
   turnSpeed: 100
   AngleToTarget: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   height: 5
-  maxLandSpeed: 50
-  acceleration: 20
+  currentLimitSpeed: 180
+  minLandSpeed: 90
+  maxLandSpeed: 220
+  acceleration: 50
   unGroundedGravity: 0.75
-  downwardForceMultiplier: 1
+  downwardForceMultiplier: 2
   driftEfficiency: 1
 --- !u!114 &6730816308427033027
 MonoBehaviour:
