@@ -162,9 +162,9 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 100
+    m_ExtremumSlip: 50
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 100
+    m_AsymptoteSlip: 50
     m_AsymptoteValue: 0.75
     m_Stiffness: 100
   m_IncludeLayers:
@@ -234,9 +234,9 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 100
+    m_ExtremumSlip: 50
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 100
+    m_AsymptoteSlip: 50
     m_AsymptoteValue: 0.75
     m_Stiffness: 100
   m_IncludeLayers:
@@ -596,9 +596,9 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 100
+    m_ExtremumSlip: 50
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 100
+    m_AsymptoteSlip: 50
     m_AsymptoteValue: 0.75
     m_Stiffness: 100
   m_IncludeLayers:
@@ -5964,9 +5964,9 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 100
+    m_ExtremumSlip: 50
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 100
+    m_AsymptoteSlip: 50
     m_AsymptoteValue: 0.75
     m_Stiffness: 100
   m_IncludeLayers:
@@ -11558,6 +11558,7 @@ MonoBehaviour:
   acceleration: 30
   turnSpeed: 1
   downwardForceMultiplier: 1
+  downwardForceMultiplierDrifting: 0.1
   setDriftFriction: 0.05
   driftTurnSpeedModifier: 1.5
   breakStrength: 0.05
