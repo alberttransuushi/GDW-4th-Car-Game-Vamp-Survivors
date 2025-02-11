@@ -59,7 +59,7 @@ Shader "Custom/OutlineShader"
                     {
                         // Apply screen-space noise for edge deformation
                         float2 noiseUV = i.uv * _NoiseScale;
-                        float2 noiseOffset = (tex2D(_NoiseTex, noiseUV).rg - 0.5) * _NoiseIntensity;
+                        float2 noiseOffset = (tex2D(_NoiseTex, noiseUV).rg - 0.5) * (_NoiseIntensity * 2);
                         float2 distortedUV = i.uv + noiseOffset;
 
                         // Return the distorted edge (black outline)
