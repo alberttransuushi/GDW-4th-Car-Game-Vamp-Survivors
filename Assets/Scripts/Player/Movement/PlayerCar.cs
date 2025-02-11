@@ -364,7 +364,16 @@ public class PlayerCar : MonoBehaviour
     {
         //Apply Friction caused by drifting
         Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
-        float perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
+        float perpendiuclarSpeed;
+        if (isDrifting)
+        {
+            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
+        } else
+        {
+            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction * 2;
+
+        }
+
         rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
 
 
