@@ -674,7 +674,7 @@ MonoBehaviour:
   height: 5
   currentLimitSpeed: 300
   minLandSpeed: 90
-  maxLandSpeed: 250
+  maxLandSpeed: 270
   acceleration: 70
   unGroundedGravity: 0.75
   downwardForceMultiplier: 2

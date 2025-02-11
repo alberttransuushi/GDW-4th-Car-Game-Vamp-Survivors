@@ -34,14 +34,18 @@ public class LandEnemy : BaseEnemy
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void LateUpdate()
     {
-        base.Update();
+        base.LateUpdate();
         CheckAlive();
         Movement();
     }
 
-    
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        rb.velocity = Vector3.forward * playerCar.GetComponent<Rigidbody>().velocity.magnitude;
+    }
 
     void Movement()
     {

@@ -128,7 +128,7 @@ public class PlayerCar : MonoBehaviour
         currentDriftFriction = setDriftFriction;
         audioSource = GetComponent<AudioSource>();
         baseVolume = audioSource.volume;
-        driftSpark.Stop();
+        //driftSpark.Stop();
     }
 
     // Update is called once per frame
@@ -242,14 +242,14 @@ public class PlayerCar : MonoBehaviour
             startedEngine = false;
         }
         
-        /**
+        
         if (driftControl.action.triggered) {
           isDrifting = true;
         } else {
           isDrifting = false;
         }
-        **/
-
+        
+        /*
         //You can remove this and uncomment the one up top
         if (driftControl.action.WasPressedThisFrame())
         {
@@ -261,7 +261,7 @@ public class PlayerCar : MonoBehaviour
             isDrifting = false;
             driftSpark.Stop();
         }
-
+        */
         if (UnstuckControl.action.triggered && canUnStuck)
         {
             if (CheckGrounded())

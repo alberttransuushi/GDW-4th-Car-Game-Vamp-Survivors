@@ -35,8 +35,8 @@ public class BaseEnemy : MonoBehaviour
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
         
     }
-
-    public virtual void Update()
+    
+    public virtual void LateUpdate()
     {
         IsTargetingPlayer();
         CheckDespawnCondition();
@@ -55,14 +55,16 @@ public class BaseEnemy : MonoBehaviour
             targetingPlayer = false;
         }
     }
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         health = maxHealth;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
-        targetObject = FindClosestTarget();
-        SetRandomIndex();
+        //GameObject closestTarget = FindClosestTarget();
+        //SetRandomIndex();
+        //targetObject = closestTarget.GetComponentInParent<CheckPointManager>().nextCheckPoint.targets[targetIndex];
+
 
 
     }

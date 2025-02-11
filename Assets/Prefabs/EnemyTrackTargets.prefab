@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 4451168505752233464}
   - component: {fileID: 1057056819873082676}
   - component: {fileID: 3455584987079651167}
+  - component: {fileID: 3532952891649342839}
   m_Layer: 3
   m_Name: Target
   m_TagString: target
@@ -153,6 +154,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3532952891649342839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718014804431204476}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242387ff7e74a624daa3709cd4acdfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5775331352803509636
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +178,7 @@ GameObject:
   - component: {fileID: 6063331890893610143}
   - component: {fileID: 3025089978564914872}
   - component: {fileID: 3417748490456305522}
+  - component: {fileID: 864633820082335755}
   m_Layer: 3
   m_Name: Target
   m_TagString: target
@@ -258,6 +272,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &864633820082335755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5775331352803509636}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242387ff7e74a624daa3709cd4acdfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7516863826814409834
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +296,7 @@ GameObject:
   - component: {fileID: 5981361748452729879}
   - component: {fileID: 1062929066718725004}
   - component: {fileID: 32096547264158054}
+  - component: {fileID: 4010400504175209301}
   m_Layer: 3
   m_Name: Target
   m_TagString: target
@@ -363,6 +390,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4010400504175209301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516863826814409834}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242387ff7e74a624daa3709cd4acdfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8016923654314582504
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +414,7 @@ GameObject:
   - component: {fileID: 7700217673250164799}
   - component: {fileID: 4885425341512010681}
   - component: {fileID: 5082756826504591265}
+  - component: {fileID: 958384226307578884}
   m_Layer: 3
   m_Name: Target
   m_TagString: target
@@ -468,6 +508,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &958384226307578884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016923654314582504}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242387ff7e74a624daa3709cd4acdfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8470478003732233980
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +532,7 @@ GameObject:
   - component: {fileID: 3979801890851331966}
   - component: {fileID: 4002553520721746298}
   - component: {fileID: 1336136022870352226}
+  - component: {fileID: 4570129007540062081}
   m_Layer: 3
   m_Name: Target
   m_TagString: target
@@ -573,6 +626,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4570129007540062081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470478003732233980}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242387ff7e74a624daa3709cd4acdfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &240726726901770487
 PrefabInstance:
   m_ObjectHideFlags: 0
