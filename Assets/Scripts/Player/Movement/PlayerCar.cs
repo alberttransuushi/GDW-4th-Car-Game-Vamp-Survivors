@@ -77,7 +77,7 @@ public class PlayerCar : MonoBehaviour
     private InputActionReference UnstuckControl;
 
     [Header("audio")]
-    AudioSource audioSource;
+    public AudioSource audioSource;
     [SerializeField]
     AudioClip startEngine;
     [SerializeField]
@@ -95,6 +95,8 @@ public class PlayerCar : MonoBehaviour
 
     [SerializeField] float AoeTempTime;
     [SerializeField] GameObject AoeVisualizer;
+
+    public ParticleSystem driftSpark;
 
 
     private void OnEnable()
@@ -126,6 +128,7 @@ public class PlayerCar : MonoBehaviour
         currentDriftFriction = setDriftFriction;
         audioSource = GetComponent<AudioSource>();
         baseVolume = audioSource.volume;
+        driftSpark.Stop();
     }
 
     // Update is called once per frame
@@ -205,7 +208,7 @@ public class PlayerCar : MonoBehaviour
             audioSource.volume = baseVolume;
             audioSource.loop = false;
             startedEngine = true;
-            audioSource.pitch = Random.Range(0.6f, 1.6f);
+            audioSource.pitch = Random.Range(0.7f, 1.2f);
             //Debug.Log(rb.velocity);
             
             audioSource.clip = startEngine;
@@ -239,10 +242,12 @@ public class PlayerCar : MonoBehaviour
         if (driftControl.action.WasPressedThisFrame())
         {
             isDrifting = true;
+            driftSpark.Play();
         }
         else if (driftControl.action.WasReleasedThisFrame())
         {
             isDrifting = false;
+            driftSpark.Stop();
         }
 
         if (UnstuckControl.action.triggered && canUnStuck)
