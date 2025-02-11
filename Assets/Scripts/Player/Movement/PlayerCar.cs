@@ -139,7 +139,7 @@ public class PlayerCar : MonoBehaviour
         //AOALimiter();
 
         UpdateHP();
-
+        Debug.Log(rb.angularVelocity);
     }
 
 
@@ -189,6 +189,12 @@ public class PlayerCar : MonoBehaviour
                 if (rb.velocity.magnitude <= maxLandSpeed)
                 {
                     rb.velocity += transform.forward * Time.deltaTime * acceleration;
+
+                    if (!isDrifting)
+                    {
+
+                        rb.angularVelocity = Vector3.zero;
+                    }
                 }
                 driving = true;
                 //Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
@@ -198,6 +204,12 @@ public class PlayerCar : MonoBehaviour
                 if (rb.velocity.magnitude <= maxLandSpeed)
                 {
                     rb.velocity -= transform.forward * Time.deltaTime * acceleration;
+
+                    if (!isDrifting)
+                    {
+
+                        rb.angularVelocity = Vector3.zero;
+                    }
                 }
                 driving = true;
                 //Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
@@ -305,13 +317,13 @@ public class PlayerCar : MonoBehaviour
         if (!isDrifting)
         {
             Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
-            //Debug.Log(turn);
+            
             rb.MoveRotation(rb.rotation * turn);
         }
         else
         {
             Quaternion turn = Quaternion.Euler(0,  (driftTurnSpeedModifier * speed) * Time.deltaTime, 0);
-            //Debug.Log(turn);
+            
             rb.MoveRotation(rb.rotation * turn);
         }
     }
@@ -514,6 +526,8 @@ public class PlayerCar : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<BaseEnemy>().takeDamge(ramDamage * rb.velocity.magnitude / 10);
+            
+
         }
     }
 }
