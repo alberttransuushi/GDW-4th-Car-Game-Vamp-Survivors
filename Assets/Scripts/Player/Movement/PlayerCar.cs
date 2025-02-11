@@ -27,6 +27,7 @@ public class PlayerCar : MonoBehaviour
     // 0 = no friction/slidey | 1 = no momentum from drifting
     float currentDriftFriction;
     [SerializeField] float setDriftFriction;
+    [SerializeField] float driftFrictionModifier;
     
     [SerializeField] float driftTurnSpeedModifier;
     [SerializeField] float breakStrength = 0.05f;
@@ -367,10 +368,10 @@ public class PlayerCar : MonoBehaviour
         float perpendiuclarSpeed;
         if (isDrifting)
         {
-            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
+            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction * driftFrictionModifier;
         } else
         {
-            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction * 2;
+            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
 
         }
 
