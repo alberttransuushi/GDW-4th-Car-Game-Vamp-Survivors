@@ -87,7 +87,7 @@ public class LandEnemy : BaseEnemy
                 }
             } else
             {
-                if (rb.velocity.magnitude < Mathf.Max(currentLimitSpeed - GetCatchUpBonus(), minLandSpeed))
+                if (rb.velocity.magnitude < Mathf.Max(currentLimitSpeed - GetCatchUpBonus()/2, minLandSpeed))
                 {
                     //print(currentLimitSpeed + GetCatchUpBonus());
 

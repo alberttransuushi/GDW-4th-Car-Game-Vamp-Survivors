@@ -216,14 +216,14 @@ MonoBehaviour:
   isPlayerAhead: 0
   targetIndex: 2
   despawnRange: 2000
-  turnSpeed: 100
+  turnSpeed: 150
   AngleToTarget: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   height: 2
   currentLimitSpeed: 220
-  minLandSpeed: 90
+  minLandSpeed: 120
   maxLandSpeed: 250
   acceleration: 80
   unGroundedGravity: 0.75
