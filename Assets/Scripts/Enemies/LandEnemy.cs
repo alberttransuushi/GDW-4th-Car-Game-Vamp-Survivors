@@ -71,7 +71,6 @@ public class LandEnemy : BaseEnemy
 
                     rb.velocity += transform.forward * Time.deltaTime * acceleration;
                     
-                    Debug.Log("Speed: " + rb.velocity.magnitude);
                     //Slows down when drifting
                     rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180;
                     //print("Delta:" + Time.deltaTime);
@@ -93,7 +92,6 @@ public class LandEnemy : BaseEnemy
 
                     rb.velocity += transform.forward * Time.deltaTime * acceleration;
                     
-                    Debug.Log("Speed: " + rb.velocity.magnitude);
                     //Slows down when drifting
                     rb.velocity -= transform.forward * Time.deltaTime * acceleration * AngleToTarget / 180;
                     //print("Delta:" + Time.deltaTime);

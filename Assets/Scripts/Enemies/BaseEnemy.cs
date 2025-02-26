@@ -131,7 +131,6 @@ public class BaseEnemy : MonoBehaviour
     {
         //print(Mathf.Floor(CheckDistanceToPlayer() / distancePerCatchUp) * catchUpBonus);
 
-        Debug.Log(gameObject.name + ": " + Mathf.Floor(CheckDistanceToTarget() / distancePerCatchUp) * catchUpBonus);
         return Mathf.Floor(CheckDistanceToTarget() / distancePerCatchUp) * catchUpBonus;
         
     }
@@ -161,13 +160,11 @@ public class BaseEnemy : MonoBehaviour
         {
             Quaternion turn = Quaternion.Euler(0, turnSpeed * Time.deltaTime, 0);
             rb.MoveRotation(rb.rotation * turn);
-            Debug.Log("Turn Right");
         }
         else
         {
             Quaternion turn = Quaternion.Euler(0, -turnSpeed * Time.deltaTime, 0);
             rb.MoveRotation(rb.rotation * turn);
-            Debug.Log("Turn Left");
         }
 
         //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToTarget.x, 0, dirToTarget.z), turnSpeed * Time.deltaTime, 10.0f));

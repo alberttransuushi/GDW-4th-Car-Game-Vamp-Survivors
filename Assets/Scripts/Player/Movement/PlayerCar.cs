@@ -141,7 +141,6 @@ public class PlayerCar : MonoBehaviour
         //AOALimiter();
 
         UpdateHP();
-        Debug.Log(rb.angularVelocity);
     }
 
 

@@ -19,9 +19,9 @@ public class Spawner : MonoBehaviour
     public bool bossSpawner;
     public List<WaveEnemyData> currentWaveData;
     public List<int> currentWaveEnemyCount;
-
-
-    
+    Rigidbody playerCarRb;
+    GameObject[] targets;
+    [SerializeField, Range(0f, 3f)] float rangeAddedFromSpeedMultiplier;
 
 
 
@@ -29,8 +29,9 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //CopyWaveDataToRunTime();
 
+        //CopyWaveDataToRunTime();
+        playerCarRb = gameObject.GetComponent<Rigidbody>();
         //start timer for wave 1
         waveTimer = waveDuration;
 
@@ -80,27 +81,41 @@ public class Spawner : MonoBehaviour
 
     List<GameObject> FindAllValidSpawnTargets()
     {
+        targets = GameObject.FindGameObjectsWithTag("target");
 
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("target");
         List<GameObject> validGameObjects = new List<GameObject>();
-        foreach(GameObject gameObject in gameObjects)
+        foreach(GameObject gameObject in targets)
         {
-            //Debug.Log(gameObjects);
-            float distance = Vector3.Distance(transform.position, gameObject.transform.position);
-            if (distance > minRange && distance < maxRange)
+            if (isInFront(gameObject))
             {
-                validGameObjects.Add(gameObject);
+                float distance = Vector3.Distance(transform.position, gameObject.transform.position);
+                if (distance > minRange + playerCarRb.velocity.magnitude * rangeAddedFromSpeedMultiplier && distance < maxRange + playerCarRb.velocity.magnitude * rangeAddedFromSpeedMultiplier)
+                {
+                    validGameObjects.Add(gameObject);
+                }
+            } else
+            {
+                float distance = Vector3.Distance(transform.position, gameObject.transform.position);
+                if (distance > minRange && distance < maxRange)
+                {
+                    //validGameObjects.Add(gameObject);
+                }
             }
         }
         return validGameObjects;
 
     }
 
+    bool isInFront(GameObject obj)
+    {
+        return Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(obj.transform.position)) > 0;
+    }
+
     void SpawnEnemy()
     {
 
         List<GameObject> targetList = FindAllValidSpawnTargets();
-        GameObject target = targetList[Random.Range(0, targetList.Count)];
+        GameObject target = targetList[Random.Range(0, targetList.Count-1)];
 
         Vector3 spawnPos = target.transform.position;
 
@@ -124,7 +139,7 @@ public class Spawner : MonoBehaviour
 
         //Debug.Log(currentWaveData[spawnedEnemyIndex].enemyType.name);
 
-        GameObject spawnedEnemy = PoolManager.SpawnObject(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos, Quaternion.identity);
+        GameObject spawnedEnemy = PoolManager.SpawnObject(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos - new Vector3(0,-2,0), Quaternion.identity);
         spawnedEnemy.GetComponent<BaseEnemy>().targetObject = target.GetComponentInParent<CheckPointManager>().nextCheckPoint.targets[spawnedEnemy.GetComponent<BaseEnemy>().targetIndex];
         spawnedEnemy.transform.forward = target.transform.forward;
         spawnedEnemy.GetComponent<BaseEnemy>().targetIndex = target.GetComponentInParent<CheckPointManager>().targets.IndexOf(target);

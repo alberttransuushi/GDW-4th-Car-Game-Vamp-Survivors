@@ -221,7 +221,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  height: 2
+  height: 8
   currentLimitSpeed: 220
   minLandSpeed: 120
   maxLandSpeed: 250
