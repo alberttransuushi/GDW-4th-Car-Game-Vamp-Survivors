@@ -20,7 +20,8 @@ public class Spawner : MonoBehaviour
     public List<WaveEnemyData> currentWaveData;
     public List<int> currentWaveEnemyCount;
     Rigidbody playerCarRb;
-    GameObject[] targets;
+    public GameObject[] targets;
+    public List<GameObject> targetList;
     [SerializeField, Range(0f, 3f)] float rangeAddedFromSpeedMultiplier;
 
 
@@ -114,8 +115,14 @@ public class Spawner : MonoBehaviour
     void SpawnEnemy()
     {
 
-        List<GameObject> targetList = FindAllValidSpawnTargets();
-        GameObject target = targetList[Random.Range(0, targetList.Count-1)];
+        targetList = FindAllValidSpawnTargets();
+        if(targetList.Count <= 0)
+        {
+            return;
+        }
+        int f = Random.Range(0, targetList.Count);
+        Debug.Log(f);
+        GameObject target = targetList[f];
 
         Vector3 spawnPos = target.transform.position;
 
@@ -139,7 +146,7 @@ public class Spawner : MonoBehaviour
 
         //Debug.Log(currentWaveData[spawnedEnemyIndex].enemyType.name);
 
-        GameObject spawnedEnemy = PoolManager.SpawnObject(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos - new Vector3(0,-2,0), Quaternion.identity);
+        GameObject spawnedEnemy = PoolManager.SpawnObject(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos + new Vector3(0,-4,0), Quaternion.identity);
         spawnedEnemy.GetComponent<BaseEnemy>().targetObject = target.GetComponentInParent<CheckPointManager>().nextCheckPoint.targets[spawnedEnemy.GetComponent<BaseEnemy>().targetIndex];
         spawnedEnemy.transform.forward = target.transform.forward;
         spawnedEnemy.GetComponent<BaseEnemy>().targetIndex = target.GetComponentInParent<CheckPointManager>().targets.IndexOf(target);
