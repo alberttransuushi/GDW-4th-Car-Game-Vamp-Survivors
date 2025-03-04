@@ -100,15 +100,13 @@ public class ObstacleSpawner : MonoBehaviour
 
     void SpawnObstacle()
     {
-        Debug.Log("AAAA");
         targetList = FindAllValidCheckPoints();
         if (targetList.Count <= 0)
         {
-            Debug.Log("SSSS");
             return;
         }
         int f = Random.Range(0, targetList.Count);
-        Debug.Log(f);
+        //Debug.Log(f);
         GameObject target = targetList[f];
 
         obstacleCheckPoint = target; 

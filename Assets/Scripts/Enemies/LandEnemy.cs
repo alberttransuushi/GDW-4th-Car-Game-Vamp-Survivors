@@ -20,8 +20,8 @@ public class LandEnemy : BaseEnemy
     [SerializeField] float driftEfficiency;
 
     //[SerializeField] float randomScaleStrenght;
-    
 
+    [SerializeField] bool spinOut;
     // Start is called before the first frame update
     public override void Awake()
     {
@@ -39,6 +39,11 @@ public class LandEnemy : BaseEnemy
         base.LateUpdate();
         CheckAlive();
         Movement();
+
+        if (spinOut)
+        {
+            rb.angularVelocity = Vector3.up * 5;   
+        }
     }
 
     public override void OnEnable()
@@ -120,7 +125,14 @@ public class LandEnemy : BaseEnemy
     public override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
-        
+        if (spinOut)
+        {
+            Debug.Log(collision.gameObject.layer);
+        }
+        if(spinOut && collision.gameObject.layer == 12)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     

@@ -121,7 +121,7 @@ public class Spawner : MonoBehaviour
             return;
         }
         int f = Random.Range(0, targetList.Count);
-        Debug.Log(f);
+        //Debug.Log(f);
         GameObject target = targetList[f];
 
         Vector3 spawnPos = target.transform.position;

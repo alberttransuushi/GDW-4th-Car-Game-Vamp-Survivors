@@ -82,7 +82,7 @@ public class MissileLauncher : MonoBehaviour
         int trueNumberOfMissiles = Mathf.Min(numberOfMissiles, validTargets.Count);
         for (int i = 0; i < trueNumberOfMissiles; i++)
         {
-            Debug.Log(validTargets[i].transform.position);
+            //Debug.Log(validTargets[i].transform.position);
             Vector3 targetScreenPosition = currentCam.WorldToScreenPoint(validTargets[i].transform.position);
             lockOnUIs[i].gameObject.GetComponent<RectTransform>().position = targetScreenPosition;
         }
