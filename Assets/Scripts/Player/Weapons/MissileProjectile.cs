@@ -30,6 +30,7 @@ public class MissileProjectile : MonoBehaviour
     void Update()
     {
         rb.velocity = transform.forward * speed;
+        speed += Time.deltaTime;
         if (tracking)
         {
             TrackTarget();
