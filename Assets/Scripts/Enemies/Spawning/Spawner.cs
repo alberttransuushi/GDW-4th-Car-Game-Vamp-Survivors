@@ -147,6 +147,10 @@ public class Spawner : MonoBehaviour
         //Debug.Log(currentWaveData[spawnedEnemyIndex].enemyType.name);
 
         GameObject spawnedEnemy = PoolManager.SpawnObject(currentWaveData[spawnedEnemyIndex].enemyType, spawnPos + new Vector3(0,-4,0), Quaternion.identity);
+        if (spawnedEnemy == null || target == null)
+        {
+            return;
+        }
         spawnedEnemy.GetComponent<BaseEnemy>().targetObject = target.GetComponentInParent<CheckPointManager>().nextCheckPoint.targets[spawnedEnemy.GetComponent<BaseEnemy>().targetIndex];
         spawnedEnemy.transform.forward = target.transform.forward;
         spawnedEnemy.GetComponent<BaseEnemy>().targetIndex = target.GetComponentInParent<CheckPointManager>().targets.IndexOf(target);
