@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1516413971483518856}
   - component: {fileID: 2503196691881015026}
   - component: {fileID: -6184289339742472166}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: MissileProto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
