@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class EventManager : MonoBehaviour {
+  [SerializeField] GameObject expOrb;
   [SerializeField] EventList eventList;
 
   //event trigger spawn points
@@ -13,6 +14,16 @@ public class EventManager : MonoBehaviour {
   //event trigger types
   bool makeNewEvent;
   bool raceEvent;
+
+  //event variable tracking
+  public static int enemiesKilled;
+  [SerializeField] int enemiesToBeKilled;
+  bool enemiesKilledEvent;
+  public static int timesHit;
+  [SerializeField] float timesAvoidGettingHit;
+  bool timesHitEvent;
+  float eventTimer;
+  float eventTimeLimit;
 
   [SerializeField] int eventTriggerTimeDuration;
   [SerializeField] List<int> eventTimes;
@@ -29,18 +40,55 @@ public class EventManager : MonoBehaviour {
     eventTimesDupe = new List<int>(eventTimes);
   }
   private void Update() {
+    if (Input.GetKeyDown(KeyCode.K)) {
+      MakeRandomEvent();
+    }
     textDelayFade -= Time.deltaTime;
     timer += Time.deltaTime;
-    if (timer > eventTimesDupe[0]) {// event spawn
-      eventTimesDupe.RemoveAt(0);
-      GameObject randEventTrigger = GetRandomEventTrigger();
-      randEventTrigger.SetActive(true);
-      randEventTrigger.GetComponent<EventTrigger>().SetTimer(45);
-      eventText.text = "Event Spawned";
-      alpha = 1;
-      textDelayFade = 2;
-      eventText.color = new Color(1, 1, 1, alpha);
-      makeNewEvent = true;
+    eventTimer += Time.deltaTime;
+    if (eventTimesDupe.Count > 0){
+      if (timer > eventTimesDupe[0]) {// event spawn
+        eventTimesDupe.RemoveAt(0);
+        GameObject randEventTrigger = GetRandomEventTrigger();
+        randEventTrigger.SetActive(true);
+        randEventTrigger.GetComponent<EventTrigger>().SetTimer(45);
+        eventText.text = "Event Spawned";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        makeNewEvent = true;
+      }
+    }
+    if (timesHitEvent) {
+      if (eventTimer > 30) {
+        eventText.text = "Event Completed";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        timesHitEvent = false;
+      }
+      if (timesHit >= timesAvoidGettingHit) {
+        eventText.text = "Event Failed";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        timesHitEvent = false;
+      }
+    } else if (enemiesKilledEvent) {
+      if (eventTimer > 30) {
+        eventText.text = "Event Failed";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        enemiesKilledEvent = false;
+      }
+      if (enemiesKilled >= enemiesToBeKilled) {
+        eventText.text = "Event Complete";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        enemiesKilledEvent = false;
+      }
     }
     if (textDelayFade <= 0) {
       if (alpha > 0) {
@@ -59,16 +107,7 @@ public class EventManager : MonoBehaviour {
       alpha = 1;
       textDelayFade = 2;
       eventText.color = new Color(1, 1, 1, alpha);
-      raceEvent = true;
-      makeNewEvent = false;
-      int rand = Random.Range(50, subEventManagers.Count);
-      rand += eventStartRef;
-      if (eventStartRef > subEventManagers.Count) {
-        eventStartRef -= subEventManagers.Count;
-      }
-      GameObject randEventTrigger = subEventManagers[rand].GetComponent<SubEventManager>().GetRandomEventTrigger();
-      randEventTrigger.SetActive(true);
-      randEventTrigger.GetComponent<EventTrigger>().SetTimer(45);
+      MakeRandomEvent();
     } else if (raceEvent) {
       eventText.text = "Event Completed";
       alpha = 1;
@@ -76,6 +115,40 @@ public class EventManager : MonoBehaviour {
       eventText.color = new Color(1, 1, 1, alpha);
       raceEvent = false;
     }
+  }
+  void MakeRandomEvent() {
+    alpha = 1;
+    textDelayFade = 2;
+    eventText.color = new Color(1, 1, 1, alpha);
+    //random event creation
+    int rand = Random.Range(0, 3);
+    Debug.Log(rand);
+    if (rand == 0) {
+      eventText.text = "Event Created: reach the destination";
+      raceEvent = true;
+      makeNewEvent = false;
+      rand = Random.Range(50, subEventManagers.Count);
+      rand += eventStartRef;
+      if (eventStartRef > subEventManagers.Count) {
+        eventStartRef -= subEventManagers.Count;
+      }
+      GameObject randEventTrigger = subEventManagers[rand].GetComponent<SubEventManager>().GetRandomEventTrigger();
+      randEventTrigger.SetActive(true);
+      randEventTrigger.GetComponent<EventTrigger>().SetTimer(rand);
+    } else if (rand == 1) {
+      eventText.text = "Event Created: DONT GET HIT";
+      timesHitEvent = true;
+      timesHit = 0;
+      eventTimer = 0;
+      eventTimeLimit = 30;
+    } else if (rand == 2) {
+      eventText.text = "Event Created: KILL ENEMIES";
+      enemiesKilledEvent = true;
+      enemiesKilled = 0;
+      eventTimer = 0;
+      eventTimeLimit = 30;
+    }
+    
   }
   public void EventTriggerFaded() {
     makeNewEvent = false;

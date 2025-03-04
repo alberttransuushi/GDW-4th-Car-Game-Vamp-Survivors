@@ -438,7 +438,7 @@ public class PlayerCar : MonoBehaviour
 
         if (damagable)
         {
-
+      EventManager.timesHit += 1;
             currentHP -= damage;
             damagable = false;
             if (currentHP <= 0)
