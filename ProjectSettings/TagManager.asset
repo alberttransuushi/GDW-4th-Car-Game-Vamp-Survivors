@@ -9,6 +9,7 @@ TagManager:
   - Booster
   - Enemy
   - target
+  - GUI
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - EnemyWheels
   - 
   - 
-  - 
+  - PlayerProjectiles
   - 
   - 
   - 

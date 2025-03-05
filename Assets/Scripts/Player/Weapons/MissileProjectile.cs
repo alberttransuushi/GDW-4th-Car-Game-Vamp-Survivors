@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class MissileProjectile : MonoBehaviour
 {
-    public GameObject playerCar;
     public GameObject target;
-    float speed;
-    [SerializeField] float trackingDelay;
+    [SerializeField] float speed;
+    [SerializeField, Range(0,0.75f)] float trackingDelay;
     [SerializeField] float aoeRange;
     [SerializeField] float damage;
     [SerializeField] float damageFalloff;
     [SerializeField] float explosionKnockback;
     [SerializeField] bool tracking;
     [SerializeField] float turnSpeed;
-    [SerializeField] float trackingSpeed;
+    //[SerializeField] float trackingSpeed;
 
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(DelayTracking());
-        playerCar = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
 
         //rb.velocity = new Vector3(0, 200, 0);
@@ -31,19 +29,24 @@ public class MissileProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.velocity = transform.forward * speed;
         if (tracking)
         {
-            TrackPlayer();
+            TrackTarget();
+        }
+        if(target == null)
+        {
+            Destroy(this.gameObject);
         }
     }
 
-    void TrackPlayer()
+    void TrackTarget()
     {
-        Vector3 dirToPlayer = playerCar.transform.position - transform.position;
+        Vector3 dirToTarget = target.transform.position - transform.position;
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToPlayer.x, dirToPlayer.y, dirToPlayer.z), turnSpeed * Time.deltaTime, 10.0f));
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dirToTarget.x, dirToTarget.y, dirToTarget.z), turnSpeed * Time.deltaTime, 10.0f));
 
-        rb.velocity = transform.forward * speed;
+        
     }
 
     IEnumerator DelayTracking()
@@ -53,7 +56,6 @@ public class MissileProjectile : MonoBehaviour
 
         tracking = true;
 
-        speed = rb.velocity.magnitude;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,13 +66,17 @@ public class MissileProjectile : MonoBehaviour
 
         foreach (Collider collider in explosionCollider)
         {
-            if (collider.gameObject.tag == "Player" || collider.gameObject.tag == "Enemy")
+            if (collider.gameObject.tag == "Enemy")
             {
+                /*
                 if (collider.gameObject.tag == "Player")
                 {
                     collider.gameObject.GetComponent<PlayerCar>().TakeDamage(damage);
-                }
+                }*/
                 //print("BOOM");
+
+                collider.gameObject.GetComponent<BaseEnemy>().takeDamge(damage);
+
                 collider.GetComponent<Rigidbody>().AddExplosionForce(explosionKnockback, pointOfExplosion, aoeRange, 3.0f, ForceMode.Impulse);
             }
         }

@@ -19,6 +19,10 @@ public class PlayerCar : MonoBehaviour
 
     [Header("Movement Stats")]
     [SerializeField] public float maxLandSpeed;
+    public float boostLeft;
+    [SerializeField] float boostAdded;
+    [SerializeField] float boostMultiplier;
+
     [SerializeField] float acceleration;
     [SerializeField] float turnSpeed;
     [SerializeField] float downwardForceMultiplier = 1f;
@@ -141,8 +145,28 @@ public class PlayerCar : MonoBehaviour
         //AOALimiter();
 
         UpdateHP();
+
+        Boost();
     }
 
+
+    void Boost()
+    {
+        if(boostLeft >= 0)
+        {
+            rb.velocity += transform.forward * Time.deltaTime * boostLeft * boostMultiplier;
+            boostLeft -= Time.deltaTime;
+        }
+        AddBoost();
+    }
+
+    void AddBoost()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse2))
+        {
+            boostLeft = boostAdded;
+        }
+    }
 
     public void Movement()
     {
@@ -264,6 +288,7 @@ public class PlayerCar : MonoBehaviour
             driftSpark.Stop();
         }
         */
+
         if (UnstuckControl.action.triggered && canUnStuck)
         {
             if (CheckGrounded())
@@ -273,6 +298,7 @@ public class PlayerCar : MonoBehaviour
                 StartCoroutine(StartUnStuckCooldown(unStuckCooldown));
             }
         }
+
         FrictionVelocity();
 
     }
