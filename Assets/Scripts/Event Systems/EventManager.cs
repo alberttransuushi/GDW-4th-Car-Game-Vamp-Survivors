@@ -9,6 +9,11 @@ public class EventManager : MonoBehaviour {
 
   //event trigger spawn points
   [SerializeField] List<GameObject> subEventManagers;
+  [SerializeField] List<Hoop> hoops;
+  [SerializeField] int hoopStartReference;
+  [SerializeField] int gapsBetweenHoops;
+  [SerializeField] float hoopLRAdjustments;
+  [SerializeField] int hoopAmount;
   int eventStartRef;
 
   //event trigger types
@@ -16,12 +21,20 @@ public class EventManager : MonoBehaviour {
   bool raceEvent;
 
   //event variable tracking
+  //kill enemies
   public static int enemiesKilled;
   [SerializeField] int enemiesToBeKilled;
   bool enemiesKilledEvent;
+  //dont get hit
   public static int timesHit;
-  [SerializeField] float timesAvoidGettingHit;
+  public static float timeSinceLastHit;
+  [SerializeField] float timeSinceLastHitWinCon;
   bool timesHitEvent;
+  //hoops
+  int hoopCount;
+  bool hoopsEvent;
+
+
   float eventTimer;
   float eventTimeLimit;
 
@@ -36,16 +49,24 @@ public class EventManager : MonoBehaviour {
   private void Start() {
     for (int i = 0; i < transform.childCount; i++) {
       subEventManagers.Add(transform.GetChild(i).gameObject.GetComponentInChildren<SubEventManager>().gameObject);
+      hoops.Add(transform.GetChild(i).gameObject.GetComponentInChildren<Hoop>());
+      hoops[i].gameObject.SetActive(false);
     }
+    
+    
     eventTimesDupe = new List<int>(eventTimes);
   }
   private void Update() {
     if (Input.GetKeyDown(KeyCode.K)) {
       MakeRandomEvent();
     }
+    
+    //timer updates
     textDelayFade -= Time.deltaTime;
     timer += Time.deltaTime;
     eventTimer += Time.deltaTime;
+    timeSinceLastHit += Time.deltaTime;
+
     if (eventTimesDupe.Count > 0){
       if (timer > eventTimesDupe[0]) {// event spawn
         eventTimesDupe.RemoveAt(0);
@@ -60,14 +81,14 @@ public class EventManager : MonoBehaviour {
       }
     }
     if (timesHitEvent) {
-      if (eventTimer > 30) {
+      if (timeSinceLastHit >= timeSinceLastHitWinCon) {
         eventText.text = "Event Completed";
         alpha = 1;
         textDelayFade = 2;
         eventText.color = new Color(1, 1, 1, alpha);
         timesHitEvent = false;
       }
-      if (timesHit >= timesAvoidGettingHit) {
+      if (eventTimer > eventTimeLimit) {
         eventText.text = "Event Failed";
         alpha = 1;
         textDelayFade = 2;
@@ -75,7 +96,7 @@ public class EventManager : MonoBehaviour {
         timesHitEvent = false;
       }
     } else if (enemiesKilledEvent) {
-      if (eventTimer > 30) {
+      if (eventTimer > eventTimeLimit) {
         eventText.text = "Event Failed";
         alpha = 1;
         textDelayFade = 2;
@@ -89,10 +110,25 @@ public class EventManager : MonoBehaviour {
         eventText.color = new Color(1, 1, 1, alpha);
         enemiesKilledEvent = false;
       }
+    } else if (hoopsEvent) {
+      if (eventTimer > eventTimeLimit) {
+        eventText.text = "Event Failed";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        hoopsEvent = false;
+      }
+      if (hoopCount >= hoopAmount) {
+        eventText.text = "Event Complete";
+        alpha = 1;
+        textDelayFade = 2;
+        eventText.color = new Color(1, 1, 1, alpha);
+        enemiesKilledEvent = false;
+      }
     }
     if (textDelayFade <= 0) {
       if (alpha > 0) {
-        alpha -= Time.deltaTime * 0.5f;
+        alpha -= Time.deltaTime * 0.5f;  
       }
       eventText.color = new Color(1, 1, 1, alpha);
     }
@@ -121,7 +157,7 @@ public class EventManager : MonoBehaviour {
     textDelayFade = 2;
     eventText.color = new Color(1, 1, 1, alpha);
     //random event creation
-    int rand = Random.Range(0, 3);
+    int rand = Random.Range(0, 4);
     Debug.Log(rand);
     if (rand == 0) {
       eventText.text = "Event Created: reach the destination";
@@ -147,11 +183,37 @@ public class EventManager : MonoBehaviour {
       enemiesKilled = 0;
       eventTimer = 0;
       eventTimeLimit = 30;
+    } else if (rand == 3) {//hoops
+      eventText.text = "Event Created: GET THROUGH ALL THE HOOPS";
+      SquenceHoops(hoopStartReference, gapsBetweenHoops, hoopLRAdjustments, hoopAmount);
+      hoopsEvent = true;
+      hoopCount = 0;
+      eventTimer = 0;
+      eventTimeLimit = 30;
     }
     
   }
   public void EventTriggerFaded() {
     makeNewEvent = false;
     raceEvent = false;
+  }
+
+  void SquenceHoops(int start, int gap, float lrVariation, int length) {
+    int refHoop = start;
+    float hoopLR = Random.Range(0.3f, 0.7f);
+    for (int i = 0; i < length; i ++) {
+      hoopLR += lrVariation * Random.Range(-1f, 1f);
+      if (hoopLR < 0) {
+        hoopLR = 0;
+      } else if (hoopLR > 1) {
+        hoopLR = 1;
+      }
+      hoops[refHoop].gameObject.SetActive(true);
+      hoops[refHoop].AdjustLeftRight(hoopLR);
+      refHoop += gap;
+    }
+  }
+  public void AddHoopToCount() {
+    hoopCount += 1;
   }
 }
