@@ -23,37 +23,42 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Fireruck - Wheels_BaseColor
-    second: {fileID: 2800000, guid: f535d918354d89c4e99f78e9eba47c10, type: 3}
+    second: {fileID: 2800000, guid: 418d48fba38e43f49a48b25d7dadf2ec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fireruck - Wheels_Metallic
+    second: {fileID: 2800000, guid: 1bbcd0d0d47746c45b85ba32ade9c2a6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Fireruck - Wheels_Normal
-    second: {fileID: 2800000, guid: 02ad2702836212e4d802b651dec1f997, type: 3}
+    second: {fileID: 2800000, guid: 85117f8be9434ea469a626f712833a7c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Fireruck - Wheels_Roughness
-    second: {fileID: 2800000, guid: 843bf3a521086c54da674405f7f0e65d, type: 3}
+    second: {fileID: 2800000, guid: 62854ac213f80c34f8fe5fbbca488e88, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Accesories_BaseColor
-    second: {fileID: 2800000, guid: d921f64092c90484fbfa8e2610c5db1f, type: 3}
+    second: {fileID: 2800000, guid: 280cb0adef00f57408fbba143bbb9094, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Accesories_Metallic
-    second: {fileID: 2800000, guid: 382ad1a7e68c2314484f5bd69b263394, type: 3}
+    second: {fileID: 2800000, guid: 99a88069da756c14cb30ecceb06dc3fd, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Accesories_Normal
-    second: {fileID: 2800000, guid: ffb763580973a1f4e946528f8f1a5407, type: 3}
+    second: {fileID: 2800000, guid: 2d22f5e5c754ee64ba794c5085945c22, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Accesories_Roughness
-    second: {fileID: 2800000, guid: 5e4f09ab5d77d6a4aa7eb0402551cd1f, type: 3}
+    second: {fileID: 2800000, guid: d8236e2795646e94694fe473da5466b3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
@@ -63,27 +68,27 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Body_BaseColor
-    second: {fileID: 2800000, guid: 682c88a6fd41bae4486b43a5050eeb43, type: 3}
+    second: {fileID: 2800000, guid: 7a486540b10766f4c95037c8d43af8c4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Body_Emission
-    second: {fileID: 2800000, guid: 57e7db76d3229fc488f87474cf8950ed, type: 3}
+    second: {fileID: 2800000, guid: 9551d7a489edd794e980c712b356acb3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Body_Metallic
-    second: {fileID: 2800000, guid: 1bf25d1b87c878a4d914f88f2464bd67, type: 3}
+    second: {fileID: 2800000, guid: ec43700aab7b5a14a895daacd5dac3b3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Body_Normal
-    second: {fileID: 2800000, guid: b94ecaf2fb6c87b4f940948e6bbdfea1, type: 3}
+    second: {fileID: 2800000, guid: 6b8998542b706cb41a72a59608d3f641, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Firetruck - Body_Roughness
-    second: {fileID: 2800000, guid: 4c158c0e2f2bdef4db167699a921eb3a, type: 3}
+    second: {fileID: 2800000, guid: 9299c1c707432364bb36d85ac34b3512, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
