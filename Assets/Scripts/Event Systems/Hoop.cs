@@ -12,5 +12,10 @@ public class Hoop : MonoBehaviour {
     adjust += lowerRange;
     transform.localPosition = new Vector3(adjust, transform.localPosition.y, transform.localPosition.z);
   }
-  
+  private void OnTriggerEnter(Collider other) {
+    if (other.tag == "Player") {
+      GetComponentInParent<EventManager>().AddHoopToCount();
+      this.gameObject.SetActive(false);
+    }
+  }
 }

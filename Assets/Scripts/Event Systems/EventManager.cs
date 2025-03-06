@@ -10,10 +10,10 @@ public class EventManager : MonoBehaviour {
   //event trigger spawn points
   [SerializeField] List<GameObject> subEventManagers;
   [SerializeField] List<Hoop> hoops;
-  [SerializeField] int hoopStartReference;
-  [SerializeField] int gapsBetweenHoops;
-  [SerializeField] float hoopLRAdjustments;
-  [SerializeField] int hoopAmount;
+  [SerializeField] int hoopStartReferenceOffset = 15;
+  [SerializeField] int gapsBetweenHoops = 2;
+  [SerializeField] float hoopLRAdjustments = 0.2f;
+  [SerializeField] int hoopAmount = 25;
   int eventStartRef;
 
   //event trigger types
@@ -33,6 +33,7 @@ public class EventManager : MonoBehaviour {
   //hoops
   int hoopCount;
   bool hoopsEvent;
+  int hoopReference;
 
 
   float eventTimer;
@@ -137,7 +138,8 @@ public class EventManager : MonoBehaviour {
     int rand = Random.Range(0, subEventManagers.Count);
     return subEventManagers[rand].GetComponent<SubEventManager>().GetRandomEventTrigger();
   }
-  public void EventTriggerReached() {
+  public void EventTriggerReached(GameObject trigger) {
+    hoopReference = subEventManagers.FindInstanceID(trigger);
     if (makeNewEvent) {
       eventText.text = "Event Created";
       alpha = 1;
@@ -157,7 +159,9 @@ public class EventManager : MonoBehaviour {
     textDelayFade = 2;
     eventText.color = new Color(1, 1, 1, alpha);
     //random event creation
-    int rand = Random.Range(0, 4);
+    //int rand = Random.Range(0, 4);
+    int rand = 3;
+
     Debug.Log(rand);
     if (rand == 0) {
       eventText.text = "Event Created: reach the destination";
@@ -185,7 +189,7 @@ public class EventManager : MonoBehaviour {
       eventTimeLimit = 30;
     } else if (rand == 3) {//hoops
       eventText.text = "Event Created: GET THROUGH ALL THE HOOPS";
-      SquenceHoops(hoopStartReference, gapsBetweenHoops, hoopLRAdjustments, hoopAmount);
+      SquenceHoops(hoopReference + hoopStartReferenceOffset, gapsBetweenHoops, hoopLRAdjustments, hoopAmount);
       hoopsEvent = true;
       hoopCount = 0;
       eventTimer = 0;

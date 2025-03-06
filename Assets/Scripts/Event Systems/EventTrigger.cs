@@ -22,7 +22,7 @@ public class EventTrigger : MonoBehaviour
 
   private void OnTriggerEnter(Collider other) {
     if (other.tag == "Player") {
-      GetComponentInParent<EventManager>().EventTriggerReached();
+      GetComponentInParent<EventManager>().EventTriggerReached(transform.parent.gameObject);
       this.gameObject.SetActive(false);
     }
   }
