@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0f0b4e4395e9fa544b8433b88b49f9a2
   - enabled: 1
+    path: Assets/Scenes/CarSelect.unity
+    guid: b85b3ec0d8f670847a2593151db14111
+  - enabled: 1
     path: Assets/Scenes/MockupLevel.unity
     guid: a2a0448bc521cf946b5d8c931e4b2e95
   - enabled: 1
     path: Assets/Scenes/TestLevel.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/AlbertsTestingGround.unity
+    guid: 59eb6af626299e5489d72eaf0c77cb63
   m_configObjects: {}

@@ -53,7 +53,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnCarClick()
     {
-        SceneManager.LoadScene("MockupLevel");
+        SceneManager.LoadScene("AlbertsTestingGround");
     }
 
     public void SwappedTo()
