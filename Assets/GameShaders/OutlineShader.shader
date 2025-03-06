@@ -4,6 +4,7 @@ Shader "Custom/OutlineShader"
     {
         _MainTex("Base (RGB)", 2D) = "white" {}
         _EdgeThreshold("Edge Threshold", Range(0, 1)) = 0.1
+        _Color("Color", Color) = (0,0,0,1)
         _NoiseTex("Noise Texture", 2D) = "white" {} // Noise texture for edge deformation
         _NoiseScale("Noise Scale", Range(0.1, 10)) = 1.0
         _NoiseIntensity("Noise Intensity", Range(0, 10)) = 1.0 // Control the strength of the deformation
@@ -24,6 +25,7 @@ Shader "Custom/OutlineShader"
                 float4 _MainTex_TexelSize; // Automatically passed texel size
                 float _NoiseScale;
                 float _NoiseIntensity;
+                float4 _Color;
 
                 struct v2f
                 {
@@ -63,7 +65,7 @@ Shader "Custom/OutlineShader"
                         float2 distortedUV = i.uv + noiseOffset;
 
                         // Return the distorted edge (black outline)
-                        return float4(0, 0, 0, 1);
+                        return _Color;
                     }
                     else
                     {

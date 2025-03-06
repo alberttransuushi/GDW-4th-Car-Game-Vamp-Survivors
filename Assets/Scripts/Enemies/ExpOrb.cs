@@ -25,7 +25,7 @@ public class ExpOrb : MonoBehaviour {
       isPickedup = true;
     }*/
     if (isPickedup && Time.timeScale != 0) {
-      velocity += Time.deltaTime;
+      velocity += Time.deltaTime * 10;
       if (Vector3.Distance(player.transform.position, transform.position) < velocity && Time.timeScale != 0) {
         player.GetComponent<PlayerExp>().GetExp(value);
         Destroy(this.gameObject);

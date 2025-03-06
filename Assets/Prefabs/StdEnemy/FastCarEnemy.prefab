@@ -229,6 +229,7 @@ MonoBehaviour:
   unGroundedGravity: 0.75
   downwardForceMultiplier: 2
   driftEfficiency: 1
+  spinOut: 0
 --- !u!114 &216019634660045120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1c29fe5c6e65a4684b48cd2b49be79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp: 3
+  exp: 2
   expOrb: {fileID: 5783732858616499691, guid: 2f10d4304d3b63f48a9c3ec231314dee, type: 3}
 --- !u!1 &2002128033825445883
 GameObject:
