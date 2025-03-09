@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerCar : MonoBehaviour
 {
@@ -104,6 +105,18 @@ public class PlayerCar : MonoBehaviour
 
     public ParticleSystem driftSpark;
 
+    [SerializeField] WheelCollider FRWheel;
+    [SerializeField] WheelCollider FLWheel;
+    [SerializeField] WheelCollider BRWheel;
+    [SerializeField] WheelCollider BLWheel;
+
+    public float frontWheelStiffness;
+    public float backWheelStiffness;
+    public float frontWheelDriftingStiffness;
+    public float backWheelDriftingStiffness;
+
+
+
 
     private void OnEnable()
     {
@@ -179,7 +192,7 @@ public class PlayerCar : MonoBehaviour
             AccelDeccel();
             ApplyDownwardForce();
 
-
+            
         }
         else
         {
@@ -201,8 +214,9 @@ public class PlayerCar : MonoBehaviour
 
     void ApplyDownwardForce()
     {
-        if(!isDrifting) rb.AddForce(0, downwardForceMultiplier * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
-        else rb.AddForce(0, downwardForceMultiplierDrifting * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
+        rb.AddForce(0, downwardForceMultiplier * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
+        //if (!isDrifting) rb.AddForce(0, downwardForceMultiplier * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
+        //else rb.AddForce(0, downwardForceMultiplierDrifting * 0.00119f * Mathf.Pow(rb.velocity.magnitude, 2), 0, ForceMode.Force);
     }
 
     void AccelDeccel()
@@ -216,11 +230,11 @@ public class PlayerCar : MonoBehaviour
                 {
                     rb.velocity += transform.forward * Time.deltaTime * acceleration;
 
-                    if (!isDrifting)
-                    {
+                    //if (!isDrifting)
+                    //{
 
                         rb.angularVelocity = Vector3.zero;
-                    }
+                    //}
                 }
                 driving = true;
                 //Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
@@ -231,11 +245,11 @@ public class PlayerCar : MonoBehaviour
                 {
                     rb.velocity -= transform.forward * Time.deltaTime * acceleration;
 
-                    if (!isDrifting)
-                    {
+                    //if (!isDrifting)
+                    //{
 
                         rb.angularVelocity = Vector3.zero;
-                    }
+                    //}
                 }
                 driving = true;
                 //Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
@@ -267,12 +281,26 @@ public class PlayerCar : MonoBehaviour
             audioSource.loop = false;
             startedEngine = false;
         }
-        
-        
-        if (driftControl.action.triggered) {
-          isDrifting = true;
+
+
+        if (driftControl.action.IsPressed()) {
+            if (FRWheel.sidewaysFriction.stiffness != frontWheelDriftingStiffness)
+            {
+                isDrifting = true;
+                ChangeSidewaysFriction(FRWheel, frontWheelDriftingStiffness);
+                ChangeSidewaysFriction(FLWheel, frontWheelDriftingStiffness);
+                ChangeSidewaysFriction(BLWheel, backWheelDriftingStiffness);
+                ChangeSidewaysFriction(BRWheel, backWheelDriftingStiffness);
+            }
+
         } else {
-          isDrifting = false;
+            if (FRWheel.sidewaysFriction.stiffness != frontWheelStiffness) { 
+                isDrifting = false;
+                ChangeSidewaysFriction(FRWheel, frontWheelStiffness);
+                ChangeSidewaysFriction(FLWheel, frontWheelStiffness);
+                ChangeSidewaysFriction(BLWheel, backWheelStiffness);
+                ChangeSidewaysFriction(BRWheel, backWheelStiffness);
+            }
         }
         
         /*
@@ -303,6 +331,12 @@ public class PlayerCar : MonoBehaviour
 
     }
 
+    void ChangeSidewaysFriction(WheelCollider wheel, float stiffVal)
+    {
+        WheelFrictionCurve friction = wheel.sidewaysFriction;  
+        friction.stiffness = stiffVal;  
+        wheel.sidewaysFriction = friction;  
+    }
     void Steering()
     {
         
@@ -341,7 +375,7 @@ public class PlayerCar : MonoBehaviour
 
 
     void TurnToWheel(float speed)
-    {
+    { /*
         if (!isDrifting)
         {
             Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
@@ -354,6 +388,10 @@ public class PlayerCar : MonoBehaviour
             
             rb.MoveRotation(rb.rotation * turn);
         }
+        */
+        Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
+
+        rb.MoveRotation(rb.rotation * turn);
     }
 
     /*
@@ -391,6 +429,7 @@ public class PlayerCar : MonoBehaviour
         //Apply Friction caused by drifting
         Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
         float perpendiuclarSpeed;
+        /*
         if (isDrifting)
         {
             perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction * driftFrictionModifier;
@@ -399,7 +438,8 @@ public class PlayerCar : MonoBehaviour
             perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
 
         }
-
+        */
+        perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
         rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
 
 
@@ -421,7 +461,8 @@ public class PlayerCar : MonoBehaviour
         {
             breaking = false;
         }
-        if(breaking == true || isDrifting)
+        //if(breaking == true || isDrifting)
+        if (breaking == true)
         {
             rb.velocity = rb.velocity / (1 + breakStrength * Time.deltaTime);
         }

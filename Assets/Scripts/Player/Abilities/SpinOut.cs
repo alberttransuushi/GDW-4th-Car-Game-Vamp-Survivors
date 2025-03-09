@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SpinOut : MonoBehaviour
 {
-    List<GameObject> possibleTargets = new List<GameObject>();
+    //List<GameObject> possibleTargets = new List<GameObject>();
     public GameObject[] enemyArray;
     [SerializeField] float maxRange;
     [SerializeField] float minRange;
+
+    [SerializeField] float cooldown;
+    [SerializeField] float cooldownCountdown;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,22 +20,30 @@ public class SpinOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cooldownCountdown -= Time.deltaTime;
+        if (cooldownCountdown <= 0) {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                DoAbility();
+            }
+        }
+
+
 
     }
 
     void DoAbility()
     {
         enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
-        possibleTargets.Clear();
+        //possibleTargets.Clear();
         foreach (GameObject enemy in enemyArray)
         {
 
             if (Vector3.Distance(enemy.transform.position, transform.position) <= maxRange && Vector3.Distance(enemy.transform.position, transform.position) >= minRange)
             {
+                LandEnemy landEnemy = enemy.GetComponent<LandEnemy>();
 
-                
-
+                landEnemy.StartSpinOut();
             }
 
         }

@@ -152,6 +152,6 @@ MonoBehaviour:
   aoeRange: 20
   damage: 2
   damageFalloff: 0
-  explosionKnockback: 50000
+  explosionKnockback: 5000
   tracking: 0
   turnSpeed: 10

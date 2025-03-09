@@ -21,7 +21,9 @@ public class LandEnemy : BaseEnemy
 
     //[SerializeField] float randomScaleStrenght;
 
-    [SerializeField] bool spinOut;
+    [SerializeField] public bool spinOut;
+    [SerializeField] bool spinOutRight;
+    [SerializeField] float spinoutDuration;
     // Start is called before the first frame update
     public override void Awake()
     {
@@ -29,6 +31,7 @@ public class LandEnemy : BaseEnemy
         base.Awake();
         currentLimitSpeed = playerCar.GetComponent<PlayerCar>().maxLandSpeed;
         
+
         //Vector3 scaleChange = new Vector3(Random.Range(0.75f, 2f), Random.Range(0.75f, 2f), Random.Range(0.75f, 2f));
         //gameObject.transform.localScale += scaleChange;
     }
@@ -40,10 +43,41 @@ public class LandEnemy : BaseEnemy
         CheckAlive();
         Movement();
 
+        SpinOut();
+    }
+
+    void SpinOut()
+    {
         if (spinOut)
         {
-            rb.angularVelocity = Vector3.up * 5;   
+            if (spinOutRight)
+            {
+                rb.angularVelocity = Vector3.up * 5;
+            }
+            else rb.angularVelocity = Vector3.up * -5;
+
+
         }
+    }
+
+    public void StartSpinOut()
+    {
+
+        float randy = Random.value;
+        if (randy < 0.5f)
+        {
+            spinOutRight = true;
+        } else spinOutRight = false;
+
+        spinOut = true;
+        StartCoroutine(Unspinout());
+    }
+
+    IEnumerator Unspinout()
+    {
+
+        yield return new WaitForSeconds(spinoutDuration);
+        spinOut = false;
     }
 
     public override void OnEnable()
@@ -125,10 +159,7 @@ public class LandEnemy : BaseEnemy
     public override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
-        if (spinOut)
-        {
-            Debug.Log(collision.gameObject.layer);
-        }
+        
         if(spinOut && collision.gameObject.layer == 12)
         {
             Destroy(this.gameObject);

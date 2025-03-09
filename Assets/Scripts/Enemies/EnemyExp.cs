@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyExp : MonoBehaviour
 {
+
   [SerializeField] int exp = 1;
   [SerializeField] GameObject expOrb;
   public void SetEnemyExp(int xp) {
