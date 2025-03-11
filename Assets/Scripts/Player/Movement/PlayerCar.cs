@@ -334,7 +334,8 @@ public class PlayerCar : MonoBehaviour
     void ChangeSidewaysFriction(WheelCollider wheel, float stiffVal)
     {
         WheelFrictionCurve friction = wheel.sidewaysFriction;
-        float val = Mathf.Lerp(friction.stiffness, stiffVal, wheelFrictionLerp);
+        float wheelFriction = 60 * wheelFrictionLerp;
+        float val = Mathf.Lerp(friction.stiffness, stiffVal, wheelFriction * Time.deltaTime);
         friction.stiffness = val;  
         wheel.sidewaysFriction = friction;  
     }
