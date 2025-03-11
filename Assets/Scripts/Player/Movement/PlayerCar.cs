@@ -115,9 +115,11 @@ public class PlayerCar : MonoBehaviour
     public float frontWheelDriftingStiffness;
     public float backWheelDriftingStiffness;
 
-    public float wheelFrictionLerp;
+    public float wheelFrictionLerpTo;
+    public float wheelFrictionLerpFrom;
+    public float maxDriftAngle;
 
-
+    float driftMaintainSpeed;
     private void OnEnable()
     {
         movementControl.action.Enable();
@@ -162,7 +164,7 @@ public class PlayerCar : MonoBehaviour
         Boost();
     }
 
-
+    
     void Boost()
     {
         if(boostLeft >= 0)
@@ -286,6 +288,7 @@ public class PlayerCar : MonoBehaviour
         if (driftControl.action.IsPressed()) {
             if (FRWheel.sidewaysFriction.stiffness != frontWheelDriftingStiffness)
             {
+                driftMaintainSpeed = rb.velocity.magnitude;
                 isDrifting = true;
                 ChangeSidewaysFriction(FRWheel, frontWheelDriftingStiffness);
                 ChangeSidewaysFriction(FLWheel, frontWheelDriftingStiffness);
@@ -333,11 +336,22 @@ public class PlayerCar : MonoBehaviour
 
     void ChangeSidewaysFriction(WheelCollider wheel, float stiffVal)
     {
-        WheelFrictionCurve friction = wheel.sidewaysFriction;
-        float wheelFriction = 60 * wheelFrictionLerp;
-        float val = Mathf.Lerp(friction.stiffness, stiffVal, wheelFriction * Time.deltaTime);
-        friction.stiffness = val;  
-        wheel.sidewaysFriction = friction;  
+        if (isDrifting)
+        {
+            WheelFrictionCurve friction = wheel.sidewaysFriction;
+            float wheelFriction = 60 * wheelFrictionLerpTo;
+            float val = Mathf.Lerp(friction.stiffness, stiffVal, wheelFriction * Time.deltaTime);
+            friction.stiffness = val;
+            wheel.sidewaysFriction = friction;
+        } else
+        {
+            WheelFrictionCurve friction = wheel.sidewaysFriction;
+            float wheelFriction = 60 * wheelFrictionLerpFrom;
+            float val = Mathf.Lerp(friction.stiffness, stiffVal, wheelFriction * Time.deltaTime);
+            friction.stiffness = val;
+            wheel.sidewaysFriction = friction;
+        }
+            
     }
     void Steering()
     {
@@ -391,9 +405,14 @@ public class PlayerCar : MonoBehaviour
             rb.MoveRotation(rb.rotation * turn);
         }
         */
-        Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
+        float driftAngle = Vector3.Angle(transform.forward, rb.velocity.normalized);
+        if (!isDrifting || (isDrifting && driftAngle < maxDriftAngle))
+        {
+            Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
 
-        rb.MoveRotation(rb.rotation * turn);
+            rb.MoveRotation(rb.rotation * turn);
+        }
+        Debug.Log(Vector3.Angle(transform.forward, rb.velocity.normalized));
     }
 
     /*
