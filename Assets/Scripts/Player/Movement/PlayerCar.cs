@@ -115,7 +115,7 @@ public class PlayerCar : MonoBehaviour
     public float frontWheelDriftingStiffness;
     public float backWheelDriftingStiffness;
 
-
+    public float wheelFrictionLerp;
 
 
     private void OnEnable()
@@ -333,8 +333,9 @@ public class PlayerCar : MonoBehaviour
 
     void ChangeSidewaysFriction(WheelCollider wheel, float stiffVal)
     {
-        WheelFrictionCurve friction = wheel.sidewaysFriction;  
-        friction.stiffness = stiffVal;  
+        WheelFrictionCurve friction = wheel.sidewaysFriction;
+        float val = Mathf.Lerp(friction.stiffness, stiffVal, wheelFrictionLerp);
+        friction.stiffness = val;  
         wheel.sidewaysFriction = friction;  
     }
     void Steering()
