@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: d7aad51ded0d5b54c83583cff031f443
+guid: 6b367b38267ae4f4383673e0b4d17243
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Miata - Accessories
-    second: {fileID: 2100000, guid: c7f095ca0dca41b4985ad3137cc8de93, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Miata - Body
-    second: {fileID: 2100000, guid: 549305eaeb6f1f84cbb22210b5ba3c09, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Miata - Wheels
-    second: {fileID: 2100000, guid: dd203de95094833469765293333f3f84, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
