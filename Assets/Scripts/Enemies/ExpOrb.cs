@@ -19,7 +19,9 @@ public class ExpOrb : MonoBehaviour {
     GetComponent<Rigidbody>().AddForce(tempVector.x * 300, 700, tempVector.z * 300);
         //Debug.Log("force added");
         isPickedup = true;
-  }
+        player.GetComponent<PlayerExp>().GetExp(value);
+        Destroy(this.gameObject);
+    }
   private void Update() {
   /*  if (Vector3.Distance(player.transform.position, transform.position) < PlayerStats.expPickupRange && !isPickedup && Time.timeScale != 0) {
       isPickedup = true;
@@ -33,11 +35,11 @@ public class ExpOrb : MonoBehaviour {
       transform.position += Vector3.Normalize(player.transform.position - transform.position) * velocity;
     }
   }
-  private void OnTriggerEnter(Collider other) {
+  private void OnTriggerEnter(Collider other) {/*
     if (other.gameObject.tag == "Ground" && inAir) {
       gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 
       inAir = false;
-    }
+    }*/
   }
 }
