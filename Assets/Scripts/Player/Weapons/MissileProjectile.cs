@@ -13,6 +13,9 @@ public class MissileProjectile : MonoBehaviour
     [SerializeField] float explosionKnockback;
     [SerializeField] bool tracking;
     [SerializeField] float turnSpeed;
+    [SerializeField] ParticleSystem fireParticles;
+    [SerializeField] GameObject explosionParticles;
+
     //[SerializeField] float trackingSpeed;
 
     Rigidbody rb;
@@ -21,6 +24,7 @@ public class MissileProjectile : MonoBehaviour
     {
         StartCoroutine(DelayTracking());
         rb = GetComponent<Rigidbody>();
+        fireParticles.Play();
 
         //rb.velocity = new Vector3(0, 200, 0);
 
@@ -34,6 +38,10 @@ public class MissileProjectile : MonoBehaviour
         if (tracking)
         {
             TrackTarget();
+            if (!fireParticles.isPlaying)
+            {
+                fireParticles.Play();
+            }
         }
         if(target == null)
         {
@@ -79,6 +87,8 @@ public class MissileProjectile : MonoBehaviour
                 collider.gameObject.GetComponent<BaseEnemy>().takeDamge(damage);
 
                 collider.GetComponent<Rigidbody>().AddExplosionForce(explosionKnockback, pointOfExplosion, aoeRange, 3.0f, ForceMode.Impulse);
+
+                Instantiate(explosionParticles, this.gameObject.transform);
             }
         }
 
