@@ -23,6 +23,8 @@ public class PlayerCar : MonoBehaviour
     public float boostLeft;
     [SerializeField] float boostAdded;
     [SerializeField] float boostMultiplier;
+    [SerializeField] bool canBoost;
+    [SerializeField] float boostCooldownTime = 5f;
 
     [SerializeField] float acceleration;
     [SerializeField] float turnSpeed;
@@ -33,6 +35,8 @@ public class PlayerCar : MonoBehaviour
     float currentDriftFriction;
     [SerializeField] float setDriftFriction;
     [SerializeField] float driftFrictionModifier;
+
+    
     
     [SerializeField] float driftTurnSpeedModifier;
     [SerializeField] float breakStrength = 0.05f;
@@ -82,6 +86,8 @@ public class PlayerCar : MonoBehaviour
     private InputActionReference AoADriftControl;
     [SerializeField]
     private InputActionReference UnstuckControl;
+    [SerializeField]
+    private InputActionReference boostControl;
 
     [Header("audio")]
     public AudioSource audioSource;
@@ -127,6 +133,7 @@ public class PlayerCar : MonoBehaviour
         fireControl.action.Enable();
         AoADriftControl.action.Enable();
         UnstuckControl.action.Enable();
+        boostControl.action.Enable();
 
     }
 
@@ -137,6 +144,7 @@ public class PlayerCar : MonoBehaviour
         fireControl.action.Disable();
         AoADriftControl.action.Disable();
         UnstuckControl.action.Disable();
+        boostControl.action.Disable();
 
     }
 
@@ -149,6 +157,7 @@ public class PlayerCar : MonoBehaviour
         currentDriftFriction = setDriftFriction;
         audioSource = GetComponent<AudioSource>();
         baseVolume = audioSource.volume;
+        canBoost = true;
         //driftSpark.Stop();
     }
 
@@ -177,10 +186,19 @@ public class PlayerCar : MonoBehaviour
 
     void AddBoost()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (boostControl.action.IsPressed() && canBoost)
         {
             boostLeft = boostAdded;
+            BoostCooldown();
+            Debug.Log("BOOST");
         }
+    }
+
+    IEnumerator BoostCooldown()
+    {
+        canBoost = false;
+        yield return new WaitForSeconds(boostCooldownTime);
+        canBoost = true;
     }
 
     public void Movement()
@@ -224,39 +242,15 @@ public class PlayerCar : MonoBehaviour
     void AccelDeccel()
     {
         driving = false;
-        if (!AOAEnabled)
+        
+        
+        if (rb.velocity.magnitude <= maxLandSpeed)
         {
-            if (movementControl.action.ReadValue<Vector2>().y > 0)
-            {
-                if (rb.velocity.magnitude <= maxLandSpeed)
-                {
-                    rb.velocity += transform.forward * Time.deltaTime * acceleration;
-
-                    //if (!isDrifting)
-                    //{
-
-                        rb.angularVelocity = Vector3.zero;
-                    //}
-                }
-                driving = true;
-                //Debug.Log("Should be moving forward, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
-            }
-            if (movementControl.action.ReadValue<Vector2>().y < 0)
-            {
-                if (rb.velocity.magnitude <= maxLandSpeed)
-                {
-                    rb.velocity -= transform.forward * Time.deltaTime * acceleration;
-
-                    //if (!isDrifting)
-                    //{
-
-                        rb.angularVelocity = Vector3.zero;
-                    //}
-                }
-                driving = true;
-                //Debug.Log("Should be moving backwards, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
-            }
+            float accel = movementControl.action.ReadValue<Vector2>().y;
+            rb.velocity -= transform.forward * Time.deltaTime * acceleration * -accel;
+            rb.angularVelocity = Vector3.zero;
         }
+
         if (driving && !startedEngine)
         {
             audioSource.volume = baseVolume;
@@ -285,26 +279,7 @@ public class PlayerCar : MonoBehaviour
         }
 
 
-        if (driftControl.action.IsPressed()) {
-            if (FRWheel.sidewaysFriction.stiffness != frontWheelDriftingStiffness)
-            {
-                driftMaintainSpeed = rb.velocity.magnitude;
-                isDrifting = true;
-                ChangeSidewaysFriction(FRWheel, frontWheelDriftingStiffness);
-                ChangeSidewaysFriction(FLWheel, frontWheelDriftingStiffness);
-                ChangeSidewaysFriction(BLWheel, backWheelDriftingStiffness);
-                ChangeSidewaysFriction(BRWheel, backWheelDriftingStiffness);
-            }
-
-        } else {
-            if (FRWheel.sidewaysFriction.stiffness != frontWheelStiffness) { 
-                isDrifting = false;
-                ChangeSidewaysFriction(FRWheel, frontWheelStiffness);
-                ChangeSidewaysFriction(FLWheel, frontWheelStiffness);
-                ChangeSidewaysFriction(BLWheel, backWheelStiffness);
-                ChangeSidewaysFriction(BRWheel, backWheelStiffness);
-            }
-        }
+        
         
         /*
         //You can remove this and uncomment the one up top
@@ -356,55 +331,41 @@ public class PlayerCar : MonoBehaviour
     void Steering()
     {
         
-        if (movementControl.action.ReadValue<Vector2>().x < 0)
+        float turn = movementControl.action.ReadValue<Vector2>().x;
+        
+        TurnToWheel(turn * turnSpeed);
+
+        if (driftControl.action.IsPressed())
         {
-            TurnToWheel(-turnSpeed);
+            if (FRWheel.sidewaysFriction.stiffness != frontWheelDriftingStiffness)
+            {
+                driftMaintainSpeed = rb.velocity.magnitude;
+                isDrifting = true;
+                ChangeSidewaysFriction(FRWheel, frontWheelDriftingStiffness);
+                ChangeSidewaysFriction(FLWheel, frontWheelDriftingStiffness);
+                ChangeSidewaysFriction(BLWheel, backWheelDriftingStiffness);
+                ChangeSidewaysFriction(BRWheel, backWheelDriftingStiffness);
+            }
 
         }
-        if (movementControl.action.ReadValue<Vector2>().x > 0)
+        else
         {
-            TurnToWheel(turnSpeed);
-
-
+            if (FRWheel.sidewaysFriction.stiffness != frontWheelStiffness)
+            {
+                isDrifting = false;
+                ChangeSidewaysFriction(FRWheel, frontWheelStiffness);
+                ChangeSidewaysFriction(FLWheel, frontWheelStiffness);
+                ChangeSidewaysFriction(BLWheel, backWheelStiffness);
+                ChangeSidewaysFriction(BRWheel, backWheelStiffness);
+            }
         }
-        /*
-        dirToTurn = gameObject.transform.forward;
-        if (movementControl.action.ReadValue<Vector2>().x < 0)
-        {
-            dirToTurn = Quaternion.AngleAxis(-turnAngle, Vector2.up) * transform.forward;
-            //Debug.Log("Should be turning left, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
-        }
-        if (movementControl.action.ReadValue<Vector2>().x > 0)
-        {
-            dirToTurn = Quaternion.AngleAxis(turnAngle, Vector2.up) * transform.forward;
-            //Debug.Log("Should be turning right, Vector 2 is: " + movementControl.action.ReadValue<Vector2>().x + movementControl.action.ReadValue<Vector2>().y);
-        }
-        if (rb.velocity.magnitude >= 0)
-        {
-            TurnToWheel(dirToTurn);
-            //print("Turning");
-        }
-        Debug.Log("DIR:" + dirToTurn.ToString());
-        */
 
     }
 
 
     void TurnToWheel(float speed)
-    { /*
-        if (!isDrifting)
-        {
-            Quaternion turn = Quaternion.Euler(0, speed * Time.deltaTime, 0);
-            
-            rb.MoveRotation(rb.rotation * turn);
-        }
-        else
-        {
-            Quaternion turn = Quaternion.Euler(0,  (driftTurnSpeedModifier * speed) * Time.deltaTime, 0);
-            
-            rb.MoveRotation(rb.rotation * turn);
-        }
-        */
+    { 
+        
         float driftAngle = Vector3.Angle(transform.forward, rb.velocity.normalized);
         if (!isDrifting || (isDrifting && driftAngle < maxDriftAngle))
         {
@@ -412,25 +373,10 @@ public class PlayerCar : MonoBehaviour
 
             rb.MoveRotation(rb.rotation * turn);
         }
-        Debug.Log(Vector3.Angle(transform.forward, rb.velocity.normalized));
+        //Debug.Log(Vector3.Angle(transform.forward, rb.velocity.normalized));
     }
 
-    /*
-    void TurnToWheel(Vector3 dir)
-    {
-        //Add More Turn Speed when drifting
-        if (!isDrifting)
-        {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dir.x, dir.y, dir.z), turnSpeed * Time.deltaTime, 10.0f));
-        }
-        else
-        {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, new Vector3(dir.x, dir.y, dir.z), (turnSpeed + driftTurnSpeedModifier) * Time.deltaTime, 10.0f));
-        }
-
-    }
-
-    */
+   
 
     public bool CheckGrounded()
     {
@@ -450,16 +396,7 @@ public class PlayerCar : MonoBehaviour
         //Apply Friction caused by drifting
         Vector3 perpendicularVelocity = transform.right * Vector3.Dot(transform.right, rb.velocity);
         float perpendiuclarSpeed;
-        /*
-        if (isDrifting)
-        {
-            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction * driftFrictionModifier;
-        } else
-        {
-            perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
-
-        }
-        */
+        
         perpendiuclarSpeed = perpendicularVelocity.magnitude * currentDriftFriction;
         rb.velocity -= perpendicularVelocity.normalized * perpendiuclarSpeed;
 
@@ -482,7 +419,6 @@ public class PlayerCar : MonoBehaviour
         {
             breaking = false;
         }
-        //if(breaking == true || isDrifting)
         if (breaking == true)
         {
             rb.velocity = rb.velocity / (1 + breakStrength * Time.deltaTime);
@@ -601,23 +537,14 @@ public class PlayerCar : MonoBehaviour
             if (collider.gameObject.tag == "Enemy")
             {
 
-                //print("BOOM");
                 collider.GetComponent<Rigidbody>().AddExplosionForce(unstuckExplosionStrength, pointOfExplosion, unstuckAoeRange, 3.0f, ForceMode.Acceleration);
 
                 collider.GetComponent<BaseEnemy>().takeDamge(explosionDamage);
 
             }
         }
-        StartCoroutine(AoeHoloTime(AoeTempTime));
     }
 
-    IEnumerator AoeHoloTime(float time)
-    {
-        AoeVisualizer.SetActive(true);
-        yield return new WaitForSeconds(time);
-
-        AoeVisualizer.SetActive(false);
-    }
 
 
 

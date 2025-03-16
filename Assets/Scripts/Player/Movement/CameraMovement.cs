@@ -63,12 +63,23 @@ public class CameraMovement : MonoBehaviour
 
         transform.position = playerCar.transform.position;
 
-
+        /*
         if(CameraReverseControl.action.WasPressedThisFrame()) { 
             frontCamera.enabled = false;
             backCamera.enabled = true;
 
         } else if (CameraReverseControl.action.WasReleasedThisFrame())
+        {
+            frontCamera.enabled = true;
+            backCamera.enabled = false;
+        }*/
+        if (CameraReverseControl.action.IsPressed())
+        {
+            frontCamera.enabled = false;
+            backCamera.enabled = true;
+
+        }
+        else 
         {
             frontCamera.enabled = true;
             backCamera.enabled = false;
