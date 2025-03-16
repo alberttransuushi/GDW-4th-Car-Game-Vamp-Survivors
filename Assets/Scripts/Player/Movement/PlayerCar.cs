@@ -247,6 +247,7 @@ public class PlayerCar : MonoBehaviour
         if (rb.velocity.magnitude <= maxLandSpeed)
         {
             float accel = movementControl.action.ReadValue<Vector2>().y;
+            Debug.Log(accel);
             rb.velocity -= transform.forward * Time.deltaTime * acceleration * -accel;
             rb.angularVelocity = Vector3.zero;
         }
@@ -386,6 +387,7 @@ public class PlayerCar : MonoBehaviour
         }
         else
         {
+            Debug.Log("false");
             return false;
         }
 
