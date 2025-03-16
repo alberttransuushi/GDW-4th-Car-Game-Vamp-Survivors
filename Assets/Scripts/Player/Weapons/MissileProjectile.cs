@@ -82,13 +82,15 @@ public class MissileProjectile : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<PlayerCar>().TakeDamage(damage);
                 }*/
-                //print("BOOM");
+                print("BOOM");
+
+                Instantiate(explosionParticles, this.gameObject.transform.position, this.gameObject.transform.rotation);
 
                 collider.gameObject.GetComponent<BaseEnemy>().takeDamge(damage);
 
                 collider.GetComponent<Rigidbody>().AddExplosionForce(explosionKnockback, pointOfExplosion, aoeRange, 3.0f, ForceMode.Impulse);
 
-                Instantiate(explosionParticles, this.gameObject.transform);
+
             }
         }
 
