@@ -778,6 +778,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4846569243430522170}
     m_Modifications:
+    - target: {fileID: 1810985470925006428, guid: da9ede24b73c0c148858f6b2ebc3a047, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2117299408983747217, guid: da9ede24b73c0c148858f6b2ebc3a047, type: 3}
       propertyPath: m_Name
       value: Hoop

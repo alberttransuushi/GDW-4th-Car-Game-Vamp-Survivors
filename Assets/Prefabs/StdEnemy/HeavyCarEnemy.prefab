@@ -680,6 +680,8 @@ MonoBehaviour:
   downwardForceMultiplier: 2
   driftEfficiency: 1
   spinOut: 0
+  spinOutRight: 0
+  spinoutDuration: 0
 --- !u!114 &6730816308427033027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1c29fe5c6e65a4684b48cd2b49be79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp: 2
+  exp: 0
   expOrb: {fileID: 5783732858616499691, guid: 2f10d4304d3b63f48a9c3ec231314dee, type: 3}
 --- !u!114 &2275620496935498851
 MonoBehaviour:

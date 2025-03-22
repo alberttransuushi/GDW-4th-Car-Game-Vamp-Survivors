@@ -10,6 +10,13 @@ TagManager:
   - Enemy
   - target
   - GUI
+  - TopViewCamera
+  - BackCamera
+  - LeftCamera
+  - RightCamera
+  - RoadCamera1
+  - RoadCamera2
+  - RoadCamera3
   layers:
   - Default
   - TransparentFX
