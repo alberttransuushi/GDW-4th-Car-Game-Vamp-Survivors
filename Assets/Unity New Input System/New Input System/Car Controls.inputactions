@@ -332,8 +332,19 @@
                 },
                 {
                     "name": "",
+                    "id": "c8d4a245-cfc7-4d74-980d-de1169ef3653",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "19e7ac90-95ed-4e33-8038-92f4f1c55e6a",
-                    "path": "<Keyboard>/r",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
