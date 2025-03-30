@@ -36,4 +36,7 @@ public class PlayerExp : MonoBehaviour
       upgradeUI.gameObject.GetComponent<WeaponUI>().UpdateUpgradeMenu();
     }
   }
+  public float GetNextLevelRequirement() {
+    return nextLevelRequirement;
+  }
 }

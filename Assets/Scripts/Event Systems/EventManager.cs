@@ -35,6 +35,8 @@ public class EventManager : MonoBehaviour {
   bool hoopsEvent;
   int hoopReference;
 
+  //event compelted
+  bool eventCompleted;
 
   float eventTimer;
   float eventTimeLimit;
@@ -84,6 +86,7 @@ public class EventManager : MonoBehaviour {
     if (timesHitEvent) {
       if (timeSinceLastHit >= timeSinceLastHitWinCon) {
         eventText.text = "Event Completed";
+        eventCompleted = true;
         alpha = 1;
         textDelayFade = 2;
         eventText.color = new Color(1, 1, 1, alpha);
@@ -106,6 +109,7 @@ public class EventManager : MonoBehaviour {
       }
       if (enemiesKilled >= enemiesToBeKilled) {
         eventText.text = "Event Complete";
+        eventCompleted = true;
         alpha = 1;
         textDelayFade = 2;
         eventText.color = new Color(1, 1, 1, alpha);
@@ -121,6 +125,7 @@ public class EventManager : MonoBehaviour {
       }
       if (hoopCount >= hoopAmount) {
         eventText.text = "Event Complete";
+        eventCompleted = true;
         alpha = 1;
         textDelayFade = 2;
         eventText.color = new Color(1, 1, 1, alpha);
@@ -132,6 +137,12 @@ public class EventManager : MonoBehaviour {
         alpha -= Time.deltaTime * 0.5f;  
       }
       eventText.color = new Color(1, 1, 1, alpha);
+    }
+    if (eventCompleted) {
+      GameObject playerCar = GameObject.FindGameObjectWithTag("Player");
+      float expDrop = playerCar.GetComponent<PlayerExp>().GetNextLevelRequirement();
+      GameObject orb = Instantiate(expOrb, playerCar.transform.position, playerCar.transform.rotation);
+      orb.GetComponent<ExpOrb>().SetExpValue(expDrop);
     }
   }
   GameObject GetRandomEventTrigger() {

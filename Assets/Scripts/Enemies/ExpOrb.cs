@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExpOrb : MonoBehaviour {
-  [SerializeField] int value = 1;
+  [SerializeField] float value = 1;
   bool inAir = true;
   GameObject player;
   bool isPickedup;
   float velocity;
   float temp;
-  public void SetExpValue(int expValue) {
+  public void SetExpValue(float expValue) {
     value = expValue;
   }
   private void Start() {
