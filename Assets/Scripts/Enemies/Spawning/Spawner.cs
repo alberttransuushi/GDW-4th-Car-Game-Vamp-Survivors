@@ -180,7 +180,7 @@ public class Spawner : MonoBehaviour
         {
             totalNumberOfEnemies += enemies.numberOfEnemies;
         }
-        Debug.Log(totalNumberOfEnemies);
+        //Debug.Log(totalNumberOfEnemies);
         return totalNumberOfEnemies;
 
     }

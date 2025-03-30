@@ -16,7 +16,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
     [SerializeField] bool collectionCheck = true;
     [SerializeField] int defaultCap = 10;
     [SerializeField] int maxPoolSize = 100;
-    [SerializeField] int maxSoundInstances = 30;
+    [SerializeField] public int maxSoundInstances = 30;
 
     void Start()
     {

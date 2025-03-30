@@ -77,17 +77,19 @@ public class PlayerCar : MonoBehaviour
     [Header("Controls")]
     //All our input objects, cause yay I guess
     [SerializeField]
-    private InputActionReference movementControl;
+    public InputActionReference movementControl;
     [SerializeField]
-    private InputActionReference driftControl;
+    public InputActionReference driftControl;
     [SerializeField]
-    private InputActionReference fireControl;
+    public InputActionReference fireControl;
     [SerializeField]
-    private InputActionReference AoADriftControl;
+    public InputActionReference AoADriftControl;
     [SerializeField]
-    private InputActionReference UnstuckControl;
+    public InputActionReference UnstuckControl;
     [SerializeField]
-    private InputActionReference boostControl;
+    public InputActionReference boostControl;
+    [SerializeField]
+    public InputActionReference pauseControl;
 
     [Header("audio")]
     public AudioSource audioSource;
@@ -134,7 +136,7 @@ public class PlayerCar : MonoBehaviour
         AoADriftControl.action.Enable();
         UnstuckControl.action.Enable();
         boostControl.action.Enable();
-
+        pauseControl.action.Enable();
     }
 
     private void OnDisable()
@@ -145,7 +147,7 @@ public class PlayerCar : MonoBehaviour
         AoADriftControl.action.Disable();
         UnstuckControl.action.Disable();
         boostControl.action.Disable();
-
+        pauseControl.action.Disable();
     }
 
     // Start is called before the first frame update
@@ -247,7 +249,7 @@ public class PlayerCar : MonoBehaviour
         if (rb.velocity.magnitude <= maxLandSpeed)
         {
             float accel = movementControl.action.ReadValue<Vector2>().y;
-            Debug.Log(accel);
+            //Debug.Log(accel);
             rb.velocity -= transform.forward * Time.deltaTime * acceleration * -accel;
             rb.angularVelocity = Vector3.zero;
         }
@@ -387,7 +389,7 @@ public class PlayerCar : MonoBehaviour
         }
         else
         {
-            Debug.Log("false");
+            //Debug.Log("false");
             return false;
         }
 
