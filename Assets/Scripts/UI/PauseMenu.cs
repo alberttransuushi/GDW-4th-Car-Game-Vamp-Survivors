@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
 
 
     private void Update() {
-        Debug.Log(gamePaused);
+        //Debug.Log(gamePaused);
         if (pauseControl.action.WasPressedThisFrame() && gamePaused == false)
         {
 

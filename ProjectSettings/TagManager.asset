@@ -17,6 +17,7 @@ TagManager:
   - RoadCamera1
   - RoadCamera2
   - RoadCamera3
+  - EnemyTracker
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - 
   - Wall
   - PlayerProjectiles
-  - 
+  - PlayerWeapon
   - 
   - 
   - 

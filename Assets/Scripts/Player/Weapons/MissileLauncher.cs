@@ -3,62 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MissileLauncher : MonoBehaviour
+public class MissileLauncher : PrimaryWeapon
 {
-    [SerializeField]
-    private InputActionReference fireControl;
-    [SerializeField]
-    private InputActionReference reloadControl;
 
-    public GameObject player;
+    public GameObject crosshairPrefab;
     public GameObject missilePrefab;
     public GameObject missileSpawner;
     public GameObject GUICanvas;
-    public GameObject crosshairPrefab;
-    public List<GameObject> targetList = new List<GameObject>();
-    public GameObject[] enemyArray;
-    public List<GameObject> validTargets = new List<GameObject>();
 
     [SerializeField, Range(0,75)] float lockOnAngle;
-    [SerializeField] float minRange;
-    [SerializeField] float maxRange;
 
     [SerializeField, Range(1, 5)] int numberOfMissiles;
 
     [SerializeField] List<GameObject> lockOnUIs = new List<GameObject>();
     public Camera currentCam;
 
-    public int maxAmmo = 5;
-    public int currentAmmo;
-    public float reloadTime;
-    public bool isReloading;
 
-    private void Start()
+    public override void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        base.Start();
         GUICanvas = GameObject.FindGameObjectWithTag("GUI");
         for(int i = 0; i < numberOfMissiles; i++)
         {
             GameObject prefab = Instantiate(crosshairPrefab, GUICanvas.transform);
             lockOnUIs.Add(prefab);
         }
-        currentAmmo = maxAmmo;
+        
     }
-    private void OnEnable()
-    {
-        fireControl.action.Enable();
-        reloadControl.action.Enable();
-    }
-    private void OnDisable()
-    {
-        fireControl.action.Disable();
-        reloadControl.action.Disable(); 
-    }
+    
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        enemyArray = GameObject.FindGameObjectsWithTag("Enemy");
+        
         validTargets.Clear();
         foreach(GameObject enemy in enemyArray)
         {
@@ -69,34 +46,23 @@ public class MissileLauncher : MonoBehaviour
             }
 
         }
-
-
-        if (fireControl.action.WasPressedThisFrame())
-        {
-            if (currentAmmo > 0)
-            {
-                FireMissiles();
-                Debug.Log("FIRE");
-            }
-            else if (!isReloading) StartCoroutine(Reload());
-                
-        }
-
-        if(reloadControl.action.WasPressedThisFrame() && !isReloading) StartCoroutine(Reload());
-
         currentCam = Camera.main;
         UpdateLockOn();
-  
+        base.Update();
+
     }
 
-    IEnumerator Reload()
+    public override void Fire()
     {
-        isReloading = true;
-        currentAmmo = 0;
-        yield return new WaitForSeconds(reloadTime);
-        isReloading = false;
-        currentAmmo = maxAmmo;
+        if (currentAmmo > 0)
+        {
+            FireMissiles();
+            
+        }
+        else if (!isReloading) StartCoroutine(Reload());
     }
+
+    
 
     void FireMissiles()
     {

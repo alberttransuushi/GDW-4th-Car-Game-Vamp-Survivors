@@ -135,7 +135,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575671208401800621}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -222,6 +222,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   height: 8
+  isStunned: 0
   currentLimitSpeed: 220
   minLandSpeed: 120
   maxLandSpeed: 250

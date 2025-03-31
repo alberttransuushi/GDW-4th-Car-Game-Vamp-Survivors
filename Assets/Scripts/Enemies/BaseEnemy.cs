@@ -27,8 +27,8 @@ public class BaseEnemy : MonoBehaviour {
   RaycastHit hit;
   [SerializeField] protected float height;
 
-
-  public virtual void Awake() {
+    [SerializeField] public bool isStunned;
+    public virtual void Awake() {
     rb = GetComponent<Rigidbody>();
     rb.centerOfMass = centerOfMass.gameObject.transform.localPosition;
 
@@ -48,7 +48,15 @@ public class BaseEnemy : MonoBehaviour {
       targetingPlayer = false;
     }
   }
-  public virtual void OnEnable() {
+
+    public IEnumerator Stun(float stunDuration)
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(stunDuration);
+        isStunned = false;
+    }
+
+    public virtual void OnEnable() {
     health = maxHealth;
     rb.velocity = Vector3.zero;
     rb.angularVelocity = Vector3.zero;

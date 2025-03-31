@@ -24,6 +24,8 @@ public class LandEnemy : BaseEnemy
     [SerializeField] public bool spinOut;
     [SerializeField] bool spinOutRight;
     [SerializeField] float spinoutDuration;
+
+    
     // Start is called before the first frame update
     public override void Awake()
     {
@@ -41,7 +43,7 @@ public class LandEnemy : BaseEnemy
     {
         base.LateUpdate();
         CheckAlive();
-        Movement();
+        if(!isStunned) Movement();
 
         SpinOut();
     }
@@ -59,7 +61,7 @@ public class LandEnemy : BaseEnemy
 
         }
     }
-
+    
     public void StartSpinOut()
     {
 
