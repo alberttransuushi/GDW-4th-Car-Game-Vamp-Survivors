@@ -748,6 +748,7 @@ GameObject:
   - component: {fileID: 7169072671228034129}
   - component: {fileID: 6842073040297024963}
   - component: {fileID: 8428507569749682672}
+  - component: {fileID: 5470844850733174261}
   m_Layer: 10
   m_Name: Wheel - Tire - FR
   m_TagString: Untagged
@@ -821,6 +822,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5470844850733174261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199515240090261926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 688608778225391961}
 --- !u!1 &1426206220909584706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1262,7 @@ GameObject:
   - component: {fileID: 8625307064485370976}
   - component: {fileID: 8917213425620790432}
   - component: {fileID: 316211977714608621}
+  - component: {fileID: 2211290115765306286}
   m_Layer: 10
   m_Name: Wheel - Tire - RR
   m_TagString: Untagged
@@ -1321,6 +1336,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2211290115765306286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349835447773236124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 9211524441040090638}
 --- !u!1 &3854914794188996632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1360,7 @@ GameObject:
   - component: {fileID: 8881978489704922337}
   - component: {fileID: 7897095134391825299}
   - component: {fileID: 8791466582524364145}
+  - component: {fileID: 3145254208601741368}
   m_Layer: 10
   m_Name: Wheel - Tire - FL
   m_TagString: Untagged
@@ -1405,6 +1434,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3145254208601741368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854914794188996632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 2609272865749707827}
 --- !u!1 &4105164463968340554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2452,7 @@ GameObject:
   - component: {fileID: 4245796127547260643}
   - component: {fileID: 549016340314688894}
   - component: {fileID: 4215996861455681637}
+  - component: {fileID: 7193205667065941326}
   m_Layer: 10
   m_Name: Wheel - Tire - RL
   m_TagString: Untagged
@@ -2483,6 +2526,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7193205667065941326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917572532363980922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 7198189977081418472}
 --- !u!1 &6013096657307862251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,7 +2886,7 @@ Transform:
   m_GameObject: {fileID: 6487116554747273194}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalPosition: {x: 0, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

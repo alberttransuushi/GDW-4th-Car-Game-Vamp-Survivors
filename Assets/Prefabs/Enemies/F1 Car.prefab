@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: 7577663466747075286}
   - component: {fileID: 6101964208866273826}
   - component: {fileID: 2838357473518426074}
+  - component: {fileID: 6997659248585708429}
   m_Layer: 6
   m_Name: F1 - Wheel - FR
   m_TagString: Untagged
@@ -904,6 +905,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6997659248585708429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415547836960654610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 1811475353366792932}
 --- !u!1 &1598914009373087535
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2038,7 @@ GameObject:
   - component: {fileID: 5807222274723097107}
   - component: {fileID: 2287594790910281927}
   - component: {fileID: 8008499389688471177}
+  - component: {fileID: 7624586064701248444}
   m_Layer: 10
   m_Name: F1 - Wheel - FL
   m_TagString: Untagged
@@ -2098,6 +2113,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7624586064701248444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745013435224434130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 1911694966392022257}
 --- !u!1 &4893244561238586301
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2220,7 @@ GameObject:
   - component: {fileID: 4870385926671810110}
   - component: {fileID: 5087117602441424910}
   - component: {fileID: 616444881277449765}
+  - component: {fileID: 5235873815156842109}
   m_Layer: 10
   m_Name: F1 - Wheel - RL
   m_TagString: Untagged
@@ -2266,6 +2295,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5235873815156842109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412436494677591801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 4832734810591007291}
 --- !u!1 &5832570252472012520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,6 +2968,7 @@ GameObject:
   - component: {fileID: 1863464700084811541}
   - component: {fileID: 6202860605664315198}
   - component: {fileID: 5236094247032062871}
+  - component: {fileID: 1770969190835055342}
   m_Layer: 10
   m_Name: F1 - Wheel - RR
   m_TagString: Untagged
@@ -3000,6 +3043,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1770969190835055342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014024014948336048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 4185764307199558550}
 --- !u!1 &8263813600260511203
 GameObject:
   m_ObjectHideFlags: 0
