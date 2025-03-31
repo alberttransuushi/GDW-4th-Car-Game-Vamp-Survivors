@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Miata - Accessories
-    second: {fileID: 2100000, guid: c7f095ca0dca41b4985ad3137cc8de93, type: 2}
+    second: {fileID: 2100000, guid: 9694c9d5a64ec9540843559db274c667, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Miata - Body
-    second: {fileID: 2100000, guid: 549305eaeb6f1f84cbb22210b5ba3c09, type: 2}
+    second: {fileID: 2100000, guid: 8b479258577357948b83f44c348b3b5c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Miata - Wheels
-    second: {fileID: 2100000, guid: dd203de95094833469765293333f3f84, type: 2}
+    second: {fileID: 2100000, guid: c24e8d2a7634a244f94f0b6a25ddd170, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

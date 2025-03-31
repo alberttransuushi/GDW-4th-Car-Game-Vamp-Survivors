@@ -3,7 +3,22 @@ guid: 3530024fe84cc06449c5c7f223b6bf7e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mustang - Accessories
+    second: {fileID: 2100000, guid: 3a780251a0f0e4640896d3a9976af21c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mustang - Body
+    second: {fileID: 2100000, guid: 3d32531da22f4824b9fa9740c11034aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mustang - Wheels
+    second: {fileID: 2100000, guid: ab6bda74732b2f342b3801067d41bed7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
