@@ -5514,7 +5514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 0}
   damage: 1.5
-  weaponRef: {fileID: 0}
+  weaponRef: {fileID: 8956007007202928151}
   enemy: []
   enemyBurnTime: []
   burnTime: 0
@@ -6920,7 +6920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: 20
   maxRange: 80
-  obstacle: {fileID: 915904599284298038, guid: 7b6d42b82a358ba44a2efa242bce9fb8, type: 3}
+  obstacle: {fileID: 786977376565826382, guid: f200729ce6e8c5740bdbc505dd2d22c5, type: 3}
   targets: []
   rangeAddedFromSpeedMultiplier: 10
   checkPoints: []
@@ -8552,7 +8552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: 67fd707e97e5b4c4cbb5ed057b472a35, type: 2}
   damage: 1
-  weaponRef: {fileID: 0}
+  weaponRef: {fileID: 8956007007202928151}
   baseTransform: {fileID: 4130189582877611994}
   direction: {x: 0, y: 0, z: 0}
   rotationSpeed: 1
