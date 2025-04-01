@@ -5276,6 +5276,7 @@ GameObject:
   - component: {fileID: 839215393855987772}
   - component: {fileID: 7807116884520010862}
   - component: {fileID: 5067628834713910360}
+  - component: {fileID: 1624205921014726820}
   m_Layer: 0
   m_Name: Wheel - BL
   m_TagString: Untagged
@@ -5348,6 +5349,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1624205921014726820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496703807118319637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 1963322660914332087}
 --- !u!1 &653819783114123299
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,7 +5493,7 @@ WheelCollider:
   m_GameObject: {fileID: 743216117183733163}
   serializedVersion: 2
   m_Center: {x: 1.3, y: 0.78, z: -2.73}
-  m_Radius: 0.71
+  m_Radius: 0.65
   m_SuspensionSpring:
     spring: 85000
     damper: 18000
@@ -5520,6 +5534,7 @@ GameObject:
   - component: {fileID: 8164504343456580102}
   - component: {fileID: 1365606324867334796}
   - component: {fileID: 1955091693465997572}
+  - component: {fileID: 6503117882497951682}
   m_Layer: 0
   m_Name: Wheel - FR
   m_TagString: Untagged
@@ -5592,6 +5607,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6503117882497951682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783634853786485958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 3837158993828098230}
 --- !u!1 &859296896327585747
 GameObject:
   m_ObjectHideFlags: 0
@@ -7287,7 +7315,7 @@ WheelCollider:
   m_GameObject: {fileID: 3472025075353013205}
   serializedVersion: 2
   m_Center: {x: 1.3, y: 0.78, z: 2.77}
-  m_Radius: 0.71
+  m_Radius: 0.65
   m_SuspensionSpring:
     spring: 85000
     damper: 18000
@@ -7743,7 +7771,7 @@ WheelCollider:
   m_GameObject: {fileID: 4200914698041590990}
   serializedVersion: 2
   m_Center: {x: -1.3, y: 0.78, z: 2.77}
-  m_Radius: 0.71
+  m_Radius: 0.65
   m_SuspensionSpring:
     spring: 85000
     damper: 18000
@@ -8073,6 +8101,7 @@ MonoBehaviour:
   AoADriftControl: {fileID: 8422743376006617881, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   UnstuckControl: {fileID: 7211672211899866147, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   boostControl: {fileID: -8607024417806277469, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  pauseControl: {fileID: 6622022487264125220, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   audioSource: {fileID: 0}
   startEngine: {fileID: 8300000, guid: 42dbd5e7c5bd0ee458e04798b344c16b, type: 3}
   enginenoise: {fileID: 8300000, guid: 2e30947ed75028e45a0887ea8809046b, type: 3}
@@ -9006,6 +9035,7 @@ GameObject:
   - component: {fileID: 2629485631692381873}
   - component: {fileID: 836116545065384330}
   - component: {fileID: 1774208635960837212}
+  - component: {fileID: 5715037213372857868}
   m_Layer: 0
   m_Name: Wheel - FL
   m_TagString: Untagged
@@ -9078,6 +9108,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5715037213372857868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904044484090860479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 1856013499773205917}
 --- !u!1 &5910900421158866739
 GameObject:
   m_ObjectHideFlags: 0
@@ -10000,23 +10043,23 @@ MonoBehaviour:
   fireControl: {fileID: 808238627434441660, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   reloadControl: {fileID: -9034626354828193697, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   player: {fileID: 0}
-  missilePrefab: {fileID: 5769646650520503644, guid: c043fa20d946ea1468d32873f0cc6a01, type: 3}
-  missileSpawner: {fileID: 2381462284856089571}
-  GUICanvas: {fileID: 0}
-  crosshairPrefab: {fileID: 5362253570997319782, guid: c190b3c25033b8442a3b0d2c054a3133, type: 3}
-  targetList: []
   enemyArray: []
   validTargets: []
-  lockOnAngle: 75
   minRange: 20
   maxRange: 150
-  numberOfMissiles: 5
-  lockOnUIs: []
-  currentCam: {fileID: 0}
   maxAmmo: 5
   currentAmmo: 0
   reloadTime: 3
   isReloading: 0
+  enemyTracker: {fileID: 0}
+  crosshairPrefab: {fileID: 5362253570997319782, guid: c190b3c25033b8442a3b0d2c054a3133, type: 3}
+  missilePrefab: {fileID: 5769646650520503644, guid: c043fa20d946ea1468d32873f0cc6a01, type: 3}
+  missileSpawner: {fileID: 2381462284856089571}
+  GUICanvas: {fileID: 0}
+  lockOnAngle: 75
+  numberOfMissiles: 5
+  lockOnUIs: []
+  currentCam: {fileID: 0}
 --- !u!1 &7589782948480890108
 GameObject:
   m_ObjectHideFlags: 0
@@ -15413,6 +15456,7 @@ GameObject:
   - component: {fileID: 2131786112135380617}
   - component: {fileID: 6112687135016190808}
   - component: {fileID: 6720381640575088911}
+  - component: {fileID: 1869125073576776901}
   m_Layer: 0
   m_Name: Wheel - BR
   m_TagString: Untagged
@@ -15485,6 +15529,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1869125073576776901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925121284038589517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfc42eb82cedd44a7a750f0bb5821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 7147859063839775060}
 --- !u!1 &8303567739788976723
 GameObject:
   m_ObjectHideFlags: 0
@@ -15710,7 +15767,7 @@ WheelCollider:
   m_GameObject: {fileID: 9139370373187315695}
   serializedVersion: 2
   m_Center: {x: -1.3, y: 0.78, z: -2.73}
-  m_Radius: 0.71
+  m_Radius: 0.65
   m_SuspensionSpring:
     spring: 85000
     damper: 18000
