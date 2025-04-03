@@ -46,7 +46,8 @@ public class EventManager : MonoBehaviour {
   [SerializeField] List<int> eventTimesDupe;
 
   [SerializeField] TMP_Text eventText;
-  float alpha = 1;
+  [SerializeField] Color eventTextColor;
+  float alpha = 0;
   [SerializeField] float textDelayFade;
   float timer;
   private void Start() {
@@ -76,10 +77,8 @@ public class EventManager : MonoBehaviour {
         GameObject randEventTrigger = GetRandomEventTrigger();
         randEventTrigger.SetActive(true);
         randEventTrigger.GetComponent<EventTrigger>().SetTimer(45);
-        eventText.text = "Event Spawned";
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        eventText.text = "Event Trigger Spawned";
+        UpdateEventText();
         makeNewEvent = true;
       }
     }
@@ -87,56 +86,44 @@ public class EventManager : MonoBehaviour {
       if (timeSinceLastHit >= timeSinceLastHitWinCon) {
         eventText.text = "Event Completed";
         eventCompleted = true;
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        UpdateEventText();
         timesHitEvent = false;
       }
       if (eventTimer > eventTimeLimit) {
         eventText.text = "Event Failed";
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        UpdateEventText();
         timesHitEvent = false;
       }
     } else if (enemiesKilledEvent) {
       if (eventTimer > eventTimeLimit) {
         eventText.text = "Event Failed";
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        UpdateEventText();
         enemiesKilledEvent = false;
       }
       if (enemiesKilled >= enemiesToBeKilled) {
         eventText.text = "Event Complete";
         eventCompleted = true;
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        UpdateEventText();
         enemiesKilledEvent = false;
       }
     } else if (hoopsEvent) {
       if (eventTimer > eventTimeLimit) {
         eventText.text = "Event Failed";
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        UpdateEventText();
         hoopsEvent = false;
       }
       if (hoopCount >= hoopAmount) {
         eventText.text = "Event Complete";
         eventCompleted = true;
-        alpha = 1;
-        textDelayFade = 2;
-        eventText.color = new Color(1, 1, 1, alpha);
+        UpdateEventText();
         enemiesKilledEvent = false;
       }
     }
     if (textDelayFade <= 0) {
       if (alpha > 0) {
-        alpha -= Time.deltaTime * 0.5f;  
+        alpha -= Time.deltaTime * 0.5f;
       }
-      eventText.color = new Color(1, 1, 1, alpha);
+      eventText.color = new Color(eventTextColor.r, eventTextColor.g, eventTextColor.b, alpha);
     }
     if (eventCompleted) {
       GameObject playerCar = GameObject.FindGameObjectWithTag("Player");
@@ -146,6 +133,12 @@ public class EventManager : MonoBehaviour {
       playerCar.GetComponent<PlayerExp>().GetExp(expDrop);
     }
   }
+  void UpdateEventText() {
+    alpha = 1;
+    textDelayFade = 2;
+    eventText.color = new Color(eventTextColor.r, eventTextColor.g, eventTextColor.b, alpha);
+    
+  }
   GameObject GetRandomEventTrigger() {
     int rand = Random.Range(0, subEventManagers.Count);
     return subEventManagers[rand].GetComponent<SubEventManager>().GetRandomEventTrigger();
@@ -154,15 +147,11 @@ public class EventManager : MonoBehaviour {
     hoopReference = subEventManagers.FindInstanceID(trigger);
     if (makeNewEvent) {
       eventText.text = "Event Created";
-      alpha = 1;
-      textDelayFade = 2;
-      eventText.color = new Color(1, 1, 1, alpha);
+      UpdateEventText();
       MakeRandomEvent();
     } else if (raceEvent) {
       eventText.text = "Event Completed";
-      alpha = 1;
-      textDelayFade = 2;
-      eventText.color = new Color(1, 1, 1, alpha);
+      UpdateEventText();
       raceEvent = false;
     }
   }
@@ -189,18 +178,21 @@ public class EventManager : MonoBehaviour {
       randEventTrigger.GetComponent<EventTrigger>().SetTimer(rand);
     } else if (rand == 1) {
       eventText.text = "Event Created: DONT GET HIT";
+      UpdateEventText();
       timesHitEvent = true;
       timesHit = 0;
       eventTimer = 0;
       eventTimeLimit = 30;
     } else if (rand == 2) {
       eventText.text = "Event Created: KILL ENEMIES";
+      UpdateEventText();
       enemiesKilledEvent = true;
       enemiesKilled = 0;
       eventTimer = 0;
       eventTimeLimit = 30;
     } else if (rand == 3) {//hoops
       eventText.text = "Event Created: GET THROUGH ALL THE HOOPS";
+      UpdateEventText();
       SquenceHoops(hoopReference + hoopStartReferenceOffset, gapsBetweenHoops, hoopLRAdjustments, hoopAmount);
       hoopsEvent = true;
       hoopCount = 0;
