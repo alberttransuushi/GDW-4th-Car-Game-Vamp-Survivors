@@ -9,6 +9,7 @@ public class WeaponUI : MonoBehaviour {
 
   [SerializeField] int maxWeapons = 5;
   [SerializeField] List<GameObject> newWeapons;
+  [SerializeField] GameObject playerWeapon;
   [SerializeField] List<GameObject> upgradableWeapons;
   [SerializeField] List<GameObject> maxedWeapons;
 
@@ -18,6 +19,7 @@ public class WeaponUI : MonoBehaviour {
     weaponList = player.GetComponent<PlayerWeaponList>();
   }
   public void UpdateUpgradeMenu() {
+    /*
     if (upgradableWeapons.Count + maxedWeapons.Count >= maxWeapons) {//Weapon limit reached
       if (upgradableWeapons.Count < buttons.Count) {//not enough space for weapons to fill buttons slots
 
@@ -37,18 +39,27 @@ public class WeaponUI : MonoBehaviour {
           SetUpButton(buttons[i], newWeapons[rands[i]], rands[i], false);
         }
       }
+    }*/
+    //int[] rands = MakeRandomIntList(buttons.Count, newWeapons.Count + upgradableWeapons.Count);
+    int[] rands = MakeRandomIntList(3, playerWeapon.GetComponentInChildren<PrimaryWeapon>().GetUpgradeTypeAmount());
+    for (int i = 0; i < buttons.Count; i++) {
+      SetUpButton(buttons[i], rands[i]);
     }
+
   }
   public void WeaponChange(int weaponRef, bool isUpgrade) {
+    playerWeapon.GetComponentInChildren<PrimaryWeapon>().Upgrade(weaponRef);
+    /*
     if (isUpgrade) {//upgrade weapon
       upgradableWeapons[weaponRef].GetComponentInChildren<Weapon>().UpgradeWeapon();
       //upgradableWeapons[weaponRef].GetComponentInChildren<Weapon>().weaponStats.damageModifier += 10;
     } else {//get new weapon
-      GameObject newWeapon =Instantiate(newWeapons[weaponRef], player.transform);
+      GameObject newWeapon = Instantiate(newWeapons[weaponRef], player.transform);
       newWeapon.GetComponentInChildren<Weapon>().UpgradeWeapon();
       upgradableWeapons.Add(newWeapon);
       newWeapons.RemoveAt(weaponRef);
     }
+    */
 
     ExitMenu();
   }
@@ -56,18 +67,24 @@ public class WeaponUI : MonoBehaviour {
     Time.timeScale = 1;
     gameObject.SetActive(false);
   }
-  private void SetUpButton(WeaponUIButton button, GameObject weapon, int r, bool u) {
-    button.GetTMP().SetText(weapon.GetComponentInChildren<Weapon>().weaponStats.GetLevelUpDesc());
-    button.SetSprite(weapon.GetComponentInChildren<Weapon>().weaponStats.sprite);
-    button.SetWeapon(weapon);
-    button.SetWeaponReference(r);
-    button.SetIsUpgrade(u);
+  private void SetUpButton(WeaponUIButton button, int rand) {
+    PrimaryWeapon weapon = playerWeapon.GetComponentInChildren<PrimaryWeapon>();//ETHAN MAKE A LIST OF GAMEOBJECTS
+    button.GetTMP().SetText(weapon.GetUpgradeText(rand));
+    button.SetSprite(weapon.GetUpgradeSprite(rand));
+    button.SetWeaponReference(rand);
   }
+  public void SetPlayerWeapon(GameObject weapon) {
+    playerWeapon = weapon;
+  }
+
   private int[] MakeRandomIntList(int listLength, int maxInt) {
     if (maxInt > listLength) return null; // max int must be more than size of array
 
     int[] rands = new int[listLength];
     bool repeat = true;
+    for (int i = 0; i < rands.Length; i++) {
+      rands[i] = -1;
+    }
     for (int i = 0; i < rands.Length; i++) {
       repeat = true;
       while (repeat) {
@@ -83,4 +100,5 @@ public class WeaponUI : MonoBehaviour {
 
     return rands;
   }
+
 }
