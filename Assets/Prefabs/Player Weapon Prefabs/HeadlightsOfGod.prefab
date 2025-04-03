@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6861447796083671651}
+  - component: {fileID: 7916515119179301711}
   m_Layer: 0
   m_Name: HeadlightsOfGod
   m_TagString: Untagged
@@ -25,9 +26,102 @@ Transform:
   m_GameObject: {fileID: 7225684371039519453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 260.9502, y: 759.8937, z: 1007.22705}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2462960560269860712}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7916515119179301711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225684371039519453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3069a1c5c22af7d4fbdcca7254e37082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireControl: {fileID: -1023150447222097072, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  reloadControl: {fileID: -9034626354828193697, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  player: {fileID: 0}
+  enemyArray: []
+  validTargets: []
+  minRange: 0
+  maxRange: 200
+  maxAmmo: 100
+  currentAmmo: 0
+  reloadTime: 3
+  isReloading: 0
+  enemyTracker: {fileID: 0}
+  UI: {fileID: 0}
+  upgradeTexts: []
+  upgradeSprites: []
+  damageConeAngle: 45
+  damage: 1
+  damageCooldown: 0.25
+--- !u!1001 &2712443413987588227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6861447796083671651}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+      propertyPath: m_Name
+      value: Headlights
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+--- !u!4 &2462960560269860712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: be68144068d3b84429ef9f238eb728cc, type: 3}
+  m_PrefabInstance: {fileID: 2712443413987588227}
+  m_PrefabAsset: {fileID: 0}
