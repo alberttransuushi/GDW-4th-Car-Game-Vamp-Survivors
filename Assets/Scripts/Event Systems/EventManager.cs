@@ -141,8 +141,9 @@ public class EventManager : MonoBehaviour {
     if (eventCompleted) {
       GameObject playerCar = GameObject.FindGameObjectWithTag("Player");
       float expDrop = playerCar.GetComponent<PlayerExp>().GetNextLevelRequirement();
-      GameObject orb = Instantiate(expOrb, playerCar.transform.position, playerCar.transform.rotation);
-      orb.GetComponent<ExpOrb>().SetExpValue(expDrop);
+      //GameObject orb = Instantiate(expOrb, playerCar.transform.position, playerCar.transform.rotation);
+      ///orb.GetComponent<ExpOrb>().SetExpValue(expDrop);
+      playerCar.GetComponent<PlayerExp>().GetExp(expDrop);
     }
   }
   GameObject GetRandomEventTrigger() {
