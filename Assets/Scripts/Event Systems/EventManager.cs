@@ -116,7 +116,7 @@ public class EventManager : MonoBehaviour {
         eventText.text = "Event Complete";
         eventCompleted = true;
         UpdateEventText();
-        enemiesKilledEvent = false;
+        hoopsEvent = false;
       }
     }
     if (textDelayFade <= 0) {
@@ -131,6 +131,8 @@ public class EventManager : MonoBehaviour {
       //GameObject orb = Instantiate(expOrb, playerCar.transform.position, playerCar.transform.rotation);
       ///orb.GetComponent<ExpOrb>().SetExpValue(expDrop);
       playerCar.GetComponent<PlayerExp>().GetExp(expDrop);
+      eventCompleted = false;
+      Debug.Log("djasdjkdsaja");
     }
   }
   void UpdateEventText() {
@@ -159,9 +161,9 @@ public class EventManager : MonoBehaviour {
     alpha = 1;
     textDelayFade = 2;
     eventText.color = new Color(1, 1, 1, alpha);
-    //random event creation
-    //int rand = Random.Range(0, 4);
-    int rand = 3;
+        //random event creation
+        //int rand = Random.Range(0, 4);
+        int rand = 3;//Random.Range(0,4);
 
     Debug.Log(rand);
     if (rand == 0) {

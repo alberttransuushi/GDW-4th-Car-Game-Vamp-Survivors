@@ -780,8 +780,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1810985470925006428, guid: da9ede24b73c0c148858f6b2ebc3a047, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1810985470925006428, guid: da9ede24b73c0c148858f6b2ebc3a047, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68b8406788048594ab4abe81b45b5441, type: 2}
     - target: {fileID: 2117299408983747217, guid: da9ede24b73c0c148858f6b2ebc3a047, type: 3}
       propertyPath: m_Name
       value: Hoop
