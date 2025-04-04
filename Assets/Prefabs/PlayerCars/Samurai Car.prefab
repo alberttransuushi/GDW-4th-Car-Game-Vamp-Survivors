@@ -1424,7 +1424,7 @@ MonoBehaviour:
   UnstuckControl: {fileID: 7211672211899866147, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   boostControl: {fileID: -8607024417806277469, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   pauseControl: {fileID: 6622022487264125220, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2129815769688781364}
   startEngine: {fileID: 8300000, guid: 42dbd5e7c5bd0ee458e04798b344c16b, type: 3}
   enginenoise: {fileID: 8300000, guid: 2e30947ed75028e45a0887ea8809046b, type: 3}
   startDrift: {fileID: 0}
@@ -1514,7 +1514,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0

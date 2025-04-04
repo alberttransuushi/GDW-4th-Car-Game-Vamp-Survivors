@@ -101,8 +101,8 @@ public class PlayerCar : MonoBehaviour
     AudioClip startDrift;
     [SerializeField]
     AudioClip driftNoise;
-    bool startedEngine;
-    bool driving;
+    public bool startedEngine;
+    public bool driving;
     bool startedDrift;
     float baseVolume;
     bool breaking;
@@ -249,6 +249,7 @@ public class PlayerCar : MonoBehaviour
         if (rb.velocity.magnitude <= maxLandSpeed)
         {
             float accel = movementControl.action.ReadValue<Vector2>().y;
+            if(accel > 0) { driving = true; }
             //Debug.Log(accel);
             rb.velocity -= transform.forward * Time.deltaTime * acceleration * -accel;
             rb.angularVelocity = Vector3.zero;
@@ -260,7 +261,7 @@ public class PlayerCar : MonoBehaviour
             audioSource.loop = false;
             startedEngine = true;
             audioSource.pitch = Random.Range(0.7f, 1.2f);
-            //Debug.Log(rb.velocity);
+            Debug.Log(rb.velocity);
             
             audioSource.clip = startEngine;
             audioSource.Play();
