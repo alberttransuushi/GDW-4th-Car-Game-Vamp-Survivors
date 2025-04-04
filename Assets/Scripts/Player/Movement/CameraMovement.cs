@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     private InputActionReference CameraReverseControl;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         frontCamera.enabled = true;
