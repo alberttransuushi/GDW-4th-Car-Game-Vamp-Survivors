@@ -30,29 +30,38 @@ public class MissileLauncher : PrimaryWeapon {
     for (int i = 0; i < numberOfMissiles; i++) {
       GameObject prefab = Instantiate(crosshairPrefab, GUICanvas.transform);
       lockOnUIs.Add(prefab);
-    }
-
-  }
-
-
-  // Update is called once per frame
-  public override void Update() {
-
-    validTargets.Clear();
-    foreach (GameObject enemy in enemyArray) {
-
-      if (Vector3.Angle(Vector3.Normalize(enemy.transform.position - transform.position), transform.forward) <= lockOnAngle && Vector3.Distance(enemy.transform.position, transform.position) <= maxRange && Vector3.Distance(enemy.transform.position, transform.position) >= minRange) {
-        validTargets.Add(enemy);
-      }
+        }
 
     }
-    currentCam = Camera.main;
-    UpdateLockOn();
-    base.Update();
 
-  }
 
-  public override void Fire() {
+    // Update is called once per frame
+    public override void Update()
+    {
+
+        validTargets.Clear();
+        foreach (GameObject enemy in enemyArray)
+        {
+
+            if (enemy != null && enemy.gameObject != null) // Ensure enemy still exists
+            {
+                if (Vector3.Angle(Vector3.Normalize(enemy.transform.position - transform.position), transform.forward) <= lockOnAngle
+                    && Vector3.Distance(enemy.transform.position, transform.position) <= maxRange
+                    && Vector3.Distance(enemy.transform.position, transform.position) >= minRange)
+                {
+                    validTargets.Add(enemy);
+                }
+            }
+
+        }
+        currentCam = Camera.main;
+        UpdateLockOn();
+        base.Update();
+
+        numberOfMissiles = lockOnUIs.Count;
+    }
+
+    public override void Fire() {
     if (currentAmmo > 0) {
       FireMissiles();
 

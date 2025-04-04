@@ -2190,12 +2190,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436917474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: 0
+  _disableControls: 0
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!1001 &491379162
@@ -4268,9 +4269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carButtons:
-  - {fileID: 963950708}
-  - {fileID: 436917479}
-  - {fileID: 1734871030}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   menuType: 1
 --- !u!1001 &936919817
 PrefabInstance:
@@ -5058,12 +5059,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963950706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: 1
+  _disableControls: 0
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!114 &963950709
@@ -6268,6 +6270,7 @@ MonoBehaviour:
   _decreaseVert: 7700000011010000
   _confirmButtons: 200000000d000000
   _cancelButtons: 080000001b000000
+  _activeButton: 0
   _menuDefinition: {fileID: 918952453}
   upControl: {fileID: 3378413650604550214, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   downControl: {fileID: 7962555454123170879, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
@@ -6275,6 +6278,7 @@ MonoBehaviour:
   rightControl: {fileID: 8914759266004441250, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   selectControl: {fileID: -3079118488091911478, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   returnControl: {fileID: 6521463747213874908, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  WeaponSelectMenu: {fileID: 0}
 --- !u!1001 &1419133946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8090,12 +8094,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734871025}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: 0
+  _disableControls: 0
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!1001 &1736301767
