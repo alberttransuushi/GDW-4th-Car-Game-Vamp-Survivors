@@ -22,10 +22,15 @@ public class CameraMovement : MonoBehaviour
         
         frontCamera.enabled = true;
         backCamera.enabled = false;
+        playerCar = GameObject.FindGameObjectWithTag("Player");
+        playerCarRB = playerCar.GetComponent<Rigidbody>();
+        
     }
 
     private void OnEnable()
     {
+        frontCamera.enabled = true;
+        backCamera.enabled = false;
         playerCar = GameObject.FindGameObjectWithTag("Player");
         playerCarRB = playerCar.GetComponent<Rigidbody>();
         CameraReverseControl.action.Enable();
