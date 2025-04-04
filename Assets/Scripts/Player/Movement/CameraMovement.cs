@@ -19,11 +19,22 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+       
+        frontCamera.enabled = true;
+        backCamera.enabled = false;
+        playerCar = GameObject.FindGameObjectWithTag("Player");
+        playerCarRB = playerCar.GetComponent<Rigidbody>();
+        Debug.Log("Awake done");
+
+    }
+    void Start()
+    {
         
         frontCamera.enabled = true;
         backCamera.enabled = false;
         playerCar = GameObject.FindGameObjectWithTag("Player");
         playerCarRB = playerCar.GetComponent<Rigidbody>();
+        Debug.Log("Start done");
         
     }
 
@@ -68,6 +79,7 @@ public class CameraMovement : MonoBehaviour
 
         transform.position = playerCar.transform.position;
 
+
         /*
         if(CameraReverseControl.action.WasPressedThisFrame()) { 
             frontCamera.enabled = false;
@@ -82,6 +94,7 @@ public class CameraMovement : MonoBehaviour
         {
             frontCamera.enabled = false;
             backCamera.enabled = true;
+            Debug.Log("Reversing");
 
         }
         else 

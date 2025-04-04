@@ -65,13 +65,13 @@ public class MenuController : MonoBehaviour
     private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease, InputActionReference rightOrDown, InputActionReference leftOrUp)
     {
         int newActive = _activeButton;
-        Debug.Log(_menuDefinition._carButtons[1]);
+        //Debug.Log(_menuDefinition._carButtons[1]);
 
         for (int i = 0; i < increase.Count; i++)
         {
             if (Input.GetKeyDown(increase[i]) || rightOrDown.action.WasPressedThisFrame())
             {
-                Debug.Log("PressedRight");
+                //Debug.Log("PressedRight");
                 newActive = SwitchCuttentButton(1);
 
             }
@@ -104,12 +104,12 @@ public class MenuController : MonoBehaviour
 
     private int SwitchCuttentButton(int increment)
     {
-        Debug.Log("Checking Disable Controls...");
+        //Debug.Log("Checking Disable Controls...");
         if (!_menuDefinition._carButtons[_activeButton].GetDisableControls())
         {
 
             int newActive = Utility.WrapAround(_menuDefinition._carButtons.Count, _activeButton, increment);
-            Debug.Log("Swapping from " + _activeButton + " to " + newActive);
+            //Debug.Log("Swapping from " + _activeButton + " to " + newActive);
             _menuDefinition._carButtons[_activeButton].SwappedOff();
             _menuDefinition._carButtons[newActive].SwappedTo();
 

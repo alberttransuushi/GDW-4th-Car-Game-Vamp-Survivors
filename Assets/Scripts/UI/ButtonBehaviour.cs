@@ -108,6 +108,7 @@ public class ButtonBehaviour : MonoBehaviour
     }
     public void onMainMenuClick()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 

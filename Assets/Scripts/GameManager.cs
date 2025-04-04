@@ -22,13 +22,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("GameManager Awake");
-        switch (PlayerPrefs.GetInt("SelectedCar"))
+        FireTruckRef.SetActive(false);
+        FireTruckRPGRef.SetActive(false);
+        FireTruckPlowRef.SetActive(false);
+        FireTruckHOGRef.SetActive(false);
+
+        SamuraiCarRef.SetActive(false);
+        SamuraiCarRPGRef.SetActive(false);
+        SamuraiCarPlowRef.SetActive(false);
+        SamuraiCarHOGRef.SetActive(false);
+
+        PoliceCarRef.SetActive(false);
+        PoliceCarRPGRef.SetActive(false);
+        PoliceCarPlowRef.SetActive(false);
+        PoliceCarHOGRef.SetActive(false);
+
+        //Debug.Log("GameManager Awake");
+        switch (PlayerPrefs.GetInt("CarSelected"))
         {
             case 0:
                 FireTruckRef.SetActive(true);
-                Debug.Log("FireTruck");
-                switch (PlayerPrefs.GetInt("SelectedWeapon"))
+                //Debug.Log("FireTruck");
+                switch (PlayerPrefs.GetInt("WeaponSelected"))
                 {
                     case 0:
                         FireTruckRPGRef.SetActive(true);
@@ -45,8 +60,8 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 SamuraiCarRef.SetActive(true);
-                Debug.Log("SamuraiCar");
-                switch (PlayerPrefs.GetInt("SelectedWeapon"))
+                //Debug.Log("SamuraiCar");
+                switch (PlayerPrefs.GetInt("WeaponSelected"))
                 {
                     case 0:
                         SamuraiCarRPGRef.SetActive(true);
@@ -62,8 +77,8 @@ public class GameManager : MonoBehaviour
                 break;
             case 2:
                 PoliceCarRef.SetActive(true);
-                Debug.Log("PoliceCar");
-                switch (PlayerPrefs.GetInt("SelectedWeapon"))
+                //Debug.Log("PoliceCar");
+                switch (PlayerPrefs.GetInt("WeaponSelected"))
                 {
                         case 0:
                             PoliceCarRPGRef.SetActive(true);
