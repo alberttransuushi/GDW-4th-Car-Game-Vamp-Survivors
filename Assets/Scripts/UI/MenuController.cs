@@ -12,7 +12,8 @@ public class MenuController : MonoBehaviour
     public List<KeyCode> _confirmButtons;
     public List<KeyCode> _cancelButtons;
 
-    private int _activeButton = 0;
+    [SerializeField]
+    public int _activeButton = 0;
     public MenuDefinition _menuDefinition;
 
     public InputActionReference upControl;
@@ -21,6 +22,9 @@ public class MenuController : MonoBehaviour
     public InputActionReference rightControl;
     public InputActionReference selectControl;
     public InputActionReference returnControl;
+
+    [SerializeField]
+    MenuDefinition WeaponSelectMenu;
 
     public void OnEnable()
     {
@@ -61,12 +65,15 @@ public class MenuController : MonoBehaviour
     private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease, InputActionReference rightOrDown, InputActionReference leftOrUp)
     {
         int newActive = _activeButton;
+        Debug.Log(_menuDefinition._carButtons[1]);
 
         for (int i = 0; i < increase.Count; i++)
         {
             if (Input.GetKeyDown(increase[i]) || rightOrDown.action.WasPressedThisFrame())
             {
+                Debug.Log("PressedRight");
                 newActive = SwitchCuttentButton(1);
+
             }
         }
         for(int i = 0; i < decrease.Count; i++)
@@ -97,16 +104,24 @@ public class MenuController : MonoBehaviour
 
     private int SwitchCuttentButton(int increment)
     {
-
+        Debug.Log("Checking Disable Controls...");
         if (!_menuDefinition._carButtons[_activeButton].GetDisableControls())
         {
-            int newActive = Utility.WrapAround(_menuDefinition._carButtons.Count, _activeButton, increment);
 
+            int newActive = Utility.WrapAround(_menuDefinition._carButtons.Count, _activeButton, increment);
+            Debug.Log("Swapping from " + _activeButton + " to " + newActive);
             _menuDefinition._carButtons[_activeButton].SwappedOff();
             _menuDefinition._carButtons[newActive].SwappedTo();
 
             return newActive;
         }
         return _activeButton;
+    }
+
+    public void changeActiveMenu()
+    {
+        _menuDefinition.gameObject.SetActive(false);
+        WeaponSelectMenu.gameObject.SetActive(true);
+        _menuDefinition = WeaponSelectMenu.gameObject.GetComponent<MenuDefinition>();
     }
 }

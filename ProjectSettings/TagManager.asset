@@ -18,6 +18,8 @@ TagManager:
   - RoadCamera2
   - RoadCamera3
   - EnemyTracker
+  - Canvas
+  - WeaponSelectMenu
   layers:
   - Default
   - TransparentFX

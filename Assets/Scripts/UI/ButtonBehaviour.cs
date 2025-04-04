@@ -8,6 +8,7 @@ public class ButtonBehaviour : MonoBehaviour
     private Button _button;
     private Image _image;
 
+    [SerializeField]
     private bool _disableControls = false;
 
     [SerializeField]
@@ -15,6 +16,9 @@ public class ButtonBehaviour : MonoBehaviour
 
     [SerializeField]
     private Camera cameraRef;
+
+    private MenuController canvas;
+    private MenuDefinition weaponSelectMenu;
 
     private void Start()
     {
@@ -33,6 +37,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     private void Update()
     {
+        _disableControls = false;
         if(associatedCar != null)
         {
             _button.gameObject.transform.position = cameraRef.WorldToScreenPoint(associatedCar.gameObject.transform.position);
@@ -62,8 +67,43 @@ public class ButtonBehaviour : MonoBehaviour
         Application.Quit(0);
     }
 
-    public void OnCarClick()
+    public void OnFireTruckClick()
     {
+        PlayerPrefs.SetInt("CarSelected", 0);
+        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
+        canvas.changeActiveMenu();
+        canvas._activeButton = 0;
+        _disableControls = false;
+    }
+    public void OnSamuraiCarClick()
+    {
+        PlayerPrefs.SetInt("CarSelected", 1);
+        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
+        canvas.changeActiveMenu();
+        canvas._activeButton = 0;
+        _disableControls = false;
+    }
+    public void OnPoliceCarClick()
+    {
+        PlayerPrefs.SetInt("CarSelected", 2);
+        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
+        canvas.changeActiveMenu();
+        canvas._activeButton = 0;
+        _disableControls = false;
+    }
+    public void OnRPGClick()
+    {
+        PlayerPrefs.SetInt("WeaponSelected", 0);
+        SceneManager.LoadScene("AlbertsTestingGround");
+    }
+    public void OnPlowClick()
+    {
+        PlayerPrefs.SetInt("WeaponSelected", 1);
+        SceneManager.LoadScene("AlbertsTestingGround");
+    }
+    public void OnHOGClick()
+    {
+        PlayerPrefs.SetInt("WeaponSelected", 2);
         SceneManager.LoadScene("AlbertsTestingGround");
     }
     public void onMainMenuClick()
