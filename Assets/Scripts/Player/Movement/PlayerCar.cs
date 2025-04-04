@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
 
 public class PlayerCar : MonoBehaviour
 {
@@ -474,7 +473,6 @@ public class PlayerCar : MonoBehaviour
             damagable = false;
             if (currentHP <= 0)
             {
-                SceneManager.LoadScene("GameOver");
                 Destroy(this.gameObject);
             }
 

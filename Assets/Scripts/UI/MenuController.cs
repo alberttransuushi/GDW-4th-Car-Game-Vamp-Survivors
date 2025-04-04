@@ -65,7 +65,7 @@ public class MenuController : MonoBehaviour
     private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease, InputActionReference rightOrDown, InputActionReference leftOrUp)
     {
         int newActive = _activeButton;
-        //Debug.Log(_menuDefinition._carButtons[0]);
+        //Debug.Log(_menuDefinition._carButtons[1]);
 
         for (int i = 0; i < increase.Count; i++)
         {
@@ -88,7 +88,6 @@ public class MenuController : MonoBehaviour
             if (Input.GetKeyDown(_confirmButtons[i]) || selectControl.action.WasPressedThisFrame())
             {
                 ClickCurrentButton();
-                //Debug.Log("Clicked button");
             }
         }
 
