@@ -6,6 +6,7 @@ public class ButtonBehaviour : MonoBehaviour
 {
     public bool _selected = false;
     private Button _button;
+    private Image _image;
 
     private bool _disableControls = false;
 
@@ -18,6 +19,16 @@ public class ButtonBehaviour : MonoBehaviour
     private void Start()
     {
         _button = GetComponent<Button>();
+        _image = GetComponent<Image>();
+
+        if (_selected)
+        {
+            _image.color = Color.white;
+        }
+        else
+        {
+            _image.color = Color.grey;
+        }
     }
 
     private void Update()
@@ -55,10 +66,15 @@ public class ButtonBehaviour : MonoBehaviour
     {
         SceneManager.LoadScene("AlbertsTestingGround");
     }
+    public void onMainMenuClick()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
     public void SwappedTo()
     {
         _selected = true;
+        _image.color = Color.white;
 
 
     }
@@ -66,6 +82,7 @@ public class ButtonBehaviour : MonoBehaviour
     public void SwappedOff()
     {
         _selected = false;
+        _image.color = Color.grey;
     }
 
     public void ClickButton()

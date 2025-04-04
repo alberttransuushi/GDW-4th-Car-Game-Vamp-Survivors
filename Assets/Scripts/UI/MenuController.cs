@@ -48,30 +48,30 @@ public class MenuController : MonoBehaviour
         {
             case MenuType.HORIZONTAL:
 
-                MenuInput(_increaseHoriz, _decreaseHoriz);
+                MenuInput(_increaseHoriz, _decreaseHoriz, rightControl, leftControl);
 
                 break;
             case MenuType.VERTICAL:
 
-                MenuInput(_increaseVert, _decreaseVert);
+                MenuInput(_increaseVert, _decreaseVert, downControl, upControl);
                 break;
         }
     }
 
-    private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease)
+    private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease, InputActionReference rightOrDown, InputActionReference leftOrUp)
     {
         int newActive = _activeButton;
 
         for (int i = 0; i < increase.Count; i++)
         {
-            if (Input.GetKeyDown(increase[i]) || rightControl.action.WasPressedThisFrame() || downControl.action.WasPressedThisFrame())
+            if (Input.GetKeyDown(increase[i]) || rightOrDown.action.WasPressedThisFrame())
             {
                 newActive = SwitchCuttentButton(1);
             }
         }
         for(int i = 0; i < decrease.Count; i++)
         {
-            if (Input.GetKeyDown(decrease[i]) || leftControl.action.WasPressedThisFrame() || upControl.action.WasPressedThisFrame())
+            if (Input.GetKeyDown(decrease[i]) || leftOrUp.action.WasPressedThisFrame())
             {
                 newActive = SwitchCuttentButton(-1);
             }
