@@ -64,15 +64,24 @@ MonoBehaviour:
   - More Missiles
   - Reload Reduction
   - Increase Damage & Knockback
-  upgradeSprites: []
+  upgradeSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   crosshairPrefab: {fileID: 5362253570997319782, guid: c190b3c25033b8442a3b0d2c054a3133, type: 3}
   missilePrefab: {fileID: 5769646650520503644, guid: c043fa20d946ea1468d32873f0cc6a01, type: 3}
   missileSpawner: {fileID: 6511838180540343226}
   GUICanvas: {fileID: 0}
+  damage: 2
+  knockbackStrength: 5000
   lockOnAngle: 75
   numberOfMissiles: 5
   lockOnUIs: []
   currentCam: {fileID: 0}
+  missileCountUpgradeIncrease: 1
+  reloadUpgradeDecrease: 1
+  DamageUpgradeIncrease: 1
+  KnockbackUpgradeIncrease: 1000
 --- !u!1 &3341412722049296384
 GameObject:
   m_ObjectHideFlags: 0

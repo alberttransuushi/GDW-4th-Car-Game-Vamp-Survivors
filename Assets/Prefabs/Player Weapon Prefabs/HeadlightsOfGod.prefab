@@ -61,7 +61,13 @@ MonoBehaviour:
   - Wider Beam
   - Longer Range
   - More Damage
-  upgradeSprites: []
+  upgradeSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   damageConeAngle: 45
   damage: 1
   damageCooldown: 0.25
+  sizeUpgradeIncrease: 0
+  rangeUpgradeIncrease: 0
+  damageUpgradeIncrease: 0
