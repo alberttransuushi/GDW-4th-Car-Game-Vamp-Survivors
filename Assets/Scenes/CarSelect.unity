@@ -469,6 +469,7 @@ MonoBehaviour:
   - {fileID: 1479333917}
   - {fileID: 1574957880}
   - {fileID: 206964162}
+  menuType: 0
 --- !u!1001 &856639729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,9 +729,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _increaseHoriz: 6400000013010000
   _decreaseHoriz: 6100000014010000
+  _increaseVert: 1201000073000000
+  _decreaseVert: 1101000077000000
   _confirmButtons: 200000000d000000
-  _cancelButtons: 
+  _cancelButtons: 080000001b000000
   _menuDefinition: {fileID: 742194270}
+  upControl: {fileID: 3378413650604550214, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  downControl: {fileID: 7962555454123170879, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  leftControl: {fileID: 2686475127780364603, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  rightControl: {fileID: 8914759266004441250, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  selectControl: {fileID: -3079118488091911478, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  returnControl: {fileID: 6521463747213874908, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
 --- !u!1 &981389534
 GameObject:
   m_ObjectHideFlags: 0

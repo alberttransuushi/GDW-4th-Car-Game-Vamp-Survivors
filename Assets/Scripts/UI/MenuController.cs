@@ -1,43 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MenuController : MonoBehaviour
 {
     public List<KeyCode> _increaseHoriz;
     public List<KeyCode> _decreaseHoriz;
+    public List<KeyCode> _increaseVert;
+    public List<KeyCode> _decreaseVert;
     public List<KeyCode> _confirmButtons;
     public List<KeyCode> _cancelButtons;
 
     private int _activeButton = 0;
     public MenuDefinition _menuDefinition;
 
-    public void Update()
+    public InputActionReference upControl;
+    public InputActionReference downControl;
+    public InputActionReference leftControl;
+    public InputActionReference rightControl;
+    public InputActionReference selectControl;
+    public InputActionReference returnControl;
+
+    public void OnEnable()
     {
-        MenuInput(_increaseHoriz, _decreaseHoriz);
+        upControl.action.Enable();
+        downControl.action.Enable();
+        leftControl.action.Enable();
+        rightControl.action.Enable();
+        selectControl.action.Enable();
+        returnControl.action.Enable();
     }
 
-    private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease)
+    public void OnDisable()
+    {
+        upControl.action.Disable(); 
+        downControl.action.Disable();
+        leftControl.action.Disable();
+        rightControl.action.Disable();
+        selectControl.action.Disable();
+        returnControl.action.Disable();
+    }
+
+    public void Update()
+    {
+        switch (_menuDefinition.GetMenuType())
+        {
+            case MenuType.HORIZONTAL:
+
+                MenuInput(_increaseHoriz, _decreaseHoriz, rightControl, leftControl);
+
+                break;
+            case MenuType.VERTICAL:
+
+                MenuInput(_increaseVert, _decreaseVert, downControl, upControl);
+                break;
+        }
+    }
+
+    private void MenuInput(List<KeyCode> increase, List<KeyCode> decrease, InputActionReference rightOrDown, InputActionReference leftOrUp)
     {
         int newActive = _activeButton;
 
         for (int i = 0; i < increase.Count; i++)
         {
-            if (Input.GetKeyDown(increase[i]))
+            if (Input.GetKeyDown(increase[i]) || rightOrDown.action.WasPressedThisFrame())
             {
                 newActive = SwitchCuttentButton(1);
             }
         }
         for(int i = 0; i < decrease.Count; i++)
         {
-            if (Input.GetKeyDown(decrease[i]))
+            if (Input.GetKeyDown(decrease[i]) || leftOrUp.action.WasPressedThisFrame())
             {
                 newActive = SwitchCuttentButton(-1);
             }
         }
         for(int i = 0; i < _confirmButtons.Count; i++)
         {
-            if (Input.GetKeyDown(_confirmButtons[i]))
+            if (Input.GetKeyDown(_confirmButtons[i]) || selectControl.action.WasPressedThisFrame())
             {
                 ClickCurrentButton();
             }

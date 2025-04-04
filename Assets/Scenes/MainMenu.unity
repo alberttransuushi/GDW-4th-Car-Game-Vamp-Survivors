@@ -2061,6 +2061,7 @@ GameObject:
   - component: {fileID: 436917478}
   - component: {fileID: 436917477}
   - component: {fileID: 436917476}
+  - component: {fileID: 436917479}
   m_Layer: 5
   m_Name: Options Button
   m_TagString: Untagged
@@ -2109,10 +2110,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.039215688, g: 0.6431373, b: 0.6431373, a: 1}
+    m_HighlightedColor: {r: 0.827451, g: 0.4627451, b: 0.22352941, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.8627451, g: 0.5686275, b: 0.38431373, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2131,7 +2132,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 436917477}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 436917479}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: onOptionsClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &436917477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,6 +2183,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436917474}
   m_CullTransparentMesh: 1
+--- !u!114 &436917479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436917474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selected: 0
+  associatedCar: {fileID: 0}
+  cameraRef: {fileID: 0}
 --- !u!1001 &491379162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4162,6 +4190,7 @@ GameObject:
   - component: {fileID: 918952450}
   - component: {fileID: 918952452}
   - component: {fileID: 918952451}
+  - component: {fileID: 918952453}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4226,6 +4255,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918952449}
   m_CullTransparentMesh: 1
+--- !u!114 &918952453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918952449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897a446ad41af7e409835b2b889fde32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carButtons:
+  - {fileID: 963950708}
+  - {fileID: 436917479}
+  - {fileID: 1734871030}
+  menuType: 1
 --- !u!1001 &936919817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5017,7 +5063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selected: 0
+  _selected: 1
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!114 &963950709
@@ -5041,10 +5087,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.039215688, g: 0.6431373, b: 0.6431373, a: 1}
+    m_HighlightedColor: {r: 0.82745105, g: 0.46274513, b: 0.22352943, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.86274517, g: 0.5686275, b: 0.38431376, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6110,6 +6156,7 @@ GameObject:
   - component: {fileID: 1377476770}
   - component: {fileID: 1377476769}
   - component: {fileID: 1377476768}
+  - component: {fileID: 1377476772}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6203,6 +6250,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1377476772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377476767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015cb0fcab92d9f419d358f05fccde9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _increaseHoriz: 6400000013010000
+  _decreaseHoriz: 6100000014010000
+  _increaseVert: 1201000073000000
+  _decreaseVert: 7700000011010000
+  _confirmButtons: 200000000d000000
+  _cancelButtons: 080000001b000000
+  _menuDefinition: {fileID: 918952453}
+  upControl: {fileID: 3378413650604550214, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  downControl: {fileID: 7962555454123170879, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  leftControl: {fileID: 2686475127780364603, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  rightControl: {fileID: 8914759266004441250, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  selectControl: {fileID: -3079118488091911478, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  returnControl: {fileID: 6521463747213874908, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
 --- !u!1001 &1419133946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7889,6 +7961,7 @@ GameObject:
   - component: {fileID: 1734871029}
   - component: {fileID: 1734871028}
   - component: {fileID: 1734871027}
+  - component: {fileID: 1734871030}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -7937,10 +8010,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.039215688, g: 0.6431373, b: 0.6431373, a: 1}
+    m_HighlightedColor: {r: 0.827451, g: 0.4627451, b: 0.22352941, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.8627451, g: 0.5686275, b: 0.38431373, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7960,13 +8033,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1734871030}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: onQuitClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8010,6 +8083,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734871025}
   m_CullTransparentMesh: 1
+--- !u!114 &1734871030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734871025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selected: 0
+  associatedCar: {fileID: 0}
+  cameraRef: {fileID: 0}
 --- !u!1001 &1736301767
 PrefabInstance:
   m_ObjectHideFlags: 0
