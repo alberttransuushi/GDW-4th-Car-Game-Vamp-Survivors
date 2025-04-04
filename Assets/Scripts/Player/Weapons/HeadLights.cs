@@ -10,6 +10,11 @@ public class HeadLights : PrimaryWeapon
     float damageTimer;
     public float damageCooldown;
 
+
+    [SerializeField] float sizeUpgradeIncrease;
+    [SerializeField] float rangeUpgradeIncrease;
+    [SerializeField] float damageUpgradeIncrease;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -68,4 +73,21 @@ public class HeadLights : PrimaryWeapon
         }
         
     }
+
+    protected override void Upgrade1()
+    {
+        damageConeAngle += sizeUpgradeIncrease;
+    }
+    protected override void Upgrade2()
+    {
+        
+
+        maxRange -= rangeUpgradeIncrease;
+        
+    }
+    protected override void Upgrade3()
+    {
+        damage += damageUpgradeIncrease;
+    }
+
 }

@@ -88,8 +88,26 @@ public class PrimaryWeapon : MonoBehaviour {
     return upgradeSprites[i];
   }
   public void Upgrade(int upgradeRef) {
-    //THE UPGRADE SYSTEM WILL REFER TO THE UPGRADE TEXT FOR UPGRADE FORMAT
-    //USE A SWITCH CASE HERE TO EXECUTE THE RIGHT UPGRADE FOR THE PLAYER
+        //THE UPGRADE SYSTEM WILL REFER TO THE UPGRADE TEXT FOR UPGRADE FORMAT
+        //USE A SWITCH CASE HERE TO EXECUTE THE RIGHT UPGRADE FOR THE PLAYER
+        switch(upgradeRef){
+            case 0: Upgrade1(); break;
+            case 1: Upgrade2(); break;
+            case 2: Upgrade3(); break;
+        }
+
 
   }
+
+    protected virtual void Upgrade1() { 
+    
+    }
+    protected virtual void Upgrade2()
+    {
+
+    }
+    protected virtual void Upgrade3()
+    {
+
+    }
 }

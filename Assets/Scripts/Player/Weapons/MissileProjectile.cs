@@ -8,9 +8,9 @@ public class MissileProjectile : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField, Range(0,0.75f)] float trackingDelay;
     [SerializeField] float aoeRange;
-    [SerializeField] float damage;
+    [SerializeField] public float damage;
     [SerializeField] float damageFalloff;
-    [SerializeField] float explosionKnockback;
+    [SerializeField] public float explosionKnockback;
     [SerializeField] bool tracking;
     [SerializeField] float turnSpeed;
     [SerializeField] ParticleSystem fireParticles;

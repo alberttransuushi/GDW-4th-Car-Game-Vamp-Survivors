@@ -50,23 +50,29 @@ MonoBehaviour:
   fireControl: {fileID: -1023150447222097072, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   reloadControl: {fileID: -9034626354828193697, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
   player: {fileID: 0}
-  missilePrefab: {fileID: 5769646650520503644, guid: c043fa20d946ea1468d32873f0cc6a01, type: 3}
-  missileSpawner: {fileID: 6511838180540343226}
-  GUICanvas: {fileID: 0}
-  crosshairPrefab: {fileID: 5362253570997319782, guid: c190b3c25033b8442a3b0d2c054a3133, type: 3}
-  targetList: []
   enemyArray: []
   validTargets: []
-  lockOnAngle: 75
   minRange: 20
   maxRange: 150
-  numberOfMissiles: 5
-  lockOnUIs: []
-  currentCam: {fileID: 0}
   maxAmmo: 5
   currentAmmo: 0
   reloadTime: 3
   isReloading: 0
+  enemyTracker: {fileID: 0}
+  UI: {fileID: 0}
+  upgradeTexts:
+  - More Missiles
+  - Reload Reduction
+  - Increase Damage & Knockback
+  upgradeSprites: []
+  crosshairPrefab: {fileID: 5362253570997319782, guid: c190b3c25033b8442a3b0d2c054a3133, type: 3}
+  missilePrefab: {fileID: 5769646650520503644, guid: c043fa20d946ea1468d32873f0cc6a01, type: 3}
+  missileSpawner: {fileID: 6511838180540343226}
+  GUICanvas: {fileID: 0}
+  lockOnAngle: 75
+  numberOfMissiles: 5
+  lockOnUIs: []
+  currentCam: {fileID: 0}
 --- !u!1 &3341412722049296384
 GameObject:
   m_ObjectHideFlags: 0

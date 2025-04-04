@@ -10,13 +10,19 @@ public class MissileLauncher : PrimaryWeapon {
   public GameObject missileSpawner;
   public GameObject GUICanvas;
 
+    [SerializeField] float damage;
+    [SerializeField] float knockbackStrength;
   [SerializeField, Range(0, 75)] float lockOnAngle;
 
-  [SerializeField, Range(1, 5)] int numberOfMissiles;
+  [SerializeField] int numberOfMissiles;
 
   [SerializeField] List<GameObject> lockOnUIs = new List<GameObject>();
   public Camera currentCam;
 
+    public int missileCountUpgradeIncrease;
+    public float reloadUpgradeDecrease;
+    public float DamageUpgradeIncrease;
+    public float KnockbackUpgradeIncrease;
 
   public override void Start() {
     base.Start();
@@ -62,8 +68,9 @@ public class MissileLauncher : PrimaryWeapon {
       hasFired = true;
       GameObject spawnedMissiles = Instantiate(missilePrefab, missileSpawner.transform.position, missileSpawner.transform.rotation);
       spawnedMissiles.GetComponent<MissileProjectile>().target = validTargets[i];
-
-    }
+            spawnedMissiles.GetComponent<MissileProjectile>().damage = damage;
+            spawnedMissiles.GetComponent<MissileProjectile>().explosionKnockback = knockbackStrength;
+        }
     if (hasFired) currentAmmo--;
 
   }
@@ -81,4 +88,23 @@ public class MissileLauncher : PrimaryWeapon {
     }
 
   }
+
+
+    protected override void Upgrade1()
+    {
+        numberOfMissiles += missileCountUpgradeIncrease;
+    }
+    protected override void Upgrade2()
+    {
+
+
+        reloadTime -= reloadUpgradeDecrease;
+
+    }
+    protected override void Upgrade3()
+    {
+        damage += DamageUpgradeIncrease;
+        knockbackStrength += KnockbackUpgradeIncrease;
+
+    }
 }

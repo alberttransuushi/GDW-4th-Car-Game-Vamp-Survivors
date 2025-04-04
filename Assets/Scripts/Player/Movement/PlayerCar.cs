@@ -10,7 +10,7 @@ public class PlayerCar : MonoBehaviour
 {
     [SerializeField]
     [Header("Health Stats")]
-    float currentHP;
+    public float currentHP;
     [SerializeField] public float maxHP;
     [SerializeField] float IframeDuration;
     public bool damagable = true;
