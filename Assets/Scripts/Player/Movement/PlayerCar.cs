@@ -162,6 +162,7 @@ public class PlayerCar : MonoBehaviour
         baseVolume = audioSource.volume;
         canBoost = true;
         //driftSpark.Stop();
+        Physics.gravity = new Vector3(0,-58.8f,0);
     }
 
     // Update is called once per frame
