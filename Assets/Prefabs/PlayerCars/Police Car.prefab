@@ -238,7 +238,6 @@ GameObject:
   - component: {fileID: 7093759956639626368}
   - component: {fileID: 5856285398817311452}
   - component: {fileID: 2420811688779547360}
-  - component: {fileID: 6182477690366981179}
   - component: {fileID: 7275772819975955497}
   - component: {fileID: 8102986783077309845}
   m_Layer: 8
@@ -324,7 +323,7 @@ MonoBehaviour:
   unstuckAoeRange: 100
   unstuckExplosionStrength: 10000
   unstuckPlayerDamage: 0.5
-  unstuckJumpFeature: 0
+  unstuckJumpFeature: 1
   unstuckBoost: 50
   isDrifting: 0
   movementControl: {fileID: 4077619434960433401, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
@@ -355,6 +354,8 @@ MonoBehaviour:
   wheelFrictionLerpTo: 0.1
   wheelFrictionLerpFrom: 0.1
   maxDriftAngle: 40
+  antiRoll: 85000
+  isMidair: 0
 --- !u!54 &2910532787008040227
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -537,27 +538,6 @@ MonoBehaviour:
   targets: []
   targetList: []
   rangeAddedFromSpeedMultiplier: 3
---- !u!65 &6182477690366981179
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776247657717150531}
-  m_Material: {fileID: 13400000, guid: 3e8ddc62498dcda4a9e3290169bbc810, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6437976, y: 0.8815918, z: 6.185575}
-  m_Center: {x: 0, y: 0.67474365, z: 0.09584999}
 --- !u!114 &7275772819975955497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,6 +1038,7 @@ GameObject:
   - component: {fileID: 8562459576550423308}
   - component: {fileID: 3315946975277579247}
   - component: {fileID: 8823960251290661057}
+  - component: {fileID: 6652538497618296753}
   m_Layer: 8
   m_Name: Police - Body
   m_TagString: Untagged
@@ -1130,6 +1111,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6652538497618296753
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763222050300473395}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2195202147583699789, guid: dd225b3500db45348a4dfafac4056d26, type: 3}
 --- !u!1 &1845922147193816999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2147,7 @@ Transform:
   m_GameObject: {fileID: 3658136775359500621}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.014, z: 0}
+  m_LocalPosition: {x: 0, y: -0.434, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -129,6 +129,9 @@ public class PlayerCar : MonoBehaviour
     public float maxDriftAngle;
 
     float driftMaintainSpeed;
+
+    public float antiRoll = 100000f;
+    public bool isMidair;
     private void OnEnable()
     {
         movementControl.action.Enable();
@@ -162,7 +165,7 @@ public class PlayerCar : MonoBehaviour
         baseVolume = audioSource.volume;
         canBoost = true;
         //driftSpark.Stop();
-        Physics.gravity = new Vector3(0,-58.8f,0);
+        Physics.gravity = new Vector3(0,-56.9f,0);
     }
 
     // Update is called once per frame
@@ -180,14 +183,55 @@ public class PlayerCar : MonoBehaviour
         {
             Debug.Log("drifting true smile");
         }
+
     }
+
+    private void FixedUpdate()
+    {
+        
+        if (!isMidair)
+        {
+            AntiFlipAxle(BLWheel, BRWheel);
+            AntiFlipAxle(FLWheel, FRWheel);
+        }
+        
+    }
+
+    void AntiFlipAxle(WheelCollider wheelL, WheelCollider wheelR)
+    {
+        WheelHit hit;
+        float travelL = 1.0f;
+        float travelR = 1.0f;
+        bool groundedL = wheelL.GetGroundHit(out hit);
+        if (groundedL)
+            travelL = (-wheelL.transform.InverseTransformPoint(hit.point).y - wheelL.radius) / wheelL.suspensionDistance;
+        bool groundedR = wheelR.GetGroundHit(out hit);
+        if (groundedR)
+            travelR = (-wheelR.transform.InverseTransformPoint(hit.point).y - wheelR.radius) / wheelR.suspensionDistance;
+        float antiRollForce = (travelL - travelR) * antiRoll;
+        if (groundedL)
+            rb.AddForceAtPosition(wheelL.transform.up * -antiRollForce, wheelL.transform.position);
+        if (groundedR)
+            rb.AddForceAtPosition(wheelR.transform.up * antiRollForce, wheelR.transform.position);
+    }
+
+
+
+
+    
+
 
 
     void Boost()
     {
         if(boostLeft >= 0)
         {
-            rb.velocity += transform.forward * Time.deltaTime * boostLeft * boostMultiplier;
+            if (CheckGrounded() && !isDrifting)
+            {
+                rb.velocity += transform.forward * Time.deltaTime * boostLeft * boostMultiplier;
+                //rb.AddForce(transform.forward * Time.deltaTime * boostLeft * boostMultiplier, ForceMode.Impulse);
+                
+            }
             boostLeft -= Time.deltaTime;
         }
         AddBoost();
@@ -198,7 +242,7 @@ public class PlayerCar : MonoBehaviour
         if (boostControl.action.IsPressed() && canBoost)
         {
             boostLeft = boostAdded;
-            BoostCooldown();
+            StartCoroutine(BoostCooldown());
             Debug.Log("BOOST");
         }
     }
@@ -389,17 +433,31 @@ public class PlayerCar : MonoBehaviour
    
 
     public bool CheckGrounded()
-    {
+    {   
+        
         if (Physics.Raycast(transform.position, -transform.up, out hit, playerHeight, groundLayer) || Physics.Raycast(transform.position, -transform.up, out hit, 2f, enemyLayer))
         {
-            return true;
+            
+            
+            isMidair = false;
+            WheelHit hit;
+            if (BLWheel.GetGroundHit(out hit) && BRWheel.GetGroundHit(out hit) && FRWheel.GetGroundHit(out hit) && FLWheel.GetGroundHit(out hit))
+            {
+                isMidair = false;
+                return true;
+            }
+            else return false;
         }
         else
         {
+            isMidair = true;
             //Debug.Log("false");
             return false;
         }
-
+        
+        
+        
+        
     }
 
     void FrictionVelocity()
@@ -525,16 +583,16 @@ public class PlayerCar : MonoBehaviour
 
     void Unstuck()
     {
-        TakeDamage(unstuckPlayerDamage);
+        //TakeDamage(unstuckPlayerDamage);
 
-        Explode();
+        //Explode();
 
         if (unstuckJumpFeature)
         {
             rb.AddForce(unstuckExplosionStrength * Vector3.up / 2f, ForceMode.Acceleration);
         }
 
-        rb.velocity += transform.forward * unstuckBoost;
+        //rb.velocity += transform.forward * unstuckBoost;
     }
 
     public void Explode()
