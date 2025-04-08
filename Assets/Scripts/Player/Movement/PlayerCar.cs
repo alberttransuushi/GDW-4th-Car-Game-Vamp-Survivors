@@ -112,7 +112,7 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] float AoeTempTime;
     [SerializeField] GameObject AoeVisualizer;
 
-    public ParticleSystem driftSpark;
+    public GameObject driftSpark;
 
     [SerializeField] WheelCollider FRWheel;
     [SerializeField] WheelCollider FLWheel;
@@ -175,9 +175,14 @@ public class PlayerCar : MonoBehaviour
         UpdateHP();
 
         Boost();
+
+        if (isDrifting)
+        {
+            Debug.Log("drifting true smile");
+        }
     }
 
-    
+
     void Boost()
     {
         if(boostLeft >= 0)
@@ -286,20 +291,18 @@ public class PlayerCar : MonoBehaviour
 
 
         
-        
-        /*
         //You can remove this and uncomment the one up top
         if (driftControl.action.WasPressedThisFrame())
         {
             isDrifting = true;
-            driftSpark.Play();
+            driftSpark.SetActive(true);
         }
         else if (driftControl.action.WasReleasedThisFrame())
         {
             isDrifting = false;
-            driftSpark.Stop();
+            driftSpark.SetActive(false);
         }
-        */
+        
 
         if (UnstuckControl.action.triggered && canUnStuck)
         {
@@ -351,6 +354,7 @@ public class PlayerCar : MonoBehaviour
                 ChangeSidewaysFriction(FLWheel, frontWheelDriftingStiffness);
                 ChangeSidewaysFriction(BLWheel, backWheelDriftingStiffness);
                 ChangeSidewaysFriction(BRWheel, backWheelDriftingStiffness);
+                Debug.Log("drifting");
             }
 
         }

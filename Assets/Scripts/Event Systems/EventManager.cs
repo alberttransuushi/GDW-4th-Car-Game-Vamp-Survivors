@@ -163,7 +163,7 @@ public class EventManager : MonoBehaviour {
     eventText.color = new Color(1, 1, 1, alpha);
         //random event creation
         //int rand = Random.Range(0, 4);
-        int rand = 3;//Random.Range(0,4);
+        int rand = Random.Range(0,4);
 
     Debug.Log(rand);
     if (rand == 0) {
