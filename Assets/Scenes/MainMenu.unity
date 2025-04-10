@@ -2190,13 +2190,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436917474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: 0
-  _disableControls: 0
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!1001 &491379162
@@ -4269,9 +4268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 963950708}
+  - {fileID: 436917479}
+  - {fileID: 1734871030}
   menuType: 1
 --- !u!1001 &936919817
 PrefabInstance:
@@ -5059,13 +5058,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963950706}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: 1
-  _disableControls: 0
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!114 &963950709
@@ -6241,10 +6239,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 918952450}
   - {fileID: 963950707}
   - {fileID: 436917475}
   - {fileID: 1734871026}
-  - {fileID: 918952450}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7458,7 +7456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 091bbdeacb021864aad1af3f1fcf65f6, type: 2}
   m_sharedMaterial: {fileID: -9071288333358363084, guid: 091bbdeacb021864aad1af3f1fcf65f6, type: 2}
@@ -8222,13 +8220,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734871025}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selected: 0
-  _disableControls: 0
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!1001 &1736301767
