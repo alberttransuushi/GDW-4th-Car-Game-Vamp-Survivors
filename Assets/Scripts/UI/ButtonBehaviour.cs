@@ -9,9 +9,9 @@ public class ButtonBehaviour : MonoBehaviour
     private Image _image;
 
     [SerializeField]
-    private bool _disableControls = false;
+    //private bool _disableControls = false;
 
-    [SerializeField]
+    //[SerializeField]
     private GameObject associatedCar;
 
     [SerializeField]
@@ -37,17 +37,18 @@ public class ButtonBehaviour : MonoBehaviour
 
     private void Update()
     {
-        _disableControls = false;
-        if(associatedCar != null)
+        //_disableControls = false;
+        if (associatedCar != null)
         {
             _button.gameObject.transform.position = cameraRef.WorldToScreenPoint(associatedCar.gameObject.transform.position);
-        }
-        if(_selected == true)
-        {
 
-            Quaternion look = Quaternion.LookRotation(associatedCar.transform.position - cameraRef.transform.position);
+            if (_selected == true)
+            {
 
-            cameraRef.transform.rotation = Quaternion.Slerp(cameraRef.transform.rotation, look, 5 * Time.deltaTime);
+                Quaternion look = Quaternion.LookRotation(associatedCar.transform.position - cameraRef.transform.position);
+
+                cameraRef.transform.rotation = Quaternion.Slerp(cameraRef.transform.rotation, look, 5 * Time.deltaTime);
+            }
         }
     }
 
@@ -73,7 +74,7 @@ public class ButtonBehaviour : MonoBehaviour
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
         canvas.changeActiveMenu();
         canvas._activeButton = 0;
-        _disableControls = false;
+        //_disableControls = false;
     }
     public void OnSamuraiCarClick()
     {
@@ -81,7 +82,7 @@ public class ButtonBehaviour : MonoBehaviour
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
         canvas.changeActiveMenu();
         canvas._activeButton = 0;
-        _disableControls = false;
+        //_disableControls = false;
     }
     public void OnPoliceCarClick()
     {
@@ -89,7 +90,7 @@ public class ButtonBehaviour : MonoBehaviour
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuController>();
         canvas.changeActiveMenu();
         canvas._activeButton = 0;
-        _disableControls = false;
+        //_disableControls = false;
     }
     public void OnRPGClick()
     {
@@ -128,19 +129,19 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void ClickButton()
     {
-        if (!_disableControls)
-        {
-            _disableControls = true;
+        //if (!_disableControls)
+        //{
+           // _disableControls = true;
 
             _button.onClick.Invoke();
 
 
-            _disableControls = false;
-        }
+            //_disableControls = false;
+        //}
     }
 
-    public bool GetDisableControls()
-    {
-        return _disableControls;
-    }
+    //public bool GetDisableControls()
+    //{
+        //return _disableControls;
+    //}
 }

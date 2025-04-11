@@ -358,13 +358,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53323462}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a292474e17d0b8e41ae5c24681a7563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selected: 0
-  _disableControls: 0
+  _selected: 1
   associatedCar: {fileID: 0}
   cameraRef: {fileID: 0}
 --- !u!114 &53323464
@@ -2310,6 +2309,7 @@ GameObject:
   - component: {fileID: 1011929851}
   - component: {fileID: 1011929850}
   - component: {fileID: 1011929849}
+  - component: {fileID: 1011929853}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2430,6 +2430,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1011929853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011929848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015cb0fcab92d9f419d358f05fccde9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _increaseHoriz: 00000000
+  _decreaseHoriz: 00000000
+  _increaseVert: 00000000
+  _decreaseVert: 00000000
+  _confirmButtons: 00000000
+  _cancelButtons: 00000000
+  _activeButton: 0
+  _menuDefinition: {fileID: 1327982977}
+  upControl: {fileID: 3378413650604550214, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  downControl: {fileID: 7962555454123170879, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  leftControl: {fileID: 2686475127780364603, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  rightControl: {fileID: 8914759266004441250, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  selectControl: {fileID: -3079118488091911478, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  returnControl: {fileID: 6521463747213874908, guid: 62f397cbb27fb084b98e41eeb9d810d4, type: 3}
+  WeaponSelectMenu: {fileID: 0}
 --- !u!1 &1027316326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,6 +2945,7 @@ GameObject:
   - component: {fileID: 1327982974}
   - component: {fileID: 1327982976}
   - component: {fileID: 1327982975}
+  - component: {fileID: 1327982977}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2982,6 +3010,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327982973}
   m_CullTransparentMesh: 1
+--- !u!114 &1327982977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327982973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897a446ad41af7e409835b2b889fde32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carButtons:
+  - {fileID: 53323463}
+  menuType: 0
 --- !u!1 &1383955514
 GameObject:
   m_ObjectHideFlags: 0

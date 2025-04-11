@@ -97,17 +97,17 @@ public class MenuController : MonoBehaviour
 
     private void ClickCurrentButton()
     {
-        if (!_menuDefinition._carButtons[_activeButton].GetDisableControls())
-        {
+        //if (!_menuDefinition._carButtons[_activeButton].GetDisableControls())
+        //{
             _menuDefinition._carButtons[_activeButton].ClickButton();
-        }
+        //}
     }
 
     private int SwitchCuttentButton(int increment)
     {
         //Debug.Log("Checking Disable Controls...");
-        if (!_menuDefinition._carButtons[_activeButton].GetDisableControls())
-        {
+        //if (!_menuDefinition._carButtons[_activeButton].GetDisableControls())
+        //{
 
             int newActive = Utility.WrapAround(_menuDefinition._carButtons.Count, _activeButton, increment);
             //Debug.Log("Swapping from " + _activeButton + " to " + newActive);
@@ -115,8 +115,8 @@ public class MenuController : MonoBehaviour
             _menuDefinition._carButtons[newActive].SwappedTo();
 
             return newActive;
-        }
-        return _activeButton;
+        //}
+        //return _activeButton;
     }
 
     public void changeActiveMenu()
