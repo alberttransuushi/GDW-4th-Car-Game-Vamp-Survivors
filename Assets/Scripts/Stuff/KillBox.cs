@@ -6,6 +6,9 @@ public class KillBox : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(collision.gameObject);
+        if(collision.transform.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerCar>().TakeDamage(99999);
+        }else Destroy(collision.gameObject);
     }
 }

@@ -132,6 +132,10 @@ public class PlayerCar : MonoBehaviour
 
     public float antiRoll = 100000f;
     public bool isMidair;
+
+    bool secretMechanicOn;
+    float secretMechanicStoredSpeed;
+
     private void OnEnable()
     {
         movementControl.action.Enable();
@@ -184,18 +188,24 @@ public class PlayerCar : MonoBehaviour
             Debug.Log("drifting true smile");
         }
 
+        SecretMechanic();
+
     }
 
     private void FixedUpdate()
     {
-        
+
         if (!isMidair)
         {
             AntiFlipAxle(BLWheel, BRWheel);
             AntiFlipAxle(FLWheel, FRWheel);
         }
-        
+
     }
+
+
+
+
 
     void AntiFlipAxle(WheelCollider wheelL, WheelCollider wheelR)
     {
@@ -493,24 +503,8 @@ public class PlayerCar : MonoBehaviour
             rb.velocity = rb.velocity / (1 + breakStrength * Time.deltaTime);
         }
     }
-    /*
-    void AOALimiter()
-    {
-        if (AoADriftControl.action.WasPressedThisFrame())
-        {
-            AOAEnabled = true;
-            currentDriftFriction = 0;
-            Time.timeScale = 0.6f;
-        }
-        if ((AoADriftControl.action.WasReleasedThisFrame()) && AOAEnabled)
-        {
-            AOAEnabled = false;
-            currentDriftFriction = setDriftFriction;
-            rb.velocity = rb.velocity.magnitude * transform.forward;
-            Time.timeScale = 1.0f;
-        }
-    }
-    */
+    
+    
 
     bool Held(InputAction.CallbackContext context)
     {
@@ -627,4 +621,61 @@ public class PlayerCar : MonoBehaviour
 
         }
     }
+
+
+    void SecretMechanic()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            Debug.Log("ON");
+            secretMechanicOn = true;
+        }
+        if (secretMechanicOn)
+        {
+            AOALimiter();
+        }
+
+
+
+
+    }
+
+    void AOALimiter()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            
+            AOAEnabled = true;
+            currentDriftFriction = 0;
+            Time.timeScale = 0.3f;
+            secretMechanicStoredSpeed = rb.velocity.magnitude;
+            
+        } 
+        if (Input.GetKeyUp(KeyCode.N) && AOAEnabled)
+        {
+            AOAEnabled = false;
+            currentDriftFriction = setDriftFriction;
+            rb.velocity = secretMechanicStoredSpeed * transform.forward;
+            Time.timeScale = 1.0f;
+        }
+        if (AOAEnabled) {
+            float turn = movementControl.action.ReadValue<Vector2>().x;
+            TurnToWheel(turn * turnSpeed * 4);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

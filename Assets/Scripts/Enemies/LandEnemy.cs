@@ -41,11 +41,14 @@ public class LandEnemy : BaseEnemy
     // Update is called once per frame
     public override void LateUpdate()
     {
-        base.LateUpdate();
-        CheckAlive();
-        if(!isStunned) Movement();
+        if (playerCar != null)
+        {
+            base.LateUpdate();
+            CheckAlive();
+            if (!isStunned) Movement();
 
-        SpinOut();
+            SpinOut();
+        }
     }
 
     void SpinOut()
