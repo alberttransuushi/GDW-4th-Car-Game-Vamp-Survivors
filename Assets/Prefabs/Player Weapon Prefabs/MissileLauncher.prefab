@@ -65,9 +65,9 @@ MonoBehaviour:
   - Reload Reduction
   - Increase Damage & Knockback
   upgradeSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 97fd0aa120d11024597e04488fc97111, type: 3}
+  - {fileID: 21300000, guid: 8cdcdcbc2928d5c4bb8ff6b5fb7d7a4a, type: 3}
+  - {fileID: 21300000, guid: 97fd0aa120d11024597e04488fc97111, type: 3}
   crosshairPrefab: {fileID: 5362253570997319782, guid: c190b3c25033b8442a3b0d2c054a3133, type: 3}
   missilePrefab: {fileID: 5769646650520503644, guid: c043fa20d946ea1468d32873f0cc6a01, type: 3}
   missileSpawner: {fileID: 6511838180540343226}

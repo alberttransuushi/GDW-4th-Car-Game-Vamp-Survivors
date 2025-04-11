@@ -62,9 +62,9 @@ MonoBehaviour:
   - Longer Range
   - More Damage
   upgradeSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 12c0363544c6139459fa62b8ba46d9b6, type: 3}
+  - {fileID: 21300000, guid: 140d54210c405a44fadb6e72ff5f42b1, type: 3}
+  - {fileID: 21300000, guid: ca1bb0c1420872c40a760d0771cf5da1, type: 3}
   damageConeAngle: 45
   damage: 1
   damageCooldown: 0.25

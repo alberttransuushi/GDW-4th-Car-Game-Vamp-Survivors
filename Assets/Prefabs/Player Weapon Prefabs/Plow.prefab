@@ -117,9 +117,9 @@ MonoBehaviour:
   - Cooldown Reduction
   - Kills Refund Charge
   upgradeSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 151f9f7eb2785df4187f044702c8a44a, type: 3}
+  - {fileID: 21300000, guid: 8cdcdcbc2928d5c4bb8ff6b5fb7d7a4a, type: 3}
+  - {fileID: 21300000, guid: dc075816f459cca4381e8fdf96191bfc, type: 3}
   startingSize: {x: 0, y: 0, z: 0}
   sizeMultiplierOnActive: 2
   damage: 10
