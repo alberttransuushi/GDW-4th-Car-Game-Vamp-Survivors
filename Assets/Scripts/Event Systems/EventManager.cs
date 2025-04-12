@@ -77,7 +77,7 @@ public class EventManager : MonoBehaviour {
         GameObject randEventTrigger = GetRandomEventTrigger();
         randEventTrigger.SetActive(true);
         randEventTrigger.GetComponent<EventTrigger>().SetTimer(45);
-        eventText.text = "Event Trigger Spawned";
+        eventText.text = "Event Avaliable!";
         UpdateEventText();
         makeNewEvent = true;
       }
