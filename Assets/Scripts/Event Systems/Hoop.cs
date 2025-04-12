@@ -5,8 +5,10 @@ using UnityEngine;
 public class Hoop : MonoBehaviour {
   [SerializeField] float lowerRange = -1;
   [SerializeField] float upperRange = 1;
+  public Collider triggerZone;
 
-  public void AdjustLeftRight(float adjust) {//adjust is a float from 0-1
+
+    public void AdjustLeftRight(float adjust) {//adjust is a float from 0-1
     float range = upperRange - lowerRange;
     adjust = adjust * range;
     adjust += lowerRange;
@@ -16,6 +18,7 @@ public class Hoop : MonoBehaviour {
     if (other.tag == "Player") {
       GetComponentInParent<EventManager>().AddHoopToCount();
       this.gameObject.SetActive(false);
+      Debug.Log("I am being smacked with a car");
     }
   }
 }

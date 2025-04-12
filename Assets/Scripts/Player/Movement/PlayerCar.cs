@@ -322,7 +322,7 @@ public class PlayerCar : MonoBehaviour
             audioSource.loop = false;
             startedEngine = true;
             audioSource.pitch = Random.Range(0.7f, 1.2f);
-            Debug.Log(rb.velocity);
+            //Debug.Log(rb.velocity);
             
             audioSource.clip = startEngine;
             audioSource.Play();
@@ -389,43 +389,78 @@ public class PlayerCar : MonoBehaviour
             friction.stiffness = val;
             wheel.sidewaysFriction = friction;
         }
-            
+
     }
     void Steering()
     {
-        
+
         float turn = movementControl.action.ReadValue<Vector2>().x;
-        
+
         TurnToWheel(turn * turnSpeed);
-
-        if (driftControl.action.IsPressed())
+        if (driftControl.action.IsPressed() && rb.velocity.magnitude > 5f)
         {
-            if (FRWheel.sidewaysFriction.stiffness != frontWheelDriftingStiffness)
-            {
-                driftMaintainSpeed = rb.velocity.magnitude;
-                isDrifting = true;
-                ChangeSidewaysFriction(FRWheel, frontWheelDriftingStiffness);
-                ChangeSidewaysFriction(FLWheel, frontWheelDriftingStiffness);
-                ChangeSidewaysFriction(BLWheel, backWheelDriftingStiffness);
-                ChangeSidewaysFriction(BRWheel, backWheelDriftingStiffness);
-                Debug.Log("drifting");
-            }
+            float turnInput = movementControl.action.ReadValue<Vector2>().x;
+            float speed = rb.velocity.magnitude;
 
+            // Smoother and faster turning using Lerp
+            float targetSteer = turnInput * turnSpeed * 4.0f; // Increased multiplier for sharper drift turns
+            float smoothedSteer = Mathf.Lerp(FRWheel.steerAngle, targetSteer, Time.deltaTime * 1f);
+            TurnToWheel(smoothedSteer);
+
+            // Keep more front grip to preserve turning ability
+            ApplyDriftFriction(
+                frontStiffness: 7.0f,
+                backStiffness: 0.4f,
+                forwardStiffness: 0.9f
+            );
+
+            // Optional: small forward push to maintain speed through drift
+            rb.AddForce(transform.forward * 6000f, ForceMode.Force);
+
+            Debug.Log("Drifting");
         }
         else
         {
             if (FRWheel.sidewaysFriction.stiffness != frontWheelStiffness)
             {
                 isDrifting = false;
-                ChangeSidewaysFriction(FRWheel, frontWheelStiffness);
+                /*ChangeSidewaysFriction(FRWheel, frontWheelStiffness);
                 ChangeSidewaysFriction(FLWheel, frontWheelStiffness);
                 ChangeSidewaysFriction(BLWheel, backWheelStiffness);
-                ChangeSidewaysFriction(BRWheel, backWheelStiffness);
+                ChangeSidewaysFriction(BRWheel, backWheelStiffness);*/
+                float currentFrontFriction = Mathf.Lerp(frontWheelStiffness, 7.0f, Time.deltaTime * 2.0f);
+                float currentBackFriction = Mathf.Lerp(backWheelStiffness, 0.4f, Time.deltaTime * 2.0f);
+
+                ApplyDriftFriction(
+                    frontStiffness: currentFrontFriction,
+                    backStiffness: currentBackFriction, 
+                    forwardStiffness: currentFrontFriction
+                );
+
             }
         }
 
     }
 
+    void ApplyDriftFriction(float frontStiffness, float backStiffness, float forwardStiffness)
+    {
+        SetWheelFriction(FRWheel, frontStiffness, forwardStiffness);
+        SetWheelFriction(FLWheel, frontStiffness, forwardStiffness);
+        SetWheelFriction(BRWheel, backStiffness, forwardStiffness);
+        SetWheelFriction(BLWheel, backStiffness, forwardStiffness);
+    }
+
+    void SetWheelFriction(WheelCollider wheel, float sideways, float forward)
+    {
+        WheelFrictionCurve sideFriction = wheel.sidewaysFriction;
+        WheelFrictionCurve fwdFriction = wheel.forwardFriction;
+
+        sideFriction.stiffness = sideways;
+        fwdFriction.stiffness = forward;
+
+        wheel.sidewaysFriction = sideFriction;
+        wheel.forwardFriction = fwdFriction;
+    }
 
     void TurnToWheel(float speed)
     { 

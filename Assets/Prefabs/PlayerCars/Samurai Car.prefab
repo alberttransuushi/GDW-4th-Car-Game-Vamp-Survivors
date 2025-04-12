@@ -1220,6 +1220,7 @@ GameObject:
   - component: {fileID: 4337199155146773831}
   - component: {fileID: 4326755978375089288}
   - component: {fileID: 8012845144782385064}
+  - component: {fileID: 9746118454316145}
   m_Layer: 8
   m_Name: Samurai Car
   m_TagString: Player
@@ -1559,6 +1560,29 @@ MonoBehaviour:
   minRange: 0
   cooldown: 5
   cooldownCountdown: 2
+--- !u!136 &9746118454316145
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860760362745808088}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.935
+  m_Height: 4.9999995
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &3952921533118816326
 GameObject:
   m_ObjectHideFlags: 0

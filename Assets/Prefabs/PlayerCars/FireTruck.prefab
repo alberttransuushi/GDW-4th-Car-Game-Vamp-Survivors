@@ -2664,8 +2664,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.68, y: 1.12, z: 9.36}
-  m_Center: {x: 0, y: -0.57, z: -0.36}
+  m_Size: {x: 3, y: 1.15, z: 9}
+  m_Center: {x: 0, y: 0, z: -0.35}
 --- !u!114 &6127982122594003429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2832,7 +2832,7 @@ MonoBehaviour:
   canBoost: 0
   boostCooldownTime: 5
   acceleration: 30
-  turnSpeed: 100
+  turnSpeed: 200
   downwardForceMultiplier: 20
   downwardForceMultiplierDrifting: 0.1
   setDriftFriction: 0
@@ -2881,7 +2881,7 @@ MonoBehaviour:
   BLWheel: {fileID: 1963322660914332087}
   frontWheelStiffness: 10
   backWheelStiffness: 10
-  frontWheelDriftingStiffness: 20
+  frontWheelDriftingStiffness: 10
   backWheelDriftingStiffness: 5
   wheelFrictionLerpTo: 0.1
   wheelFrictionLerpFrom: 0.1
